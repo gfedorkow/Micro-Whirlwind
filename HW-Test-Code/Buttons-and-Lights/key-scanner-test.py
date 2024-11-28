@@ -445,7 +445,7 @@ def main():
             push_str = "Released"
             if pressed:
                 push_str = "Pressed "
-            print("%s: row=%d, col=%d" % (push_str, row, col))
+            print("%s: key=%d; row=%d, col=%d" % (push_str, key+1, row, col))
 
         time.sleep(0.3)
 
