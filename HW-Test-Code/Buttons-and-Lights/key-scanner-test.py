@@ -404,9 +404,39 @@ class IS31FL3731:
 
 # --------------------
 # the remainder of this file gives a standalone test program that exercises
-# the hardware (currently the IS31 LED driver)
-# July 7, 2024
+# the hardware (currently the IS31 LED driver plus TCS8414 key scanner)
 
+# July 7, 2024; Nov 28, 2024
+
+
+# The following routine decodes the two signals from a Rotary Encoder to
+# figure out which way the knob is being turned.
+# Th code relies on the key scanner to deliver an 'interrupt' when the pin
+# changes state.
+# We're also relying completely on the scanner to debounce the signals!
+EncoderState = [0,0]
+# which_key is which one of the two Rotary phases changed.
+def rotary_decode(pressed, which_key):
+    global EncoderState
+
+    EncoderState[which_key] = (pressed != 0)
+    push_str = "Released"
+    if pressed:
+        push_str = "Pushed  "
+
+    direction = 33
+    if pressed:
+        if which_key == 0:
+            direction = EncoderState[1]
+        if which_key == 1:
+            direction = EncoderState[0] == 0
+    else:
+        if which_key == 0:
+            direction = EncoderState[1] == 0
+        if which_key == 1:
+            direction = EncoderState[0]
+
+    print("%s: key=%d dir=%d" % (push_str, which_key, direction))
 
 
 
@@ -434,18 +464,22 @@ def main():
     print("  TCA8414 init done")
 
     for i in range(0, 10000):
-        tca84.set_gp_out(i & 0x3)
+        tca84.set_gp_out(i & 0x3)  # blink a red/green LED with two TCA8414 output GPIOs
         if tca84.available() > 0:
             key = tca84.getEvent()
             pressed = key & 0x80
             key &= 0x7F
-            key -= 1
-            row = key // 10
-            col = key % 10
-            push_str = "Released"
-            if pressed:
-                push_str = "Pressed "
-            print("%s: key=%d; row=%d, col=%d" % (push_str, key+1, row, col))
+            if (key == 111 or key == 112):
+                rotary_decode(pressed, key - 111)     # the two codes come in as 111 and 112
+
+            else:
+                key -= 1
+                row = key // 10
+                col = key % 10
+                push_str = "Released"
+                if pressed:
+                    push_str = "Pressed "
+                print("%s: key=%d; row=%d, col=%d" % (push_str, key+1, row, col))
 
         time.sleep(0.3)
 

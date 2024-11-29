@@ -463,12 +463,8 @@ def main():
         is31.write_16bit_led_rows(0, int_val)
         time.sleep(.03)
 
-    input("CR to Shutdown")
-    is31.writeRegister8(ISSI_BANK_FUNCTIONREG, ISSI_REG_SHUTDOWN, val=0x00)
-    time.sleep(1)
-
     for i in range(0, 10000):
-        tca84.set_gp_out(i & 0x3)
+        tca84.set_gp_out(i & 0x3)  # blink the LED
         if tca84.available() > 0:
             key = tca84.getEvent()
             pressed = key & 0x80
@@ -482,6 +478,10 @@ def main():
             print("%s: row=%d, col=%d" % (push_str, row, col))
 
         time.sleep(0.3)
+
+    input("CR to Shutdown")
+    is31.writeRegister8(ISSI_BANK_FUNCTIONREG, ISSI_REG_SHUTDOWN, val=0x00)
+    time.sleep(1)
 
 
 if __name__ == "__main__":
