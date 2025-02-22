@@ -709,14 +709,14 @@ class Is31:
         if self.reverse_bits:
             reversed_word = self.bit_reverse(word_reg)
             if self.exclusion:
-            if reg_offset in self.exclusion:
+                if reg_offset in self.exclusion:
                     exc = self.exclusion[reg_offset]
                     if (exc & reversed_word) != 0:
                         print("Exclusion: Reg 0x%x, 0x%x" % (reg_offset, self.exclusion[reg_offset]))
                     reversed_word &= ~exc
             int_list = [reversed_word]
         else:
-            int_list = word_reg
+            int_list = [word_reg]
         self.is31.write_16bit_led_rows(reg_offset, int_list)
 
 
