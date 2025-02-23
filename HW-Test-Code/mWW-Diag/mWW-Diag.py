@@ -13,9 +13,9 @@ import smbus2  # also contains i2c support
 import time
 
 
-IS31_1_ADDR_0 = 0x74
-IS31_1_ADDR_1 = 0x75
-IS31_1_ADDR_2 = 0x77
+IS31_1_ADDR_U1 = 0x74    # U1
+IS31_1_ADDR_U5 = 0x75    # U5
+IS31_1_ADDR_U2 = 0x77    # U2
 TCA8414_0_ADDR = 0x34 # 34
 TCA8414_1_ADDR = 0x3b #3B
 pin_pwr_ctl = 19
@@ -35,6 +35,9 @@ Verbose = False
 Debug_I2C = False  # specific to low-level I2c
 Debug = True
 
+# ******************************************************************** #
+# Interface to wwsim
+# g fedorkow, Feb 2025
 
 # see https://stackoverflow.com/questions/12681945/reversing-bits-of-python-integer
 def bit_reverse_16(x):
@@ -49,41 +52,49 @@ class Cpu:
     def __init__(self):
         pass
 
-class mWWcpuRegisterDisplay:
-    def __init__(self):
-        pass
+class mWWRegisterDisplay:
+    def __init__(self, u1_is31, u2_is31, u5_is31):
+        self.run_state = 0
+        self.ind_register = 0   # this is the eight-bit "user" indicator light display
+        self.u1_us31 = u1_is31
+        self.u2_us31 = u2_is31
+        self.u5_us31 = u5_is31
 
 
-    def set_led_display(self, cpu, ff2, ff3):
-        pass
+    # CPU run state is displayed in the most significant three bits of U1 Register 8
+    def set_run_state(self, alarm, run_stop):
+        if alarm:
+            st = 0x8000
+        else:
+            st = 0
+        if run_stop:
+            st |= 0x4000
+        else:
+            st |= 0x2000
+        self.run_state = (self.run_state & 0x1FFF) | st
+
+
+    def set_IndReg_leds(self, ind_register):
+        self.ind_register = bit_reverse_16(ind_register) & 0xff
+
+    def set_cpu_reg_display(self, pc, acc, carry, b_reg, mdr, mar, bank):
+        u1_led = [0] * 9
+        acc_r = bit_reverse_16(acc)
+        b_reg_r = bit_reverse_16(b_reg)
+        mdr_r = bit_reverse_16(mdr)
+        mar_r = bit_reverse_16(mar)
+        u1_led[0] = mar_r
+        u1_led[1] = ~mar_r
+
+        u1_led[6] = mdr_r
+        u1_led[7] = ~mdr_r
+        u1_led[8] = self.run_state | self.ind_register
+        self.u1_is31.write_16bit_led_rows(0, u1_led)
 
 
 
-""" 
-class BlinkenLights:
-    def __init__(self):
-        print("I2C init: ")
-        # bus = I2Cclass(channel = 1)
-        self.i2c_bus = smbus2.SMBus(1)
-        print("  done")
-
-        self.is31_1 = IS31FL3731(self.i2c_bus, IS31_1_ADDR)
-        print("I2C Test")
-        # is31.i2c_reg_test()
-        self.is31_1.init_IS31()
-        print("  IS31 init done")
-
-    def update_panel(self, cb, bank, alarm_state=0, standalone=False, init_PC=None):
-        cpu = cb.cpu
-        lights = []
-        lights.append(cpu.PC)
-        lights.append(cpu._AC)
-        lights.append(cpu._BReg)
-        self.is31_1.write_16bit_led_rows(0, lights)
-"""
-
+# ******************************************************************** #
 # Classes to run the hardware I/O devices to make up the Micro-Whirlwind
-
 # Guy Fedorkow, Jun 2024
 
 
@@ -871,9 +882,9 @@ def main():
     parser.add_argument("--NoPowerControl", help="Don't mess with power control", action="store_true")
     parser.add_argument("--PowerControl_Loop", help="Loop power control on/off", action="store_true")
     parser.add_argument("--SMBus_Loop", help="Loop on SMBus addr read/write test", type=str) # hex number
-    parser.add_argument("--LED_0_Mux_Loop", help="Exercise LED Mux chip @ 0x74", action="store_true")
-    parser.add_argument("--LED_1_Mux_Loop", help="Exercise LED Mux chip @ 0x75", action="store_true")
-    parser.add_argument("--LED_2_Mux_Loop", help="Exercise LED Mux chip @ 0x77", action="store_true")
+    parser.add_argument("--U1_LED_Mux_Loop", help="Exercise LED Mux chip @ 0x74", action="store_true")
+    parser.add_argument("--U5_LED_Mux_Loop", help="Exercise LED Mux chip @ 0x75", action="store_true")
+    parser.add_argument("--U2_LED_Mux_Loop", help="Exercise LED Mux chip @ 0x77", action="store_true")
     parser.add_argument("--Key_0_Scan", help="Exercise Key Scanner chip @ 0x?", action="store_true")
     parser.add_argument("--Key_1_Scan", help="Exercise Key Scanner chip @ 0x?", action="store_true")
     parser.add_argument("--P1_hot", help="LED Pattern - One Hot scan", action="store_true")
@@ -884,9 +895,9 @@ def main():
 
     tests = 0
     stop = False
-    is31_0 = None
-    is31_1 = None
-    is31_2 = None
+    is31_U1 = None
+    is31_U5 = None
+    is31_U2 = None
     tca84_0 = None
     tca84_1 = None
     pwr_ctl = PwrCtl()
@@ -911,21 +922,21 @@ def main():
         time.sleep(0.3)
 
     # Hack
-    # args.LED_0_Mux_Loop = True
+    # args.U1_LED_Mux_Loop = True
 
     if args.SMBus_Loop:
         tests +=1
 
-    if args.LED_0_Mux_Loop:
-        is31_0 = Is31(i2c_bus, IS31_1_ADDR_0)
+    if args.U1_LED_Mux_Loop:
+        is31_U1 = Is31(i2c_bus, IS31_1_ADDR_U1)
         tests += 1
 
-    if args.LED_1_Mux_Loop:
-        is31_1 = Is31(i2c_bus, IS31_1_ADDR_1)
+    if args.U5_LED_Mux_Loop:
+        is31_U5 = Is31(i2c_bus, IS31_1_ADDR_U5)
         tests += 1
 
-    if args.LED_2_Mux_Loop:
-        is31_2 = Is31(i2c_bus, IS31_1_ADDR_2)
+    if args.U2_LED_Mux_Loop:
+        is31_U2 = Is31(i2c_bus, IS31_1_ADDR_U2)
         tests += 1
 
     if args.Key_0_Scan:
@@ -967,12 +978,12 @@ def main():
             pwr_ctl.step()
         if args.SMBus_Loop:
             i2c_bus.i2c_reg_test(args.SMBus_Loop)
-        if args.LED_0_Mux_Loop:
-            is31_0.step(delay, led_pattern)
-        if args.LED_1_Mux_Loop:
-            is31_1.step(delay, led_pattern)
-        if args.LED_2_Mux_Loop:
-            is31_2.step(delay, led_pattern)
+        if args.U1_LED_Mux_Loop:
+            is31_U1.step(delay, led_pattern)
+        if args.U5_LED_Mux_Loop:
+            is31_U5.step(delay, led_pattern)
+        if args.U2_LED_Mux_Loop:
+            is31_U2.step(delay, led_pattern)
         if args.Key_0_Scan:
             run_tca(tca84_0)
         if args.Key_1_Scan:
@@ -980,13 +991,36 @@ def main():
         if args.GPIO_Switches:
             gp_sw.step(delay)
 
-#           run_pong(is31_0)
+#           run_pong(is31_U2)
         PassCount += 1
         # print("%05d" % PassCount)
 
     input("CR to Shutdown")
     # is31.writeRegister8(ISSI_BANK_FUNCTIONREG, ISSI_REG_SHUTDOWN, val=0x00)
     time.sleep(1)
+
+""" 
+class BlinkenLights:
+    def __init__(self):
+        print("I2C init: ")
+        # bus = I2Cclass(channel = 1)
+        self.i2c_bus = smbus2.SMBus(1)
+        print("  done")
+
+        self.is31_U5 = IS31FL3731(self.i2c_bus, IS31_1_ADDR)
+        print("I2C Test")
+        # is31.i2c_reg_test()
+        self.is31_1.init_IS31()
+        print("  IS31 init done")
+
+    def update_panel(self, cb, bank, alarm_state=0, standalone=False, init_PC=None):
+        cpu = cb.cpu
+        lights = []
+        lights.append(cpu.PC)
+        lights.append(cpu._AC)
+        lights.append(cpu._BReg)
+        self.is31_1.write_16bit_led_rows(0, lights)
+"""
 
 
 if __name__ == "__main__":
