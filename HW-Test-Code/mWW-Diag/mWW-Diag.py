@@ -51,7 +51,7 @@ def bit_reverse_16(x):
     return x    
 
 
-class Cpu:
+class CpuClass:
     def __init__(self):
         self._BReg = 0
         self._AC = 0    # Accumulator
@@ -65,9 +65,9 @@ class mWWRegisterDisplayClass:
     def __init__(self, u1_is31, u2_is31, u5_is31):
         self.run_state = 0
         self.ind_register = 0   # this is the eight-bit "user" indicator light display
-        self.u1_us31 = u1_is31
-        self.u2_us31 = u2_is31
-        self.u5_us31 = u5_is31
+        self.u1_is31 = u1_is31
+        self.u2_is31 = u2_is31
+        self.u5_is31 = u5_is31
 
 
     # CPU run state is displayed in the most significant three bits of U1 Register 8
@@ -89,10 +89,10 @@ class mWWRegisterDisplayClass:
     def set_cpu_reg_display(self, cpu, mdr_par=0, mar=0, mar_bank=0):
         u1_led = [0] * 9
         acc_r = bit_reverse_16(cpu._AC)
-        b_reg_r = bit_reverse_16(cpu._BREG)
+        b_reg_r = bit_reverse_16(cpu._BReg)
         mdr_par_r = bit_reverse_16(mdr_par)
         mar_r = bit_reverse_16(mar) & 0o3777 | (mar_bank & 0o7) << 12
-        u1_led[0] = mar_r 
+        u1_led[0] = mar_r
         u1_led[1] = ~mar_r
         u1_led[2] = mdr_par_r
         u1_led[3] = ~mdr_par_r
@@ -119,15 +119,15 @@ class mWWRegisterDisplayClass:
 
 
 class MappedDisplay:
-    def __init__(self, cpu):
-        self.cpu = Cpu()
+    def __init__(self, i2c_bus):
+        self.cpu = CpuClass()
 
         is31_U1 = Is31(i2c_bus, IS31_1_ADDR_U1)
         is31_U5 = Is31(i2c_bus, IS31_1_ADDR_U5)
         is31_U2 = Is31(i2c_bus, IS31_1_ADDR_U2)
 
         self.reg_disp = mWWRegisterDisplayClass(is31_U1, is31_U2, is31_U5)
-        self.reg_disp.set_cpu_reg_display(cpu)  # default everything to zero
+        self.reg_disp.set_cpu_reg_display(self.cpu)  # default everything to zero
         self.bit_num = 0
         self.reg_num = 0
 
@@ -1018,7 +1018,7 @@ def main():
         tests += 1
 
     if args.Mapped:
-        md = MappedDisplay()
+        md = MappedDisplay(i2c_bus)
         tests += 1
 
     if tests == 0:
