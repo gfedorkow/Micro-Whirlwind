@@ -2,14 +2,17 @@
 
 # Diagnostic for MicroWhirlwind hardware
 
+RasPi = True
 try:
     import RPi.GPIO as gpio
-except IOError:
+    # https://pypi.org/project/smbus2/
+    import smbus2  # also contains i2c support
+except ModuleNotFoundError:
     print("no GPIO library found")
+    RasPi = False
+
 
 import argparse
-# https://pypi.org/project/smbus2/
-import smbus2  # also contains i2c support
 import time
 
 
@@ -50,9 +53,15 @@ def bit_reverse_16(x):
 
 class Cpu:
     def __init__(self):
-        pass
+        self._BReg = 0
+        self._AC = 0    # Accumulator
+        self._AReg = 0    # Address Register, used for subroutine return address
+        self._SAM = 0   # Two-bit carry-out register; it's only legal values appear to be 1, 0, -1
+                        # SAM is set by many instructions, but used only by ca cs and cm
+        self.PC = 0o40  # Program Counter; default start address
 
-class mWWRegisterDisplay:
+
+class mWWRegisterDisplayClass:
     def __init__(self, u1_is31, u2_is31, u5_is31):
         self.run_state = 0
         self.ind_register = 0   # this is the eight-bit "user" indicator light display
@@ -77,20 +86,75 @@ class mWWRegisterDisplay:
     def set_IndReg_leds(self, ind_register):
         self.ind_register = bit_reverse_16(ind_register) & 0xff
 
-    def set_cpu_reg_display(self, pc, acc, carry, b_reg, mdr, mar, bank):
+    def set_cpu_reg_display(self, cpu, mdr_par=0, mar=0, mar_bank=0):
         u1_led = [0] * 9
-        acc_r = bit_reverse_16(acc)
-        b_reg_r = bit_reverse_16(b_reg)
-        mdr_r = bit_reverse_16(mdr)
-        mar_r = bit_reverse_16(mar)
-        u1_led[0] = mar_r
+        acc_r = bit_reverse_16(cpu._AC)
+        b_reg_r = bit_reverse_16(cpu._BREG)
+        mdr_par_r = bit_reverse_16(mdr_par)
+        mar_r = bit_reverse_16(mar) & 0o3777 | (mar_bank & 0o7) << 12
+        u1_led[0] = mar_r 
         u1_led[1] = ~mar_r
+        u1_led[2] = mdr_par_r
+        u1_led[3] = ~mdr_par_r
+        u1_led[4] = acc_r
+        u1_led[5] = ~acc_r
+        u1_led[6] = b_reg_r
+        u1_led[7] = ~b_reg_r
 
-        u1_led[6] = mdr_r
-        u1_led[7] = ~mdr_r
-        u1_led[8] = self.run_state | self.ind_register
+        # Carry-Out / SAM register
+        # Bit 8 -  0x100 -> red -1 carry
+        # Bit 9 -  0x200 -> white -1 carry
+        # Bit 10 - 0x400 -> red +1 carry
+        # Bit 11 - 0x800 -> white +1 carry
+        if cpu._SAM > 0:
+            cled = 0x600
+        elif cpu._SAM < 0:
+            cled = 0x900 
+        else:
+            cled = 0xa00
+
+        u1_led[8] = self.run_state | self.ind_register | cled
         self.u1_is31.write_16bit_led_rows(0, u1_led)
 
+
+
+class MappedDisplay:
+    def __init__(self, cpu):
+        self.cpu = Cpu()
+
+        is31_U1 = Is31(i2c_bus, IS31_1_ADDR_U1)
+        is31_U5 = Is31(i2c_bus, IS31_1_ADDR_U5)
+        is31_U2 = Is31(i2c_bus, IS31_1_ADDR_U2)
+
+        self.reg_disp = mWWRegisterDisplayClass(is31_U1, is31_U2, is31_U5)
+        self.reg_disp.set_cpu_reg_display(cpu)  # default everything to zero
+        self.bit_num = 0
+        self.reg_num = 0
+
+        self.reg_list_len = [
+            [0, 16],  # mar
+            [0, 16],  # mdr
+        ]
+        self.max_reg = 2
+
+
+    def step(self):
+        self.reg_list[self.reg_num][0] = 1 << self.reg_list.bit_num
+        self.reg_list.bit_num += 1
+        if self.reg_list.bit_num >= self.reg_list[self.reg_num][1]:
+            self.reg_list.bit_num = 0
+            self.reg_num = (self.reg_num) + 1 % self.max_reg
+
+        self.cpu.PC = 0
+        self.cpu._AC = 0
+        self.cpu._BReg = 0
+        self.cpu._SAM = 0
+
+        if self.reg_num == 0:  # MAR
+            self.reg_disp.set_cpu_reg_display(self.cpu, mar = (1 << self.reg_list.bit_num))
+
+        if self.reg_num == 1:  # MDR
+            self.reg_disp.set_cpu_reg_display(self.cpu, mdr = (1 << self.reg_list.bit_num))
 
 
 # ******************************************************************** #
@@ -887,9 +951,11 @@ def main():
     parser.add_argument("--U2_LED_Mux_Loop", help="Exercise LED Mux chip @ 0x77", action="store_true")
     parser.add_argument("--Key_0_Scan", help="Exercise Key Scanner chip @ 0x?", action="store_true")
     parser.add_argument("--Key_1_Scan", help="Exercise Key Scanner chip @ 0x?", action="store_true")
+    parser.add_argument("--P0_wave", help="LED Pattern - Wave", action="store_true")
     parser.add_argument("--P1_hot", help="LED Pattern - One Hot scan", action="store_true")
     parser.add_argument("--P2H_blink", help="LED Pattern - Alternate two horizontal LEDs at hex-addr", type=str)
     parser.add_argument("--P3V_blink", help="LED Pattern - Alternate two vertical LEDs at hex-addr", type=str)
+    parser.add_argument("-m", "--Mapped", help="Scan CPU State", action="store_true")
 
     args = parser.parse_args()
 
@@ -951,11 +1017,17 @@ def main():
     if args.PowerControl_Loop or args.GPIO_Switches:
         tests += 1
 
+    if args.Mapped:
+        md = MappedDisplay()
+        tests += 1
+
     if tests == 0:
         print("no tests?")
         exit(1)
 
-    led_pattern = 0    # default is the wave-scan
+    led_pattern = 1    # default is one-hot
+    if args.P0_wave:
+        led_pattern = 0
     if args.P1_hot:
         led_pattern = 1
     if args.P2H_blink:
@@ -990,6 +1062,9 @@ def main():
             run_tca(tca84_1)
         if args.GPIO_Switches:
             gp_sw.step(delay)
+        if args.Mapped:
+            md.step()
+
 
 #           run_pong(is31_U2)
         PassCount += 1
