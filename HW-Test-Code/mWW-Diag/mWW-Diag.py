@@ -86,20 +86,25 @@ class mWWRegisterDisplayClass:
     def set_IndReg_leds(self, ind_register):
         self.ind_register = bit_reverse_16(ind_register) & 0xff
 
-    def set_cpu_reg_display(self, cpu, mdr_par=0, mar=0, mar_bank=0):
+    def set_cpu_reg_display(self, cpu, mdr=0, mar=0, mar_bank=0):
         u1_led = [0] * 9
+        u5_led = [0] * 2
         acc_r = bit_reverse_16(cpu._AC)
+        pc_r = bit_reverse_16(cpu.PC & 0o3777)
         b_reg_r = bit_reverse_16(cpu._BReg)
-        mdr_par_r = bit_reverse_16(mdr_par)
-        mar_r = bit_reverse_16(mar) & 0o3777 | (mar_bank & 0o7) << 12
-        u1_led[0] = mar_r
-        u1_led[1] = ~mar_r
-        u1_led[2] = mdr_par_r
-        u1_led[3] = ~mdr_par_r
-        u1_led[4] = acc_r
-        u1_led[5] = ~acc_r
-        u1_led[6] = b_reg_r
-        u1_led[7] = ~b_reg_r
+        mdr_par_r = bit_reverse_16(mdr)
+        mar_r = bit_reverse_16(mar & 0o3777 | (mar_bank & 0o7) << 12)
+        u1_led[0] = ~mar_r
+        u1_led[1] = mar_r
+        u1_led[2] = ~mdr_par_r
+        u1_led[3] = mdr_par_r
+        u1_led[4] = ~acc_r
+        u1_led[5] = acc_r
+        u1_led[6] = ~b_reg_r
+        u1_led[7] = b_reg_r
+
+        u5_led[0] = ~pc_r
+        u5_led[1] = pc_r
 
         # Carry-Out / SAM register
         # Bit 8 -  0x100 -> red -1 carry
@@ -112,49 +117,60 @@ class mWWRegisterDisplayClass:
             cled = 0x900 
         else:
             cled = 0xa00
-
         u1_led[8] = self.run_state | self.ind_register | cled
-        self.u1_is31.write_16bit_led_rows(0, u1_led)
+
+        self.u1_is31.is31.write_16bit_led_rows(0, u1_led)
+        self.u5_is31.is31.write_16bit_led_rows(0, u5_led)
 
 
 
-class MappedDisplay:
+class MappedDisplayClass:
     def __init__(self, i2c_bus):
         self.cpu = CpuClass()
+        self.mar = 0
+        self.mdr = 0
+        self.AC = 0
+        self.BReg = 0
+        self.PC = 0
 
-        is31_U1 = Is31(i2c_bus, IS31_1_ADDR_U1)
-        is31_U5 = Is31(i2c_bus, IS31_1_ADDR_U5)
-        is31_U2 = Is31(i2c_bus, IS31_1_ADDR_U2)
+        u1_is31 = Is31(i2c_bus, IS31_1_ADDR_U1)
+        u5_is31 = Is31(i2c_bus, IS31_1_ADDR_U5)
+        u2_is31 = Is31(i2c_bus, IS31_1_ADDR_U2)
 
-        self.reg_disp = mWWRegisterDisplayClass(is31_U1, is31_U2, is31_U5)
+        self.reg_disp = mWWRegisterDisplayClass(u1_is31, u2_is31, u5_is31)
         self.reg_disp.set_cpu_reg_display(self.cpu)  # default everything to zero
         self.bit_num = 0
         self.reg_num = 0
 
-        self.reg_list_len = [
-            [0, 16],  # mar
-            [0, 16],  # mdr
+        self.reg_list = [
+            [self.mar, 16],  # mar
+            [self.mdr, 16],  # mdr
+            [self.AC,  16],
+            [self.BReg, 16],
+            [self.PC, 16],
         ]
-        self.max_reg = 2
+        self.max_reg = 5
 
 
-    def step(self):
-        self.reg_list[self.reg_num][0] = 1 << self.reg_list.bit_num
-        self.reg_list.bit_num += 1
-        if self.reg_list.bit_num >= self.reg_list[self.reg_num][1]:
-            self.reg_list.bit_num = 0
-            self.reg_num = (self.reg_num) + 1 % self.max_reg
+    def step(self, delay):
+        self.reg_list[self.reg_num][0] = 1 << self.bit_num
+        self.bit_num += 1
+        if self.bit_num >= self.reg_list[self.reg_num][1]:
+            self.bit_num = 0
+            self.reg_num = (self.reg_num + 1) % self.max_reg
 
-        self.cpu.PC = 0
-        self.cpu._AC = 0
-        self.cpu._BReg = 0
+        self.cpu.PC = self.reg_list[4][0]
+        self.cpu._AC = self.reg_list[2][0]
+        self.cpu._BReg = self.reg_list[3][0]
         self.cpu._SAM = 0
 
-        if self.reg_num == 0:  # MAR
-            self.reg_disp.set_cpu_reg_display(self.cpu, mar = (1 << self.reg_list.bit_num))
+#        if self.reg_num == 0:  # MAR
+        self.reg_disp.set_cpu_reg_display(self.cpu, mar=self.reg_list[0][0], mdr=self.reg_list[1][0])
 
-        if self.reg_num == 1:  # MDR
-            self.reg_disp.set_cpu_reg_display(self.cpu, mdr = (1 << self.reg_list.bit_num))
+#        if self.reg_num == 1:  # MDR
+#            self.reg_disp.set_cpu_reg_display(self.cpu, mdr=(1 << self.bit_num))
+
+        time.sleep(delay)
 
 
 # ******************************************************************** #
@@ -613,7 +629,7 @@ class IS31FL3731:
         #time.sleep(1)
         print("set brightness")
         # all LEDs to the same brightness, and turn them all off
-        self.set_brightness(0x16)
+        self.set_brightness(0x04)  # Red should be 16; white is less
 
 
 
@@ -1018,7 +1034,7 @@ def main():
         tests += 1
 
     if args.Mapped:
-        md = MappedDisplay(i2c_bus)
+        md = MappedDisplayClass(i2c_bus)
         tests += 1
 
     if tests == 0:
@@ -1063,7 +1079,7 @@ def main():
         if args.GPIO_Switches:
             gp_sw.step(delay)
         if args.Mapped:
-            md.step()
+            md.step(delay)
 
 
 #           run_pong(is31_U2)
