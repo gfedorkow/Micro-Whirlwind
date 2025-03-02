@@ -123,6 +123,22 @@ class mWWRegisterDisplayClass:
         self.u5_is31.is31.write_16bit_led_rows(0, u5_led)
 
 
+    # incomplete!
+    def set_preset_switches(self, pc, ff2, ff3):
+        u2_led = [0] * 9
+        pc_r = bit_reverse_16(cpu.PC & 0o3777)
+        u1_led[0] = ~mar_r
+        u1_led[1] = mar_r
+        u1_led[2] = ~mdr_par_r
+        u1_led[3] = mdr_par_r
+        u1_led[4] = ~acc_r
+        u1_led[5] = acc_r
+        u1_led[6] = ~b_reg_r
+        u1_led[7] = b_reg_r
+
+        self.u2_is31.is31.write_16bit_led_rows(0, u1_led)
+
+
 
 class MappedDisplayClass:
     def __init__(self, i2c_bus):
