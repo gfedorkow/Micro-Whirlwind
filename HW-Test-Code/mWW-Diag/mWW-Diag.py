@@ -68,6 +68,9 @@ class mWWRegisterDisplayClass:
         self.u1_is31 = u1_is31
         self.u2_is31 = u2_is31
         self.u5_is31 = u5_is31
+        self.u1_led = [0] * 9
+        self.u2_led = [0] * 9
+        self.u5_led = [0] * 9
 
 
     # CPU run state is displayed in the most significant three bits of U1 Register 8
@@ -87,24 +90,22 @@ class mWWRegisterDisplayClass:
         self.ind_register = bit_reverse_16(ind_register) & 0xff
 
     def set_cpu_reg_display(self, cpu, mdr=0, mar=0, mar_bank=0):
-        u1_led = [0] * 9
-        u5_led = [0] * 2
         acc_r = bit_reverse_16(cpu._AC)
         pc_r = bit_reverse_16(cpu.PC & 0o3777)
         b_reg_r = bit_reverse_16(cpu._BReg)
         mdr_par_r = bit_reverse_16(mdr)
         mar_r = bit_reverse_16(mar & 0o3777 | (mar_bank & 0o7) << 12)
-        u1_led[0] = ~mar_r
-        u1_led[1] = mar_r
-        u1_led[2] = ~mdr_par_r
-        u1_led[3] = mdr_par_r
-        u1_led[4] = ~acc_r
-        u1_led[5] = acc_r
-        u1_led[6] = ~b_reg_r
-        u1_led[7] = b_reg_r
+        self.u1_led[0] = ~mar_r
+        self.u1_led[1] = mar_r
+        self.u1_led[2] = ~mdr_par_r
+        self.u1_led[3] = mdr_par_r
+        self.u1_led[4] = ~acc_r
+        self.u1_led[5] = acc_r
+        self.u1_led[6] = ~b_reg_r
+        self.u1_led[7] = b_reg_r
 
-        u5_led[0] = ~pc_r
-        u5_led[1] = pc_r
+        self.u5_led[0] = ~pc_r
+        self.u5_led[1] = pc_r
 
         # Carry-Out / SAM register
         # Bit 8 -  0x100 -> red -1 carry
@@ -117,30 +118,29 @@ class mWWRegisterDisplayClass:
             cled = 0x900 
         else:
             cled = 0xa00
-        u1_led[8] = self.run_state | self.ind_register | cled
+        self.u1_led[8] = self.run_state | self.ind_register | cled
 
-        self.u1_is31.is31.write_16bit_led_rows(0, u1_led)
-        self.u5_is31.is31.write_16bit_led_rows(0, u5_led)
+        self.u1_is31.is31.write_16bit_led_rows(0, self.u1_led)
+        self.u5_is31.is31.write_16bit_led_rows(0, self.u5_led, len=2)
 
 
     # incomplete!
-    def set_preset_switches(self, pc, ff2, ff3):
-        u2_led = [0] * 9
-        pc_r = bit_reverse_16(cpu.PC & 0o3777)
-        u1_led[0] = ~mar_r
-        u1_led[1] = mar_r
-        u1_led[2] = ~mdr_par_r
-        u1_led[3] = mdr_par_r
-        u1_led[4] = ~acc_r
-        u1_led[5] = acc_r
-        u1_led[6] = ~b_reg_r
-        u1_led[7] = b_reg_r
+    def set_preset_switches(self, pc, pc_bank, ff2, ff3):
+        self.u2_led[0] = pc & 0o003400 | self.u2_led[0] & 0o377   # pc is only 11 bits
+        self.u2_led[1] = ((pc & 0o377) << 8) | self.u2_led[1] & 0o377
 
-        self.u2_is31.is31.write_16bit_led_rows(0, u1_led)
+        self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=2)
 
 
 
-class MappedDisplayClass:
+class RegListClass:
+    def __init__(self, num_bits=0, var_name=None, fn="?"):
+        self.fn = fn
+        self.num_bits = num_bits
+        self.var_name = var_name
+
+
+class MappedDisplayDriverClass:
     def __init__(self, i2c_bus):
         self.cpu = CpuClass()
         self.mar = 0
@@ -148,6 +148,7 @@ class MappedDisplayClass:
         self.AC = 0
         self.BReg = 0
         self.PC = 0
+        self.PC_preset = 0
 
         u1_is31 = Is31(i2c_bus, IS31_1_ADDR_U1)
         u5_is31 = Is31(i2c_bus, IS31_1_ADDR_U5)
@@ -158,33 +159,45 @@ class MappedDisplayClass:
         self.bit_num = 0
         self.reg_num = 0
 
-        self.reg_list = [
-            [self.mar, 16],  # mar
-            [self.mdr, 16],  # mdr
-            [self.AC,  16],
-            [self.BReg, 16],
-            [self.PC, 16],
-        ]
-        self.max_reg = 5
+        self.reg_list = []
+        self.reg_list.append(RegListClass(var_name=self.mar,  num_bits=11, fn="cpu"))
+        self.reg_list.append(RegListClass(var_name=self.mdr,  num_bits=16, fn="cpu"))
+        self.reg_list.append(RegListClass(var_name=self.AC,   num_bits=16, fn="cpu"))
+        self.reg_list.append(RegListClass(var_name=self.BReg, num_bits=16, fn="cpu"))
+        self.reg_list.append(RegListClass(var_name=self.PC,   num_bits=11, fn="cpu"))
+        self.reg_list.append(RegListClass(var_name=self.PC_preset,   num_bits=11, fn="preset"))
+
+
+#        self.reg_list = [
+#            [self.mar, 16],  # mar
+#            [self.mdr, 16],  # mdr
+#            [self.AC,  16],
+#            [self.BReg, 16],
+#            [self.PC, 16],
+#        ]
+#        self.max_reg = 5
 
 
     def step(self, delay):
-        self.reg_list[self.reg_num][0] = 1 << self.bit_num
-        self.bit_num += 1
-        if self.bit_num >= self.reg_list[self.reg_num][1]:
-            self.bit_num = 0
-            self.reg_num = (self.reg_num + 1) % self.max_reg
 
-        self.cpu.PC = self.reg_list[4][0]
-        self.cpu._AC = self.reg_list[2][0]
-        self.cpu._BReg = self.reg_list[3][0]
+        self.reg_list[self.reg_num].var_name = 1 << self.bit_num
+        self.bit_num += 1
+        if self.bit_num >= self.reg_list[self.reg_num].num_bits:
+            self.bit_num = 0
+            self.reg_num = (self.reg_num + 1) % len(self.reg_list)
+
+        self.cpu.PC = self.reg_list[4].var_name
+        self.cpu._AC = self.reg_list[2].var_name
+        self.cpu._BReg = self.reg_list[3].var_name
         self.cpu._SAM = 0
 
-#        if self.reg_num == 0:  # MAR
-        self.reg_disp.set_cpu_reg_display(self.cpu, mar=self.reg_list[0][0], mdr=self.reg_list[1][0])
+        if self.reg_list[self.reg_num].fn == "cpu": 
+            self.reg_disp.set_cpu_reg_display(self.cpu, mar=self.reg_list[0].var_name, mdr=self.reg_list[1].var_name)
+        elif self.reg_list[self.reg_num].fn == "preset": 
+            self.reg_disp.set_preset_switches(self.reg_list[5].var_name, pc_bank= 0, ff2=0, ff3=0)
+        else:
+            print("unknown register set type %s" % self.reg_list[self.reg_num].fn)
 
-#        if self.reg_num == 1:  # MDR
-#            self.reg_disp.set_cpu_reg_display(self.cpu, mdr=(1 << self.bit_num))
 
         time.sleep(delay)
 
@@ -612,13 +625,21 @@ class IS31FL3731:
         # for i in range(0, 18):
         self.writeMultiRegister(0, onoff)   # each 8 LEDs on (off)
 
-    def write_16bit_led_rows(self, row, int_list):
+    # convert an array of 16-bit ints into a list of bytes to turn LEDs on or off
+    # The longest string we can send is 9 words, so this routine goes until
+    # either it runs out of words or exceeds nine
+    # First_row gives the offset into the IS31 display registers
+    def write_16bit_led_rows(self, first_row, int_list, len=9):
         byte_list = []
+        i = 0
         for val in int_list:
             byte_list.append(val & 0xff)
             byte_list.append(val >> 8)
+            i += 1
+            if (i > len):
+                break
         #self.writeMultiRegister(row * 2, byte_list)   # 16 bits in two bytes
-        self.bus.write_i2c_block_data(self.i2c_addr, row * 2, byte_list)
+        self.bus.write_i2c_block_data(self.i2c_addr, first_row * 2, byte_list)
 
 
     def init_IS31(self):
@@ -1050,7 +1071,7 @@ def main():
         tests += 1
 
     if args.Mapped:
-        md = MappedDisplayClass(i2c_bus)
+        md = MappedDisplayDriverClass(i2c_bus)
         tests += 1
 
     if tests == 0:
