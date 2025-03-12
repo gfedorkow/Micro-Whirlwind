@@ -9,12 +9,16 @@ try:
     import smbus2  # also contains i2c support
 except ModuleNotFoundError:
     print("no GPIO library found")
+    import smbus_replacement as smbus2
+    import gpio_replacement as gpio
     RasPi = False
 
 
 import argparse
 import time
 
+def breakp():
+    pass
 
 IS31_1_ADDR_U1 = 0x74    # U1
 IS31_1_ADDR_U5 = 0x75    # U5
@@ -125,12 +129,43 @@ class mWWRegisterDisplayClass:
 
 
     # incomplete!
-    def set_preset_switches(self, pc, pc_bank, ff2, ff3):
-        self.u2_led[0] = pc & 0o003400 | self.u2_led[0] & 0o377   # pc is only 11 bits
+    # bytes for this set of registers is all scrambled, so I have to mask-and-or for each one
+    #
+    # Register  High Byte           Low Byte
+    #  PC Preset  R0-[8-10]         R1-[8-15]
+    #  PC bank    R0-[12-14]
+    #  FF2        R2-[8-15]         R3-[8-15]
+    #  FF3        R4-[8-15]         R5-[8-15]
+
+    def set_preset_switches(self, pc, pc_bank, ff2, ff3, bank_test=False):
+        bank = 0
+        self.u2_led[0] = pc & 0o003400 | bank & 0o7 << 12 | self.u2_led[0] & 0o377   # pc is only 11 bits
         self.u2_led[1] = ((pc & 0o377) << 8) | self.u2_led[1] & 0o377
 
-        self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=2)
+        self.u2_led[2] = (ff2 & 0o177400)     | self.u2_led[2] & 0o377
+        self.u2_led[3] = ((ff2 & 0o377) << 8) | self.u2_led[3] & 0o377
 
+        self.u2_led[4] = (ff3 & 0o177400)     | self.u2_led[4] & 0o377
+        self.u2_led[5] = ((ff3 & 0o377) << 8) | self.u2_led[5] & 0o377
+
+        self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
+
+    #
+    # MIR [0-2]    U2_R5-[0-7]
+    # MIR [3-5]    U2_R4-[0-7]
+    # MIR [0-8]    U2_R3-[0-7]
+    # MIR [0-11]   U2_R2-[0-7]
+    # MIR [0-14]   U2_R1-[0-7]
+    # MIR []       U2_R0-[0-1]
+    def set_mir_preset_switches(self, mir):
+        self.u2_led[0] = 1 << ((mir >> 15) & 1)   | self.u2_led[0] & 0o01774   #
+        self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o01774   #
+        self.u2_led[2] = 1 << ((mir >>  9) & 0o7) | self.u2_led[2] & 0o01774   #
+        self.u2_led[3] = 1 << ((mir >>  6) & 0o7) | self.u2_led[3] & 0o01774   #
+        self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o01774   #
+        self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o01774   #
+
+        self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
 
 class RegListClass:
@@ -149,6 +184,9 @@ class MappedDisplayDriverClass:
         self.BReg = 0
         self.PC = 0
         self.PC_preset = 0
+        self.ff2_preset = 0
+        self.ff3_preset = 0
+        self.mir_preset = 0
 
         u1_is31 = Is31(i2c_bus, IS31_1_ADDR_U1)
         u5_is31 = Is31(i2c_bus, IS31_1_ADDR_U5)
@@ -160,22 +198,18 @@ class MappedDisplayDriverClass:
         self.reg_num = 0
 
         self.reg_list = []
-        self.reg_list.append(RegListClass(var_name=self.mar,  num_bits=11, fn="cpu"))
-        self.reg_list.append(RegListClass(var_name=self.mdr,  num_bits=16, fn="cpu"))
-        self.reg_list.append(RegListClass(var_name=self.AC,   num_bits=16, fn="cpu"))
-        self.reg_list.append(RegListClass(var_name=self.BReg, num_bits=16, fn="cpu"))
-        self.reg_list.append(RegListClass(var_name=self.PC,   num_bits=11, fn="cpu"))
-        self.reg_list.append(RegListClass(var_name=self.PC_preset,   num_bits=11, fn="preset"))
+        self.reg_list.append(RegListClass(var_name=self.mar,  num_bits=11, fn="cpu"))       # 0
+        self.reg_list.append(RegListClass(var_name=self.mdr,  num_bits=16, fn="cpu"))       # 1
+        self.reg_list.append(RegListClass(var_name=self.AC,   num_bits=16, fn="cpu"))       # 2
+        self.reg_list.append(RegListClass(var_name=self.BReg, num_bits=16, fn="cpu"))       # 3
+        self.reg_list.append(RegListClass(var_name=self.PC,   num_bits=11, fn="cpu"))       # 4
 
+        self.reg_list.append(RegListClass(var_name=self.PC_preset,   num_bits=11, fn="preset"))  # 5
+        self.reg_list.append(RegListClass(var_name=self.ff2_preset,  num_bits=16, fn="preset"))  # 6
+        self.reg_list.append(RegListClass(var_name=self.ff3_preset,  num_bits=16, fn="preset"))  # 7
 
-#        self.reg_list = [
-#            [self.mar, 16],  # mar
-#            [self.mdr, 16],  # mdr
-#            [self.AC,  16],
-#            [self.BReg, 16],
-#            [self.PC, 16],
-#        ]
-#        self.max_reg = 5
+        self.reg_list.append(RegListClass(var_name=self.mir_preset,  num_bits=16, fn="mir_preset"))  # 8
+
 
 
     def step(self, delay):
@@ -194,10 +228,15 @@ class MappedDisplayDriverClass:
         if self.reg_list[self.reg_num].fn == "cpu": 
             self.reg_disp.set_cpu_reg_display(self.cpu, mar=self.reg_list[0].var_name, mdr=self.reg_list[1].var_name)
         elif self.reg_list[self.reg_num].fn == "preset": 
-            self.reg_disp.set_preset_switches(self.reg_list[5].var_name, pc_bank= 0, ff2=0, ff3=0)
+            self.reg_disp.set_preset_switches(self.reg_list[5].var_name, pc_bank= 0,
+                                              ff2=self.reg_list[6].var_name, ff3=self.reg_list[7].var_name)
+        elif self.reg_list[self.reg_num].fn == "mir_preset":
+            self.reg_disp.set_mir_preset_switches(self.reg_list[5].var_name)
         else:
             print("unknown register set type %s" % self.reg_list[self.reg_num].fn)
 
+        if self.reg_num == 8:
+            breakp()
 
         time.sleep(delay)
 
@@ -773,7 +812,7 @@ class PwrCtl:
 # initialize a test instance for LED patterns.
 class Is31:
     def __init__(self, i2c_bus, addr, reverse_bits=False):
-        self.is31 = IS31FL3731(i2c_bus, addr)
+        self.is31 = 3731(i2c_bus, addr)
         self.i2c_bus = i2c_bus
         print("IS31 at 0x%0x Init" % addr)
         self.addr = addr
@@ -785,7 +824,7 @@ class Is31:
         self.test_step = 0
         self.previous_test_step = 0
         self.previous_word_offset = 0
-        self.bits_on = 1
+        self.bits_on = 1IS31FL
         self.test_state = [0] * 18  # up to nine 16-bit registers
         self.exclusion = None
         self.register_range = 9     # default highest register number
@@ -1026,7 +1065,7 @@ def main():
     # not much can happen if we can't initialize the i2c bus...
     i2c_bus = I2C(1)
     bus = i2c_bus.bus
-    gp_sw = gpio_switches()  # these are the switches and LEDs on Rainer's "Tap Board"
+#    gp_sw = gpio_switches()  # these are the switches and LEDs on Rainer's "Tap Board"
 
     if args.Verbose:
         Verbose = True
