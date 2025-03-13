@@ -231,7 +231,7 @@ class MappedDisplayDriverClass:
             self.reg_disp.set_preset_switches(self.reg_list[5].var_name, pc_bank= 0,
                                               ff2=self.reg_list[6].var_name, ff3=self.reg_list[7].var_name)
         elif self.reg_list[self.reg_num].fn == "mir_preset":
-            self.reg_disp.set_mir_preset_switches(self.reg_list[5].var_name)
+            self.reg_disp.set_mir_preset_switches(self.reg_list[8].var_name)
         else:
             print("unknown register set type %s" % self.reg_list[self.reg_num].fn)
 
@@ -812,7 +812,7 @@ class PwrCtl:
 # initialize a test instance for LED patterns.
 class Is31:
     def __init__(self, i2c_bus, addr, reverse_bits=False):
-        self.is31 = 3731(i2c_bus, addr)
+        self.is31 = IS31FL3731(i2c_bus, addr)
         self.i2c_bus = i2c_bus
         print("IS31 at 0x%0x Init" % addr)
         self.addr = addr
@@ -824,7 +824,7 @@ class Is31:
         self.test_step = 0
         self.previous_test_step = 0
         self.previous_word_offset = 0
-        self.bits_on = 1IS31FL
+        self.bits_on = 1
         self.test_state = [0] * 18  # up to nine 16-bit registers
         self.exclusion = None
         self.register_range = 9     # default highest register number
