@@ -479,9 +479,9 @@ class MappedDisplayDriverClass:
 
 
 class MappedSwitchClass:
-    def __init__(self, bus):
-        self.tca84_3 = tc_init_u3(bus, TCA8414_0_ADDR)
-        self.tca84_4 = tc_init_u4(bus, TCA8414_1_ADDR)
+    def __init__(self, i2c_bus):
+        self.tca84_u3 = tc_init_u3(i2c_bus.bus, TCA8414_0_ADDR)
+        self.tca84_u4 = tc_init_u4(i2c_bus.bus, TCA8414_1_ADDR)
         # self.i2c_bus = smbus2.SMBus(1)
         print("  done")
 
@@ -1428,8 +1428,10 @@ def main():
             run_tca(tca84_1)
         if args.GPIO_Switches:
             gp_sw.step(delay)
-        if args.Mapped:
+        if args.LED_Mapped:
             md.step(delay)
+        if args.SW_Mapped:
+            sw.check_buttons()
 
 
 #           run_pong(is31_U2)
