@@ -10,7 +10,8 @@ try:
 except ModuleNotFoundError:
     print("no GPIO library found")
     import smbus_replacement as smbus2
-    import gpio_replacement as gpio
+    import gpio_replacement
+    gpio = gpio_replacement.gpioClass()
     RasPi = False
 
 
@@ -19,6 +20,243 @@ import time
 
 def breakp():
     pass
+
+
+# =================
+# the following class serves as a dispatcher for the three possible Panel technologies, one
+# with the xwindow emulated buttons, one with a few I2C buttons and lights, and the microWhirlwind panel
+# Both can be enabled at once, but the results probably aren't too predictable.
+class PanelClass:
+    def __init__(self, cb, panel_xwin, panel_blinken, panel_microWW, left_init=0, right_init=0):
+        self.panel_xwin = None
+        self.panel_blinken = None
+        self.panel_mWW = None
+        if panel_xwin:
+            self.panel_xwin = PanelXwinClass(cb, sim_state_machine_arg=self.sim_state_machine, left_init=0, right_init=0)
+        if panel_blinken:
+            self.panel_blinken = BlinkenLightsClass(cb, sim_state_machine_arg=self.sim_state_machine, left_init=0, right_init=0)
+        if panel_microWW:
+            self.panel_mWW = PanelMicroWWClass(cb, sim_state_machine_arg=self.sim_state_machine, left_init=0, right_init=0)
+
+    # Check the mouse, and update any buttons.  The only return from this call should be True or False to say
+    # whether the Exit box was clicked or not.
+    # As a side effect, the simulator run state in cb is updated
+    # Return True for normal operation, False if the user indicates that the sim should be halted
+    def update_panel(self, cb, bank, alarm_state=0, standalone=False, init_PC=None):
+        ret_xwin = True
+        ret_blinken = True
+        ret_mWW = True
+        if self.panel_xwin:
+            ret_xwin = self.panel_xwin.update_panel(cb, bank, alarm_state=0, standalone=False, init_PC=init_PC)
+        if self.panel_blinken:
+            ret_blinken = self.panel_blinken.update_panel(cb, bank, alarm_state=0, standalone=False, init_PC=init_PC)
+        if self.panel_mWW:
+            ret_mWW = self.panel_mWW.update_panel(cb, bank, alarm_state=0, standalone=False, init_PC=init_PC)
+        if ret_xwin == False or ret_blinken == False or ret_mWW == False:
+            return False
+        return True
+
+    # read a register from the switches and lights panel.
+    # It would normally be called with a string giving the name, so an FF Reg number can also be used
+    # The read routine simply returns an integer value
+    # Not obvious what to do if _both_ panel types are enabled at the same time
+    def read_register(self, which_one):
+        if self.panel_blinken:
+            return(self.panel_blinken.read_register(which_one))
+        if self.panel_xwin:
+            return(self.panel_xwin.read_register(which_one))
+        if self.panel_mWW:
+            return(self.panel_mWW.read_register(which_one))
+
+    # write a register to the switches and lights panel.
+    # there's no error return signal
+    def write_register(self, which_one, value):
+        if self.panel_blinken:
+            self.panel_blinken.write_register(which_one, value)
+        if self.panel_xwin:
+            self.panel_xwin.write_register(which_one, value)
+        if self.panel_mWW:
+            self.panel_mWW.write_register(which_one, value)
+
+    # assemble all the known activate bits into a single word
+    # Not obvious what to do if _both_ panel types are enabled at the same time
+    # def activate_reg_read(self):
+    #     if self.panel_blinken:
+    #         return(self.panel_blinken.activate_reg_read())
+    #     if self.panel_xwin:
+    #         return(self.panel_xwin.activate_reg_read())
+
+    # write activate register; no return value
+    # def activate_reg_write(self, val):
+    #     if self.panel_blinken:
+    #         self.panel_blinken.activate_reg_write(val)
+    #     if self.panel_xwin:
+    #         self.panel_xwin.activate_reg_write(val)
+
+    def reset_ff_registers(self, function, log=None, info_str=''):
+        if self.panel_blinken:
+            self.panel_blinken.reset_ff_registers(function, log=None, info_str='')
+        if self.panel_xwin:
+            self.panel_xwin.reset_ff_registers(function, log=None, info_str='')
+        if self.panel_mWW:
+            self.panel_mWW.reset_ff_registers(function, log=None, info_str='')
+
+    # This state machine is used to control the flow of execution for the simulator
+    def sim_state_machine(self, switch_name, cb, pc_switch_register):
+        sw = switch_name
+        if sw == "Stop":
+            cb.sim_state = cb.SIM_STATE_STOP
+            # self.dispatch["Stop"].lamp_object.set_lamp(True)
+            # self.dispatch["Start at 40"].lamp_object.set_lamp(False)
+            return
+
+        if sw == "Restart":   # don't mess with the PC, just pick up from the last address
+            cb.sim_state = cb.SIM_STATE_RUN
+            return
+
+        if sw == "Start at 40":
+            cb.sim_state = cb.SIM_STATE_RUN
+            cb.cpu.PC = 0o40
+            return
+
+        if sw == "Start Over":  # start executing at the address in the PC switch register
+            cb.sim_state = cb.SIM_STATE_RUN
+            # cb.cpu.PC = self.panel.pc_toggle_sw.read_button_vector()
+            cb.cpu.PC = pc_switch_register
+            return
+
+        if sw == "Order-by-Order":  # don't mess with the PC, just pick up from the last address
+            cb.sim_state = cb.SIM_STATE_SINGLE_STEP
+            return
+
+        if sw == "Examine":  # don't mess with the PC, just pick up from the last address
+            if cb.sim_state == cb.SIM_STATE_RUN:
+                cb.log.warn("Examine button may only be used when the machine is stopped")
+            addr = pc_switch_register
+            cb.cpu.cm.rd(addr)   # simply reading the register has the side effect of updating MAR and PAR/MDR
+            return
+
+        if sw == "Read In":  # Start all over again from reading in the "tape"
+            cb.sim_state = cb.SIM_STATE_READIN
+            popup = DialogPopup()
+            filename = popup.get_text_entry("Filename: ", "foo.acore")
+            print("filename:%s" % filename)
+            cb.CoreFileName = filename
+            return
+
+        print("Unhandled Button %s" % sw)
+        return
+
+# ==============================================
+
+
+class PanelMicroWWClass:
+    def __init__(self, cb, sim_state_machine_arg=None, left_init=0, right_init=0):
+        self.cb = cb
+        self.sim_state_machine = sim_state_machine_arg
+        if not MicroWW_Module:
+            self.i2c_bus = None
+            return
+        print("I2C init: ")
+        i2c_bus = I2C(1)
+        bus = i2c_bus.bus
+#    gp_sw = gpio_switches()  # these are the switches and LEDs on Rainer's "Tap Board"
+
+
+        pwr_ctl = PwrCtl()
+
+        pwr_ctl.pwr_on()
+        time.sleep(0.3)
+        self.sw = MappedSwitchClass(i2c_bus)
+        self.md = MappedDisplayDriverClass(i2c_bus)
+
+
+
+
+
+    def check_buttons(self):
+        # Official Button Names, as per Python-based Control Panel
+        #buttons_def =  ["Clear Alarm", "Stop", "Start Over", "Restart", "Start at 40", "Order-by-Order", "Examine",
+        #                                                                                                    "Read In"]
+        buttons_def = [["Restart", "Start Over", "Examine"], ["Stop", "Order-by-Order", "Clear"]]
+        button_press = None
+        if self.tca84.available() > 0:
+            key = self.tca84.getEvent()
+            pressed = key & 0x80
+            if pressed:     # I'm ignoring "released" events
+                key &= 0x7F
+                key -= 1
+                row = key // 10
+                col = key % 10
+                button_press = buttons_def[row][col]
+                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
+        return button_press
+
+    def set_cpu_state_lamps(self, cb, sim_state, alarm_state):
+        # ad-hoc; key scan GPIO-3 has two bits driving LEDs, for Run and Alarm
+        leds = 0
+        if sim_state != cb.SIM_STATE_STOP:
+            leds |= 1   # green
+        if alarm_state:     # Zero is No Alarm
+            leds |= 2   # red
+        self.tca84.set_gp_out(leds)
+
+
+    def update_panel(self, cb, bank, alarm_state=0, standalone=False, init_PC=None):
+        cpu = cb.cpu
+        lights = [0] * 9
+        lights[0] = ~cpu.PC & 0o3777  # mask off the inverse to 11 bits
+        lights[1] = cpu.PC
+        lights[2] = ~cpu._AC
+        lights[3] = cpu._AC
+        lights[4] = cpu._BReg
+        lights[5] = cpu._AReg
+        lights[6] = cpu.cm.mem_addr_reg
+        lights[8] = cpu.cm.rd(0x02, skip_mar=True)   # Fixed to FF2 for now; 'skip_mar' says to _not_ update the MAR/PAR with this read
+
+        par = cpu.cm.mem_data_reg
+        if par:  # make sure we're not sending None to the PAR lights register
+            lights[7] = par
+        else:
+            lights[7] = 0
+        self.is31_1.write_16bit_led_rows(0, lights)
+
+        if not standalone:
+            self.set_cpu_state_lamps(cb, cb.sim_state, alarm_state)
+            bn = self.check_buttons()
+            if bn:
+                self.sim_state_machine(bn, cb, 0o40) # the third arg should be the PC Preset switch register
+
+   # read a register from the switches and lights panel.
+    # It would normally be called with a string giving the name.  Inside the simulator
+    # sometimes it's easier to find a number for the flip-flop registers
+    def read_register(self, which_one):
+        self.cb.log.warn("read_registers: reg %s, val 0o%o: " % (which_one, self.switches[which_one]))
+        return self.switches[which_one]
+
+    # write a register to the switches and lights panel.
+    # It would normally be called with a string giving the name.  Inside the simulator
+    # sometimes it's easier to find a number for the flip-flop registers
+    def write_register(self, which_one, value):
+        self.cb.log.warn("write_register: reg %s = 0o%o" % (which_one, value))
+        self.switches[which_one] = value
+
+    def reset_ff_registers(self, function, log=None, info_str=''):
+        self.cb.log.warn("no reset_ff_registers")
+        for sw in self.switches:
+            m = re.match("FF([0-9][0-9])Sw", sw)
+            if m:
+                print("copy 0o%o into %s: %d" % (self.switches[sw], sw, int(m.group(1))))
+                val = self.switches[sw]
+                addr = int(m.group(1))
+                # self.lamp_vector.set_lamp_register(val)
+                function(addr, val)  # calls Coremem.write_ff_reg()
+                if log:
+                    log.info(info_str % (addr, addr, val))
+
+
+
+# ==============================================================
 
 IS31_1_ADDR_U1 = 0x74    # U1
 IS31_1_ADDR_U5 = 0x75    # U5
@@ -174,7 +412,6 @@ class RegListClass:
         self.num_bits = num_bits
         self.var_name = var_name
 
-
 class MappedDisplayDriverClass:
     def __init__(self, i2c_bus):
         self.cpu = CpuClass()
@@ -239,6 +476,37 @@ class MappedDisplayDriverClass:
             breakp()
 
         time.sleep(delay)
+
+
+class MappedSwitchClass:
+    def __init__(self, bus):
+        self.tca84_3 = tc_init_u3(bus, TCA8414_0_ADDR)
+        self.tca84_4 = tc_init_u4(bus, TCA8414_1_ADDR)
+        # self.i2c_bus = smbus2.SMBus(1)
+        print("  done")
+
+        self.tca84_u4.init_gp_out()
+        print("  TCA8414 init done")
+        self.switches = {}   # a dictionary for holding switch register settings
+
+    def check_buttons(self):
+        # Official Button Names, as per Python-based Control Panel
+        #buttons_def =  ["Clear Alarm", "Stop", "Start Over", "Restart", "Start at 40", "Order-by-Order", "Examine",
+        #                                                                                                    "Read In"]
+        buttons_def = [["Restart", "Start Over", "Examine"], ["Stop", "Order-by-Order", "Clear"]]
+        button_press = None
+        if self.tca84_u3.available() > 0:
+            key = self.tca84_u3.getEvent()
+            pressed = key & 0x80
+            if pressed:     # I'm ignoring "released" events
+                key &= 0x7F
+                key -= 1
+                row = key // 10
+                col = key % 10
+                button_press = buttons_def[row][col]
+                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
+        return button_press
+
 
 
 # ******************************************************************** #
@@ -975,7 +1243,7 @@ class Is31:
         return restart_cycle
 
 
-def tc_init_1(bus, addr):
+def tc_init_u4(bus, addr):
     tca84 = TCA8414(bus, addr)
     print("TCA8414 @0x%x U4 Test" % tca84.i2c_addr)
     # tca84.i2c_reg_test()
@@ -987,7 +1255,7 @@ def tc_init_1(bus, addr):
     return tca84
 
 
-def tc_init_0(bus, addr):
+def tc_init_u3(bus, addr):
     tca84 = TCA8414(bus, addr)
     print("TCA8414 @0x%x U3 Test" % tca84.i2c_addr)
     # tca84.i2c_reg_test()
@@ -1047,7 +1315,8 @@ def main():
     parser.add_argument("--P1_hot", help="LED Pattern - One Hot scan", action="store_true")
     parser.add_argument("--P2H_blink", help="LED Pattern - Alternate two horizontal LEDs at hex-addr", type=str)
     parser.add_argument("--P3V_blink", help="LED Pattern - Alternate two vertical LEDs at hex-addr", type=str)
-    parser.add_argument("-m", "--Mapped", help="Scan CPU State", action="store_true")
+    parser.add_argument("-l", "--LED_Mapped", help="Scan CPU State", action="store_true")
+    parser.add_argument("-s", "--SW_Mapped", help="Scan CPU State", action="store_true")
 
     args = parser.parse_args()
 
@@ -1109,9 +1378,14 @@ def main():
     if args.PowerControl_Loop or args.GPIO_Switches:
         tests += 1
 
-    if args.Mapped:
+    if args.LED_Mapped:
         md = MappedDisplayDriverClass(i2c_bus)
         tests += 1
+
+    if args.SW_Mapped:
+        sw = MappedSwitchClass(i2c_bus)
+        tests += 1
+
 
     if tests == 0:
         print("no tests?")
