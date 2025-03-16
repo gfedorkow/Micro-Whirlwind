@@ -487,7 +487,32 @@ class MappedSwitchClass:
 
         self.tca84_u4.init_gp_out()
         print("  TCA8414 init done")
-        self.switches = {}   # a dictionary for holding switch register settings
+
+        # push button switches can be classified first by the "column" number, 0-9
+        self.u3_switch_map = (
+            self.mir_sw,  # 0
+            self.mir_sw,  # 1
+            self.mir_sw,  # 2
+            self.mir_sw,  # 3
+            self.mir_sw,  # 4
+            self.mir_sw,  # 5
+            self.ff2_sw,  # 6
+            self.ff2_sw,  # 7
+            self.ff3_sw,  # 8
+            self.ff3_sw,  # 9
+    )
+        self.u4_switch_map = (
+            self.fn_sw,   # 0  - function switches - Clear Alarm through to Examine
+            self.fn_sw,   # 1  - function switches - Stop-on-X
+            self.pc_sw,   # 2  - PC Preset switches
+            self.pc_sw,   # 3  - PC Preset switches
+            self.no_sw,   # 4
+            self.no_sw,   # 5
+            self.no_sw,   # 6
+            self.no_sw,   # 7
+            self.no_sw,   # 8
+            self.no_sw,   # 9
+    )
 
     def check_buttons(self):
         # Official Button Names, as per Python-based Control Panel
@@ -503,10 +528,42 @@ class MappedSwitchClass:
                 key -= 1
                 row = key // 10
                 col = key % 10
-                button_press = buttons_def[row][col]
                 print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
+                button_press = self.u3_switch_map[col](row, col)
+                if button_press:
+                    return button_press
+        if self.tca84_u4.available() > 0:
+            key = self.tca84_u4.getEvent()
+            pressed = key & 0x80
+            if pressed:     # I'm ignoring "released" events
+                key &= 0x7F
+                key -= 1
+                row = key // 10
+                col = key % 10
+                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
+                button_press = self.u4_switch_map[col](row, col)
+
         return button_press
 
+    def no_sw(self, row, col):
+        print("unknown switch row %d, col %d" %(row, col))
+        return None
+    
+    def mir_sw(self, row, col):
+        print("mir switch row %d, col %d" %(row, col))
+        return None
+
+    def ff2_sw(self, row, col):
+        print("ff2 switch row %d, col %d" %(row, col))
+        return None
+
+    def ff3_sw(self, row, col):
+        print("ff3 switch row %d, col %d" %(row, col))
+        return None
+
+    def pc_sw(self, row, col):
+        print("pc switch row %d, col %d" %(row, col))
+        return None
 
 
 # ******************************************************************** #
