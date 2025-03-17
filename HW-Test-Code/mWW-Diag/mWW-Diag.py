@@ -565,6 +565,10 @@ class MappedSwitchClass:
         print("pc switch row %d, col %d" %(row, col))
         return None
 
+    def fn_sw(self, row, col):
+        print("function switch row %d, col %d" %(row, col))
+        return None
+
 
 # ******************************************************************** #
 # Classes to run the hardware I/O devices to make up the Micro-Whirlwind
