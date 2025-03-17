@@ -167,8 +167,8 @@ class PanelMicroWWClass:
 
         pwr_ctl.pwr_on()
         time.sleep(0.3)
-        self.sw = MappedSwitchClass(i2c_bus)
         self.md = MappedDisplayDriverClass(i2c_bus)
+        self.sw = MappedSwitchClass(i2c_bus, self.md)
 
 
 
@@ -377,17 +377,20 @@ class mWWRegisterDisplayClass:
 
     def set_preset_switch_leds(self, pc=None, pc_bank=None, ff2=None, ff3=None, bank_test=False):
         bank = 0
-        if pc:
+        if pc is not None:
             self.u2_led[0] = pc & 0o003400 | bank & 0o7 << 12 | self.u2_led[0] & 0o377   # pc is only 11 bits
             self.u2_led[1] = ((pc & 0o377) << 8) | self.u2_led[1] & 0o377
+            print("set_preset_switch_leds: preset LEDs PC set to 0o%o" % pc)
 
-        if ff2:
+        if ff2 is not None:
             self.u2_led[2] = (ff2 & 0o177400)     | self.u2_led[2] & 0o377
             self.u2_led[3] = ((ff2 & 0o377) << 8) | self.u2_led[3] & 0o377
+            print("set_preset_switch_leds: preset LEDs FF2 set to 0o%o" % ff2)
 
-        if ff3:
+        if ff3 is not None:
             self.u2_led[4] = (ff3 & 0o177400)     | self.u2_led[4] & 0o377
             self.u2_led[5] = ((ff3 & 0o377) << 8) | self.u2_led[5] & 0o377
+            print("set_preset_switch_leds: preset LEDs FF3 set to 0o%o" % ff3)
 
         # send new settings to all u2 LEDs at once
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
@@ -526,10 +529,6 @@ class MappedSwitchClass:
 
 
     def check_buttons(self):
-        # Official Button Names, as per Python-based Control Panel
-        #buttons_def =  ["Clear Alarm", "Stop", "Start Over", "Restart", "Start at 40", "Order-by-Order", "Examine",
-        #                                                                                                    "Read In"]
-        buttons_def = [["Restart", "Start Over", "Examine"], ["Stop", "Order-by-Order", "Clear"]]
         button_press = None
         if self.tca84_u3.available() > 0:
             key = self.tca84_u3.getEvent()
@@ -539,8 +538,8 @@ class MappedSwitchClass:
                 key -= 1
                 row = key // 10
                 col = key % 10
-                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
                 button_press = self.u3_switch_map[col](row, col)
+                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
                 if button_press:
                     return button_press
         if self.tca84_u4.available() > 0:
@@ -551,8 +550,8 @@ class MappedSwitchClass:
                 key -= 1
                 row = key // 10
                 col = key % 10
-                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
                 button_press = self.u4_switch_map[col](row, col)
+                print("Pressed %s: row=%d, col=%d" % (button_press, row, col))
 
         return button_press
 
@@ -563,9 +562,14 @@ class MappedSwitchClass:
     def mir_sw(self, row, col):
         print("mir switch row %d, col %d" %(row, col))
 
-    def mir_sw(self, row, col):
-        print("mir switch row %d, col %d" %(row, col))
-        return None
+    def fn_sw(self, row, col):
+        button = None
+        try:
+            button = self.fn_buttons_def[col][row]
+        except:
+            button = "undefined button"
+        print("function switch %s: row %d, col %d" %(button, row, col))
+        return button
 
     def ff2_sw(self, row, col):
         print("ff2 switch row %d, col %d" %(row, col))
@@ -578,20 +582,26 @@ class MappedSwitchClass:
         return None
 
     def pc_sw(self, row, col):
-        button = "Undefined"
+        button = "PC Preset"
         if button in self.fn_buttons_def:
             button = self.fn_buttons_def[col][row]
         print("pc switch '%s': row %d, col %d" %(button, row, col))
         return None
 
+    # flip-flop numbers are given here as offset into a two-entry array
+    #  i.e. ff==0 -> ff2, ff==1 -> ff3
     def ff_preset_flip_bit(self, ff, row, col):
         bit_num = row
         if col & 1 == 0:  # even-numbered registers are the most-significant bits of Column numbers
-            bit_num += 0x10
+            bit_num += 8
         reg = self.ff_preset_state[ff]
-        reg = reg ^ 1 < bit_num         # flip the designated bit
-        self.ff_preset_state[ff] = reg
-        self.md.set_preset_switch_leds(self, pc=None, pc_bank=None, ff2=None, ff3=None, bank_test=False)
+        regf = reg ^ (1 << bit_num)         # flip the designated bit
+        self.ff_preset_state[ff] = regf
+        print("ff flip bit: ff=%d, bit_num=%d, reg=0o%o, regf=0o%o" % (ff, bit_num, reg, regf))
+        if ff == 0:
+            self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=regf, ff3=None, bank_test=False)
+        else:
+            self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=None, ff3=regf, bank_test=False)
 
 
 
@@ -1467,7 +1477,8 @@ def main():
         tests += 1
 
     if args.SW_Mapped:
-        sw = MappedSwitchClass(i2c_bus)
+        md = MappedDisplayDriverClass(i2c_bus)
+        sw = MappedSwitchClass(i2c_bus, md)
         tests += 1
 
 
