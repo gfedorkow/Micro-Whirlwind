@@ -375,17 +375,21 @@ class mWWRegisterDisplayClass:
     #  FF2        R2-[8-15]         R3-[8-15]
     #  FF3        R4-[8-15]         R5-[8-15]
 
-    def set_preset_switches(self, pc, pc_bank, ff2, ff3, bank_test=False):
+    def set_preset_switch_leds(self, pc=None, pc_bank=None, ff2=None, ff3=None, bank_test=False):
         bank = 0
-        self.u2_led[0] = pc & 0o003400 | bank & 0o7 << 12 | self.u2_led[0] & 0o377   # pc is only 11 bits
-        self.u2_led[1] = ((pc & 0o377) << 8) | self.u2_led[1] & 0o377
+        if pc:
+            self.u2_led[0] = pc & 0o003400 | bank & 0o7 << 12 | self.u2_led[0] & 0o377   # pc is only 11 bits
+            self.u2_led[1] = ((pc & 0o377) << 8) | self.u2_led[1] & 0o377
 
-        self.u2_led[2] = (ff2 & 0o177400)     | self.u2_led[2] & 0o377
-        self.u2_led[3] = ((ff2 & 0o377) << 8) | self.u2_led[3] & 0o377
+        if ff2:
+            self.u2_led[2] = (ff2 & 0o177400)     | self.u2_led[2] & 0o377
+            self.u2_led[3] = ((ff2 & 0o377) << 8) | self.u2_led[3] & 0o377
 
-        self.u2_led[4] = (ff3 & 0o177400)     | self.u2_led[4] & 0o377
-        self.u2_led[5] = ((ff3 & 0o377) << 8) | self.u2_led[5] & 0o377
+        if ff3:
+            self.u2_led[4] = (ff3 & 0o177400)     | self.u2_led[4] & 0o377
+            self.u2_led[5] = ((ff3 & 0o377) << 8) | self.u2_led[5] & 0o377
 
+        # send new settings to all u2 LEDs at once
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
     #
@@ -465,7 +469,7 @@ class MappedDisplayDriverClass:
         if self.reg_list[self.reg_num].fn == "cpu": 
             self.reg_disp.set_cpu_reg_display(self.cpu, mar=self.reg_list[0].var_name, mdr=self.reg_list[1].var_name)
         elif self.reg_list[self.reg_num].fn == "preset": 
-            self.reg_disp.set_preset_switches(self.reg_list[5].var_name, pc_bank= 0,
+            self.reg_disp.set_preset_switch_leds(pc = self.reg_list[5].var_name, pc_bank= 0,
                                               ff2=self.reg_list[6].var_name, ff3=self.reg_list[7].var_name)
         elif self.reg_list[self.reg_num].fn == "mir_preset":
             self.reg_disp.set_mir_preset_switches(self.reg_list[8].var_name)
@@ -479,7 +483,7 @@ class MappedDisplayDriverClass:
 
 
 class MappedSwitchClass:
-    def __init__(self, i2c_bus):
+    def __init__(self, i2c_bus, mapped_display):
         self.tca84_u3 = tc_init_u3(i2c_bus.bus, TCA8414_0_ADDR)
         self.tca84_u4 = tc_init_u4(i2c_bus.bus, TCA8414_1_ADDR)
         # self.i2c_bus = smbus2.SMBus(1)
@@ -500,7 +504,7 @@ class MappedSwitchClass:
             self.ff2_sw,  # 7
             self.ff3_sw,  # 8
             self.ff3_sw,  # 9
-    )
+        )
         self.u4_switch_map = (
             self.fn_sw,   # 0  - function switches - Clear Alarm through to Examine
             self.fn_sw,   # 1  - function switches - Stop-on-X
@@ -512,7 +516,14 @@ class MappedSwitchClass:
             self.no_sw,   # 7
             self.no_sw,   # 8
             self.no_sw,   # 9
-    )
+        )
+        self.md = mapped_display
+        self.fn_buttons_def = (("Clear", "Stop", "Restart", "Start-Over", "Start-at-40", "Order-by-Order", "Read-In", "Examine"), 
+                               ("Stop-on-Addr", "Stop-on-CK", "Stop-on-S1", "F-Scope", "D-Scope"))
+        self.ff_preset_state = [0, 0]        # ff2 and ff3 preset values
+        self.pc_preset_state = 0             # pc preset values
+        self.mir_preset = [0, 0]             # preset values for Left and Right Manual Intervention Register
+
 
     def check_buttons(self):
         # Official Button Names, as per Python-based Control Panel
@@ -548,29 +559,45 @@ class MappedSwitchClass:
     def no_sw(self, row, col):
         print("unknown switch row %d, col %d" %(row, col))
         return None
-    
+
+    def mir_sw(self, row, col):
+        print("mir switch row %d, col %d" %(row, col))
+
     def mir_sw(self, row, col):
         print("mir switch row %d, col %d" %(row, col))
         return None
 
     def ff2_sw(self, row, col):
         print("ff2 switch row %d, col %d" %(row, col))
+        self.ff_preset_flip_bit(0, row, col)
         return None
 
     def ff3_sw(self, row, col):
         print("ff3 switch row %d, col %d" %(row, col))
+        self.ff_preset_flip_bit(1, row, col)
         return None
 
     def pc_sw(self, row, col):
-        print("pc switch row %d, col %d" %(row, col))
+        button = "Undefined"
+        if button in self.fn_buttons_def:
+            button = self.fn_buttons_def[col][row]
+        print("pc switch '%s': row %d, col %d" %(button, row, col))
         return None
+
+    def ff_preset_flip_bit(self, ff, row, col):
+        bit_num = row
+        if col & 1 == 0:  # even-numbered registers are the most-significant bits of Column numbers
+            bit_num += 0x10
+        reg = self.ff_preset_state[ff]
+        reg = reg ^ 1 < bit_num         # flip the designated bit
+        self.ff_preset_state[ff] = reg
+        self.md.set_preset_switch_leds(self, pc=None, pc_bank=None, ff2=None, ff3=None, bank_test=False)
+
 
 
 # ******************************************************************** #
 # Classes to run the hardware I/O devices to make up the Micro-Whirlwind
 # Guy Fedorkow, Jun 2024
-
-
 
 class gpio_switches:
     def __init__(self):
