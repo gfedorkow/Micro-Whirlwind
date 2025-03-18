@@ -402,13 +402,16 @@ class mWWRegisterDisplayClass:
     # MIR [0-11]   U2_R2-[0-7]
     # MIR [0-14]   U2_R1-[0-7]
     # MIR []       U2_R0-[0-1]
-    def set_mir_preset_switches(self, mir):
-        self.u2_led[0] = 1 << ((mir >> 15) & 1)   | self.u2_led[0] & 0o01774   #
-        self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o01774   #
-        self.u2_led[2] = 1 << ((mir >>  9) & 0o7) | self.u2_led[2] & 0o01774   #
-        self.u2_led[3] = 1 << ((mir >>  6) & 0o7) | self.u2_led[3] & 0o01774   #
-        self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o01774   #
-        self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o01774   #
+    def set_mir_preset_switch_leds(self, mir. which=0, activate=0):
+        mir &= 0o177777
+        self.u2_led[0] = 1 << ((mir >> 15) & 1)   | self.u2_led[0] & 0o0177400   #
+        self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o0177400   #
+        self.u2_led[2] = 1 << ((mir >>  9) & 0o7) | self.u2_led[2] & 0o0177400   #
+        self.u2_led[3] = 1 << ((mir >>  6) & 0o7) | self.u2_led[3] & 0o0177400   #
+        self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o0177400   #
+        self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o0177400   #
+
+        self.u2_led[5] = 1 << (which + 2) | 1 << (activate + 4) | self.u2_led[0] & 0o177700   #
 
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
@@ -475,7 +478,7 @@ class MappedDisplayDriverClass:
             self.reg_disp.set_preset_switch_leds(pc = self.reg_list[5].var_name, pc_bank= 0,
                                               ff2=self.reg_list[6].var_name, ff3=self.reg_list[7].var_name)
         elif self.reg_list[self.reg_num].fn == "mir_preset":
-            self.reg_disp.set_mir_preset_switches(self.reg_list[8].var_name)
+            self.reg_disp.set_mir_preset_switch_leds(self.reg_list[8].var_name)
         else:
             print("unknown register set type %s" % self.reg_list[self.reg_num].fn)
 
@@ -526,6 +529,7 @@ class MappedSwitchClass:
         self.ff_preset_state = [0, 0]        # ff2 and ff3 preset values
         self.pc_preset_state = 0             # pc preset values
         self.mir_preset = [0, 0]             # preset values for Left and Right Manual Intervention Register
+        self.which_mir  = 0                  # Left is Zero, Right is One
 
 
     def check_buttons(self):
@@ -558,9 +562,6 @@ class MappedSwitchClass:
     def no_sw(self, row, col):
         print("unknown switch row %d, col %d" %(row, col))
         return None
-
-    def mir_sw(self, row, col):
-        print("mir switch row %d, col %d" %(row, col))
 
     def fn_sw(self, row, col):
         button = None
@@ -602,6 +603,23 @@ class MappedSwitchClass:
             self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=regf, ff3=None, bank_test=False)
         else:
             self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=None, ff3=regf, bank_test=False)
+
+    def mir_sw(self, row, col):
+        # mir buttons are columns 0-5, rows 0-7
+        activate = 0
+        if col == 0 and row >= 2:  # four buttons in Col 0 are function keys
+            if row == 2:
+                self.which_mir = 0    # switch to Left MIR
+            if row == 3:
+                self.which_mir = 1    # switch to Right MIR
+        else:
+            bit_num = row + 3 * col
+            print("mir switch row %d, col %d" %(row, col))
+            reg = self.mir_preset[self.which_mir]
+            regf = reg ^ (1 << bit_num)         # flip the designated bit
+            self.mir_preset[self.which_mir] = regf
+        self.md.reg_disp.set_mir_preset_switch_leds(regf, which=self.which_mir, activate=activate)
+
 
 
 
