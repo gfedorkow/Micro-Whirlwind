@@ -402,7 +402,7 @@ class mWWRegisterDisplayClass:
     # MIR [0-11]   U2_R2-[0-7]
     # MIR [0-14]   U2_R1-[0-7]
     # MIR []       U2_R0-[0-1]
-    def set_mir_preset_switch_leds(self, mir. which=0, activate=0):
+    def set_mir_preset_switch_leds(self, mir, which=0, activate=0):
         mir &= 0o177777
         self.u2_led[0] = 1 << ((mir >> 15) & 1)   | self.u2_led[0] & 0o0177400   #
         self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o0177400   #
@@ -411,7 +411,7 @@ class mWWRegisterDisplayClass:
         self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o0177400   #
         self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o0177400   #
 
-        self.u2_led[5] = 1 << (which + 2) | 1 << (activate + 4) | self.u2_led[0] & 0o177700   #
+        self.u2_led[5] = 1 << (which + 2) | 1 << (activate + 4) | self.u2_led[5] & 0o177700   #
 
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
@@ -604,20 +604,26 @@ class MappedSwitchClass:
         else:
             self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=None, ff3=regf, bank_test=False)
 
+
     def mir_sw(self, row, col):
         # mir buttons are columns 0-5, rows 0-7
         activate = 0
         if col == 0 and row >= 2:  # four buttons in Col 0 are function keys
-            if row == 2:
-                self.which_mir = 0    # switch to Left MIR
             if row == 3:
+                self.which_mir = 0    # switch to Left MIR
+            if row == 2:
                 self.which_mir = 1    # switch to Right MIR
+            regf = self.mir_preset[self.which_mir]
         else:
-            bit_num = row + 3 * col
             print("mir switch row %d, col %d" %(row, col))
             reg = self.mir_preset[self.which_mir]
-            regf = reg ^ (1 << bit_num)         # flip the designated bit
+            val = row & 7  # it can't be more than three bits anyways...
+            mask = 0o177777 ^ (7 << 3 * ((5 - col)))   # mir switches are col 0-5
+
+            regf = (reg & mask) | (val << (3 * (5 - col)))       # insert the three designated bits
             self.mir_preset[self.which_mir] = regf
+        print("preset LMIR = 0o%06o, RMIR = 0o%06o, MIR=%d" % 
+            (self.mir_preset[0], self.mir_preset[1], self.which_mir))
         self.md.reg_disp.set_mir_preset_switch_leds(regf, which=self.which_mir, activate=activate)
 
 
