@@ -246,7 +246,7 @@ class PanelMicroWWClass:
 #            self.set_cpu_state_lamps(cb, cb.sim_state, alarm_state)
             bn = self.check_buttons()
             if bn:
-                self.sim_state_machine(bn, cb, 0o40) # the third arg should be the PC Preset switch register
+                self.sim_state_machine(bn, cb, pc_preset) # the third arg should be the PC Preset switch register
 
    # read a register from the switches and lights panel.
     # It would normally be called with a string giving the name.  Inside the simulator
@@ -456,20 +456,19 @@ class MappedRegisterDisplayClass:
     # U, L Activate U2_R0-[4-5]
     def set_mir_preset_switch_leds(self, mir, which=0, activate=0):
         if which:
-            which_led = 8
+            which_led = 8  # bit 3
         else:
-            which_led = 4
+            which_led = 4  # bit 2
 
         mir &= 0o177777
-        self.u2_led[0] = which_led | 1 << (activate + 4) | 1 << ((mir >> 15) & 1) | self.u2_led[0] & 0o0177400   #
+        self.u2_led[0] = which_led  | 1 << ((mir >> 15) & 1) | self.u2_led[0] & 0o0177400   #
         self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o0177400   #
         self.u2_led[2] = 1 << ((mir >>  9) & 0o7) | self.u2_led[2] & 0o0177400   #
         self.u2_led[3] = 1 << ((mir >>  6) & 0o7) | self.u2_led[3] & 0o0177400   #
         self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o0177400   #
         self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o0177400   #
 
-        self.u2_led[0] =  self.u2_led[0] & 0o177700   #
-
+        print("Setting U2 LED[0] to 0x%x; mir=0o%o, which=%d, activate=%d" % (self.u2_led[0], mir, which, activate))
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
 
@@ -569,10 +568,8 @@ class MappedSwitchClass:
         return None
 
     def pc_sw(self, row, col):
-        XXXXXXXXXX
         button = "PC Preset"
-        if button in self.fn_buttons_def:
-            button = self.fn_buttons_def[col][row]
+        self.pc_preset_flip_bit(row, col)
         print("pc switch '%s': row %d, col %d" %(button, row, col))
         return None
 
@@ -1227,6 +1224,8 @@ class Is31:
             int_list = [reversed_word]
         else:
             int_list = [word_reg]
+
+        if Verbose: print("Temp Debug: write LED register; val[0]=0o%o, offset=0o%o" % (int_list[0], reg_offset))
         self.is31.write_16bit_led_rows(reg_offset, int_list)
 
 
