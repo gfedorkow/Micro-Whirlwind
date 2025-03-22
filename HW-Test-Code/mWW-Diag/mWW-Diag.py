@@ -451,17 +451,24 @@ class MappedRegisterDisplayClass:
     # MIR [0-8]    U2_R3-[0-7]
     # MIR [0-11]   U2_R2-[0-7]
     # MIR [0-14]   U2_R1-[0-7]
-    # MIR []       U2_R0-[0-1]
+    # MIR [15]     U2_R0-[0-1]
+    # LMIR, RMIR   U2_R0-[2-3]
+    # U, L Activate U2_R0-[4-5]
     def set_mir_preset_switch_leds(self, mir, which=0, activate=0):
+        if which:
+            which_led = 8
+        else:
+            which_led = 4
+
         mir &= 0o177777
-        self.u2_led[0] = 1 << ((mir >> 15) & 1)   | self.u2_led[0] & 0o0177400   #
+        self.u2_led[0] = which_led | 1 << (activate + 4) | 1 << ((mir >> 15) & 1) | self.u2_led[0] & 0o0177400   #
         self.u2_led[1] = 1 << ((mir >> 12) & 0o7) | self.u2_led[1] & 0o0177400   #
         self.u2_led[2] = 1 << ((mir >>  9) & 0o7) | self.u2_led[2] & 0o0177400   #
         self.u2_led[3] = 1 << ((mir >>  6) & 0o7) | self.u2_led[3] & 0o0177400   #
         self.u2_led[4] = 1 << ((mir >>  3) & 0o7) | self.u2_led[4] & 0o0177400   #
         self.u2_led[5] = 1 << ((mir      ) & 0o7) | self.u2_led[5] & 0o0177400   #
 
-        self.u2_led[0] = 1 << (which + 2) | 1 << (activate + 4) | self.u2_led[0] & 0o177700   #
+        self.u2_led[0] =  self.u2_led[0] & 0o177700   #
 
         self.u2_is31.is31.write_16bit_led_rows(0, self.u2_led, len=6)
 
@@ -562,6 +569,7 @@ class MappedSwitchClass:
         return None
 
     def pc_sw(self, row, col):
+        XXXXXXXXXX
         button = "PC Preset"
         if button in self.fn_buttons_def:
             button = self.fn_buttons_def[col][row]
@@ -582,6 +590,16 @@ class MappedSwitchClass:
             self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=regf, ff3=None, bank_test=False)
         else:
             self.md.reg_disp.set_preset_switch_leds(pc=None, pc_bank=None, ff2=None, ff3=regf, bank_test=False)
+
+    def pc_preset_flip_bit(self, row, col):
+        bit_num = row
+        if col & 1 == 0:  # even-numbered registers are the most-significant bits of Column numbers
+            bit_num += 8
+        reg = self.pc_preset_state
+        regf = reg ^ (1 << bit_num)         # flip the designated bit
+        self.pc_preset_state = regf
+        print("pc flip bit: bit_num=%d, reg=0o%o, regf=0o%o" % (bit_num, reg, regf))
+        self.md.reg_disp.set_preset_switch_leds(pc=regf, pc_bank=None, bank_test=False)
 
 
     def mir_sw(self, row, col):
