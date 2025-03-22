@@ -12,3 +12,7 @@ class SMBus:
 
     def write_byte_data(self, i2c_addr, cmd, val):
         print("write byte data")
+
+    def read_byte_data(self, i2c_addr, command):
+        print("read byte data")
+        return 0
