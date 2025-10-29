@@ -1,0 +1,104 @@
+(footprint "mILS-TB-140-SW_PUSH_and_LED_6mm_x8_panel"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "tactile push button, 6x6mm e.g. PHAP33xx series, height=8mm")
+	(tags "tact sw push 6mm")
+	(property "Reference" "REF**"
+		(at 5 -2.4 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "3819fa4f-3385-4ec3-bdf3-a2f4924b3dd2")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "mILS-TB-140-SW_PUSH_and_LED_6mm_x8_panel"
+		(at 15.4 7.6 0)
+		(layer "F.Fab")
+		(uuid "04d8dff8-7b97-4658-b196-fe2865a80bfb")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2843e4b4-fa60-48ce-9da0-db4b350c162b")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "73c4f4ea-1dc4-4d3f-92ac-3aa680cf6f3d")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2ab21d7a-422f-485e-872e-f9d9a98096af")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_rect
+		(start -0.8 -1.5)
+		(end 63.2 6.5)
+		(stroke
+			(width 0.05)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "2a97bb10-9bb7-4021-b41a-a74e6c3b5e56")
+	)
+	(fp_text user "${REFERENCE}"
+		(at 37.6 7.8 0)
+		(layer "F.Fab")
+		(uuid "dfb2e859-a40d-4f78-b438-cac92b6f8639")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(model "${KICAD8_3DMODEL_DIR}/Button_Switch_THT.3dshapes/SW_PUSH_6mm_H8mm.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

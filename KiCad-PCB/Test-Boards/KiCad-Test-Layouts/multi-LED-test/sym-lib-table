@@ -1,0 +1,5 @@
+(sym_lib_table
+  (version 7)
+  (lib (name "mWW_Library")(type "KiCad")(uri "C:/Users/guyfe/Documents/guy/History-of-Computing/Whirlwind/Hardware/Micro-Whirlwind/KiCad-Project-Library.pretty/mWW_Library.kicad_sym")(options "")(descr ""))
+  (lib (name "Adafruit_TCA8418_module")(type "KiCad")(uri "C:/Users/guyfe/Documents/guy/History-of-Computing/Whirlwind/Hardware/Micro-Whirlwind/KiCad-Project-Library.pretty/Adafruit_TCA8418_module.kicad_sym")(options "")(descr ""))
+)

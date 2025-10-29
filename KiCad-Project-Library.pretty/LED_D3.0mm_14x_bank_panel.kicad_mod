@@ -1,0 +1,236 @@
+(footprint "LED_D3.0mm_14x_bank_panel"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "LED, diameter 3.0mm, 2 pins")
+	(tags "LED diameter 3.0mm 2 pins")
+	(property "Reference" "REF**"
+		(at -7.5184 -2.5908 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "1f80bb27-ee14-4fcf-ba6e-3568dd4d624f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "LED_D3.0mm_14x_bank_panel"
+		(at 0.0254 8.636 0)
+		(layer "F.Fab")
+		(uuid "d54726f0-b6d3-42b6-8d9c-fd42a23f633c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b16c4a87-4013-4101-a8e2-c8c5aaf849ec")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2caa3736-39c6-436d-b37e-ae0d5e386825")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "979248b3-090d-4463-be0a-01322f3037e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 1.27 -65)
+		(end 2.87 -65)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "becc45fa-bb03-410e-bd33-5fdd8d4d50a0")
+	)
+	(fp_circle
+		(center 1.27 -60.666667)
+		(end 2.87 -60.666667)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "b4a77ac2-cff4-4500-a5e9-33b5ceafba9d")
+	)
+	(fp_circle
+		(center 1.27 -56.333334)
+		(end 2.87 -56.333334)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "40fcd092-01d6-4375-8a05-bdf893f3cf00")
+	)
+	(fp_circle
+		(center 1.27 -52.000001)
+		(end 2.87 -52.000001)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "3aa19ff1-7268-4bc3-96d7-7f9a0758236a")
+	)
+	(fp_circle
+		(center 1.27 -47.666668)
+		(end 2.87 -47.666668)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "c1ccb756-167e-4c27-a382-47f7637f4492")
+	)
+	(fp_circle
+		(center 1.27 -43.333335)
+		(end 2.87 -43.333335)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "61e70b91-df70-475c-9fe3-3fe5d9864bad")
+	)
+	(fp_circle
+		(center 1.27 -39.000002)
+		(end 2.87 -39.000002)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "53ae4500-375f-47d6-8926-dd813024dec6")
+	)
+	(fp_circle
+		(center 1.27 -34.666669)
+		(end 2.87 -34.666669)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "246a5515-68e1-49c4-8d85-6416d4dd0138")
+	)
+	(fp_circle
+		(center 1.27 -30.333336)
+		(end 2.87 -30.333336)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "fb9a033d-6e8e-4127-9ba3-d1fec3981d75")
+	)
+	(fp_circle
+		(center 1.27 -26.000003)
+		(end 2.87 -26.000003)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "8936fde7-5898-4065-933e-ce62cde96f87")
+	)
+	(fp_circle
+		(center 1.27 -21.66667)
+		(end 2.87 -21.66667)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "669b5292-fe14-4b92-b7ac-811d5343ecfa")
+	)
+	(fp_circle
+		(center 1.27 -13.000004)
+		(end 2.87 -13.000004)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "16487b79-6d12-40b2-8787-853efa3d3220")
+	)
+	(fp_circle
+		(center 1.27 -8.666671)
+		(end 2.87 -8.666671)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "8453417f-6afd-4930-b3a1-b98081b92d19")
+	)
+	(fp_circle
+		(center 1.27 -4.333338)
+		(end 2.87 -4.333338)
+		(stroke
+			(width 0.1)
+			(type solid)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "b619d80a-9083-4b41-8b9f-e52e83667564")
+	)
+	(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

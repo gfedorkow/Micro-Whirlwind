@@ -1,0 +1,6642 @@
+(kicad_sch
+	(version 20231120)
+	(generator "eeschema")
+	(generator_version "8.0")
+	(uuid "600999a8-5d2e-47ed-9bfd-a503a86ccc34")
+	(paper "A4")
+	(lib_symbols
+		(symbol "Device:LED"
+			(pin_numbers hide)
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+		)
+		(symbol "Mechanical:MountingHole"
+			(pin_names
+				(offset 1.016)
+			)
+			(exclude_from_sim yes)
+			(in_bom no)
+			(on_board yes)
+			(property "Reference" "H"
+				(at 0 5.08 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "MountingHole"
+				(at 0 3.175 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Mounting Hole without connection"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "mounting hole"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "MountingHole*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "MountingHole_0_1"
+				(circle
+					(center 0 0)
+					(radius 1.27)
+					(stroke
+						(width 1.27)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+		)
+		(symbol "Switch:SW_Push_LED"
+			(pin_names
+				(offset 1.016) hide)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "SW"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "SW_Push_LED"
+				(at 0 -3.81 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 7.62 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Push button switch with LED, generic"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "switch normally-open pushbutton push-button LED"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "SW_Push_LED_0_0"
+				(polyline
+					(pts
+						(xy -2.54 0) (xy 2.54 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.286 -2.159) (xy -1.016 -0.889)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -2.159) (xy 0.254 -0.889)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 1.27) (xy -0.635 -1.27)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -2.286 -1.524) (xy -2.286 -2.159) (xy -1.651 -2.159)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.016 -1.524) (xy -1.016 -2.159) (xy -0.381 -2.159)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -0.635 0) (xy 1.27 1.27) (xy 1.27 -1.27) (xy -0.635 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type outline)
+					)
+				)
+			)
+			(symbol "SW_Push_LED_0_1"
+				(circle
+					(center -2.032 2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 0 3.81) (xy 0 5.588)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 2.54 3.81) (xy -2.54 3.81)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(circle
+					(center 2.032 2.54)
+					(radius 0.508)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(pin passive line
+					(at -5.08 2.54 0)
+					(length 2.54)
+					(name "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 2.54 180)
+					(length 2.54)
+					(name "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -5.08 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 5.08 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(symbol "SW_Push_LED_1_1"
+				(rectangle
+					(start -3.175 5.715)
+					(end 3.175 -2.54)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type background)
+					)
+				)
+			)
+		)
+	)
+	(junction
+		(at 214.63 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "0254bafd-008d-4530-be19-ee424c6865e6")
+	)
+	(junction
+		(at 194.31 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "059e9281-8dbf-43c2-8132-7aec8b0c8ed1")
+	)
+	(junction
+		(at 229.87 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "09a2bd94-23c1-47e0-80cd-7b43dea2b992")
+	)
+	(junction
+		(at 255.27 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "11763880-762d-4f02-a74d-efed5e0de13a")
+	)
+	(junction
+		(at 220.98 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "16b94fb6-091c-4011-8742-a0237592a6d5")
+	)
+	(junction
+		(at 214.63 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "196a7801-a495-429e-af2d-efaef9f07739")
+	)
+	(junction
+		(at 246.38 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1bc7790a-8d17-4607-a64b-ecb75eff8343")
+	)
+	(junction
+		(at 226.06 48.26)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "1f1021ee-f2c8-4daa-83d1-72ca914b4d00")
+	)
+	(junction
+		(at 231.14 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "207f11b0-4eeb-4616-a253-d5cb09077f46")
+	)
+	(junction
+		(at 250.19 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2476afb0-f424-45bd-ba7b-a7014e4fd1ed")
+	)
+	(junction
+		(at 231.14 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "26000c83-61d8-49ce-a647-9c8249c33fa5")
+	)
+	(junction
+		(at 220.98 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2db5d913-eb6b-4171-a226-f031c3ad2d10")
+	)
+	(junction
+		(at 223.52 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2de3047c-a8c3-4876-8daa-845dc9f5441d")
+	)
+	(junction
+		(at 243.84 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "2e8f814c-3401-4c36-b383-cd985c2337b5")
+	)
+	(junction
+		(at 234.95 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "306717ba-3998-4d26-8c73-254f0699ad83")
+	)
+	(junction
+		(at 280.67 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "34e4675a-8563-49d3-ab2b-444fb07a853b")
+	)
+	(junction
+		(at 227.33 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3509b12d-8247-4631-bae1-bbfda521aee4")
+	)
+	(junction
+		(at 229.87 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3653220c-50cf-4afb-a5e1-146247615a25")
+	)
+	(junction
+		(at 270.51 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "36fd9db0-efec-481a-86d2-c29f2faca218")
+	)
+	(junction
+		(at 255.27 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "38dec9dd-2eb6-476a-87bc-a2f57974210f")
+	)
+	(junction
+		(at 241.3 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3beb0b21-2127-41c7-9c3f-ed7b5fc4f299")
+	)
+	(junction
+		(at 245.11 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3c056fcd-1a2b-4110-b9d3-2b351a29d796")
+	)
+	(junction
+		(at 231.14 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3c9b74f5-6695-4180-9e61-ed8df1fe76ab")
+	)
+	(junction
+		(at 250.19 40.64)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3d4f5132-5393-417a-8a46-c10a24d4f16f")
+	)
+	(junction
+		(at 261.62 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3de2c819-9939-422c-95d6-65025e9a41fd")
+	)
+	(junction
+		(at 262.89 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3e665a9c-dd22-40f1-89c6-52adf8dd4833")
+	)
+	(junction
+		(at 262.89 78.74)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "3ecc7884-81a6-4500-a539-dff45cc87485")
+	)
+	(junction
+		(at 245.11 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4141f87d-b8b6-4330-b8c0-39a8c2b24449")
+	)
+	(junction
+		(at 248.92 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "415d324b-3fd9-4e87-a1ab-25130a43dbbc")
+	)
+	(junction
+		(at 224.79 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "4988a513-5dad-4a08-81e5-0966248cfbe8")
+	)
+	(junction
+		(at 190.5 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "49f4e0ff-cb98-4ee9-9b88-dc0e5c8051e5")
+	)
+	(junction
+		(at 228.6 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5072b1db-9c63-4492-afed-c358b264c38b")
+	)
+	(junction
+		(at 204.47 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5266fb0f-2622-4427-a101-3110969f91ec")
+	)
+	(junction
+		(at 204.47 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "55595e2c-7c51-4bf8-8fd8-11ab29dc39de")
+	)
+	(junction
+		(at 227.33 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5a523179-0575-48aa-b7fa-30d3448f031a")
+	)
+	(junction
+		(at 255.27 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5c3ace00-959b-46d7-b2af-e486a102e9a5")
+	)
+	(junction
+		(at 234.95 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "5c79aca4-782a-4f38-bbb5-bf13e329a3ec")
+	)
+	(junction
+		(at 245.11 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "60bd7fb4-da64-4755-a75a-3238eaca0cda")
+	)
+	(junction
+		(at 245.11 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "61734c55-a29b-4755-8c26-d63983adbe20")
+	)
+	(junction
+		(at 210.82 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "633b5121-fce1-491e-819c-4a139749b12b")
+	)
+	(junction
+		(at 261.62 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "67ea8e61-c877-4e0d-84b7-36938b1a732a")
+	)
+	(junction
+		(at 250.19 86.36)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "693cf6da-9b39-4d5e-8c13-9638ac0951bc")
+	)
+	(junction
+		(at 246.38 67.31)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6c184edf-b1b1-4eae-8a4f-553ee5f1ec7e")
+	)
+	(junction
+		(at 234.95 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "6e9158dc-2939-4987-a4b1-cb9cf07be161")
+	)
+	(junction
+		(at 224.79 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "70dae901-b462-4fee-b4bf-acdd66781e9b")
+	)
+	(junction
+		(at 190.5 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "749a7658-0bb4-47ce-ab76-999266461293")
+	)
+	(junction
+		(at 261.62 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "7d33cd45-af6f-47fa-97d2-881bb7860c91")
+	)
+	(junction
+		(at 270.51 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "85ddd88e-de09-4bba-812a-6d65e24f99a1")
+	)
+	(junction
+		(at 241.3 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "8a77b202-a527-4994-9909-74959744d488")
+	)
+	(junction
+		(at 223.52 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "94638595-63d9-437a-937f-1aed78b23d5f")
+	)
+	(junction
+		(at 261.62 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "9e99167e-c374-4809-aac9-551450d2e1bb")
+	)
+	(junction
+		(at 251.46 119.38)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a32ad208-c9e5-45f3-a9c3-a4fd3c910410")
+	)
+	(junction
+		(at 220.98 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "a6abe04c-ecb7-4eee-ba58-dddd63c5f692")
+	)
+	(junction
+		(at 251.46 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "aa491742-b447-44a2-a4b2-569a072f2de2")
+	)
+	(junction
+		(at 228.6 50.8)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ab26e79b-153f-468f-a3ac-708bca7cd80d")
+	)
+	(junction
+		(at 214.63 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "abec87b5-db21-4616-a5c9-303051e330dd")
+	)
+	(junction
+		(at 194.31 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ac4da50b-8c65-4814-9fd9-2721dbcae921")
+	)
+	(junction
+		(at 261.62 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "adf08f2a-b4f6-4eef-bb85-bca929efbbbe")
+	)
+	(junction
+		(at 280.67 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b3586134-7626-4b81-8689-6c277f8d83ef")
+	)
+	(junction
+		(at 194.31 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b782843a-2cbb-4c72-94a9-0a4008e69603")
+	)
+	(junction
+		(at 228.6 68.58)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "b9044d99-784f-4c01-bf88-f1a4a26ab179")
+	)
+	(junction
+		(at 245.11 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c0296948-92b3-4042-bcfc-a79de57ff40e")
+	)
+	(junction
+		(at 226.06 59.69)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c0a7c78e-9a48-490c-a957-35d338c897aa")
+	)
+	(junction
+		(at 248.92 66.04)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c0e9f3d0-92d0-44ce-9183-fe846a2e5bce")
+	)
+	(junction
+		(at 270.51 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c5e01223-9349-4cb0-b451-74b013fabf17")
+	)
+	(junction
+		(at 200.66 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "c5f81884-c8aa-485a-ba2d-9b9a46997b76")
+	)
+	(junction
+		(at 278.13 81.28)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "cb3fbc84-dcbc-49f4-8d6e-35b421a5f6fb")
+	)
+	(junction
+		(at 255.27 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d1c9ad5b-961e-4cb4-ac00-519f4a450d6d")
+	)
+	(junction
+		(at 247.65 46.99)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d209ba00-e050-4542-9523-13d53b377222")
+	)
+	(junction
+		(at 204.47 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d44c01d1-3504-429a-bb50-4e247d958c15")
+	)
+	(junction
+		(at 200.66 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d458e384-2c24-4ac9-bd84-8277a7d7d153")
+	)
+	(junction
+		(at 241.3 133.35)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d62a0657-74c5-48c2-921e-60f4890d527f")
+	)
+	(junction
+		(at 223.52 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d7d76e47-72a7-4ef7-af95-5800f2ed8a7f")
+	)
+	(junction
+		(at 278.13 62.23)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d81d1c73-792f-46d9-b1d1-6517689b80f3")
+	)
+	(junction
+		(at 210.82 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d976afb8-fcd0-4555-8010-6e1853930fca")
+	)
+	(junction
+		(at 234.95 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "dcf828de-96f4-4d37-872c-dbb79e8b15b6")
+	)
+	(junction
+		(at 204.47 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "de6f5ba9-c1cf-427a-8214-64c315b5fdca")
+	)
+	(junction
+		(at 223.52 125.73)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e0273cb5-1cce-44be-90ec-29bf2445e261")
+	)
+	(junction
+		(at 194.31 111.76)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "e95e7ec7-b588-4b10-bbfb-81f91f130152")
+	)
+	(junction
+		(at 214.63 139.7)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "ead995b4-8725-4ca5-b48b-dfb35ad9cbda")
+	)
+	(junction
+		(at 247.65 30.48)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "edcdf4b9-be98-4724-a8da-d9e9e2cf6733")
+	)
+	(junction
+		(at 190.5 96.52)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "f45edb61-a5f4-4330-a366-1e73d8b1dd80")
+	)
+	(junction
+		(at 251.46 147.32)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fff2679b-1365-4b32-9cf6-5849234818d6")
+	)
+	(wire
+		(pts
+			(xy 242.57 81.28) (xy 243.84 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0486cb9f-5a10-48cb-b6c7-3659a7e85fe4")
+	)
+	(wire
+		(pts
+			(xy 250.19 68.58) (xy 250.19 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "050fca42-3f49-4d14-a9b3-3c8b65df0f81")
+	)
+	(wire
+		(pts
+			(xy 210.82 30.48) (xy 228.6 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "05ea2a42-c933-4076-bf79-6a9c5ada9e96")
+	)
+	(wire
+		(pts
+			(xy 234.95 104.14) (xy 241.3 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "080527fa-0dd5-4bbf-893a-733c56b418b5")
+	)
+	(wire
+		(pts
+			(xy 214.63 139.7) (xy 220.98 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "08269416-c423-4605-93c5-7cdc56b78253")
+	)
+	(wire
+		(pts
+			(xy 204.47 139.7) (xy 214.63 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a1bcd8f-5566-491c-ab68-bcb21882b3b5")
+	)
+	(wire
+		(pts
+			(xy 210.82 104.14) (xy 210.82 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0a7eef36-35fe-48f8-bd34-168d10452250")
+	)
+	(wire
+		(pts
+			(xy 170.18 111.76) (xy 194.31 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0afdeb9e-c9af-4184-bfbd-7e26693f0447")
+	)
+	(wire
+		(pts
+			(xy 170.18 111.76) (xy 170.18 143.51)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0cb70a97-8442-473c-9f40-557bfa2bd5d5")
+	)
+	(wire
+		(pts
+			(xy 262.89 59.69) (xy 262.89 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "0d8c321a-b44a-4b46-8d81-41e1f46a0cbf")
+	)
+	(wire
+		(pts
+			(xy 194.31 147.32) (xy 190.5 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1152aaba-73af-4725-84fc-8ba713818a51")
+	)
+	(wire
+		(pts
+			(xy 255.27 133.35) (xy 261.62 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "12e4f0ac-c13c-4226-aa8c-9932f5e4eb54")
+	)
+	(wire
+		(pts
+			(xy 278.13 81.28) (xy 278.13 92.71)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "163e6a49-1c7f-41fb-8b78-60417f4f0819")
+	)
+	(wire
+		(pts
+			(xy 220.98 139.7) (xy 223.52 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "16f0484a-6d41-4670-b230-d5bb5db127a6")
+	)
+	(wire
+		(pts
+			(xy 264.16 104.14) (xy 270.51 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "187b36e5-1c05-4547-b980-a6ab07e7fd1c")
+	)
+	(wire
+		(pts
+			(xy 200.66 133.35) (xy 200.66 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1b8865ec-e52e-4a09-9f43-2d0984ec9d17")
+	)
+	(wire
+		(pts
+			(xy 172.72 125.73) (xy 172.72 146.05)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1da45c65-ad44-45f9-9803-22457693887d")
+	)
+	(wire
+		(pts
+			(xy 262.89 88.9) (xy 262.89 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1e639684-3c4b-4f4e-920a-98ae38214973")
+	)
+	(wire
+		(pts
+			(xy 172.72 125.73) (xy 194.31 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1f711586-b8cf-40db-8945-508bc8e19db1")
+	)
+	(wire
+		(pts
+			(xy 190.5 119.38) (xy 194.31 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fcc07e2-a571-4106-bc44-bd9d9386dac9")
+	)
+	(wire
+		(pts
+			(xy 229.87 81.28) (xy 229.87 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "1fe81d11-47e7-4b4d-bb8a-5996e1b1e871")
+	)
+	(wire
+		(pts
+			(xy 231.14 119.38) (xy 231.14 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "208fe290-c1a9-4217-a254-1865a045bfb3")
+	)
+	(wire
+		(pts
+			(xy 187.96 161.29) (xy 187.96 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "21796374-851f-449a-90fa-cf921327862c")
+	)
+	(wire
+		(pts
+			(xy 177.8 149.86) (xy 231.14 149.86)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2197ee0b-b622-4129-8abf-edf37e8c84b1")
+	)
+	(wire
+		(pts
+			(xy 210.82 119.38) (xy 210.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "22aec102-c063-4111-8b46-7cd84bfe9917")
+	)
+	(wire
+		(pts
+			(xy 198.12 88.9) (xy 262.89 88.9)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "23b78483-5e00-4a4c-a017-1d304ab1a41f")
+	)
+	(wire
+		(pts
+			(xy 204.47 48.26) (xy 226.06 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "24f022af-2388-447f-8523-fdc0ade3bef5")
+	)
+	(wire
+		(pts
+			(xy 251.46 40.64) (xy 250.19 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "253111f5-d3e8-4038-91c5-101f62063d25")
+	)
+	(wire
+		(pts
+			(xy 251.46 104.14) (xy 251.46 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "289d3aff-82d3-498b-9885-8148dd99538f")
+	)
+	(wire
+		(pts
+			(xy 214.63 119.38) (xy 220.98 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2913db81-3b1e-448a-93ad-40ede87ae371")
+	)
+	(wire
+		(pts
+			(xy 223.52 111.76) (xy 234.95 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "295ea85f-5ca6-4f43-af55-69027659a47e")
+	)
+	(wire
+		(pts
+			(xy 245.11 111.76) (xy 255.27 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2a6ced20-c276-427e-af68-2bd45afcf60e")
+	)
+	(wire
+		(pts
+			(xy 261.62 119.38) (xy 261.62 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e26ac41-8da0-4af7-b227-3e6a161f76fa")
+	)
+	(wire
+		(pts
+			(xy 280.67 90.17) (xy 280.67 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e4374b9-3324-4cec-bc66-4c52ea4834ca")
+	)
+	(wire
+		(pts
+			(xy 250.19 40.64) (xy 247.65 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e4bfb9a-9188-44cc-bf17-c152f79e0be1")
+	)
+	(wire
+		(pts
+			(xy 248.92 59.69) (xy 248.92 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e6598a3-27a0-4ee2-9e1d-0c37beb9a0e1")
+	)
+	(wire
+		(pts
+			(xy 255.27 111.76) (xy 264.16 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2e95cb29-f6d2-47dd-ae8c-82ebd2234f48")
+	)
+	(wire
+		(pts
+			(xy 260.35 40.64) (xy 262.89 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "2ea94ed9-352e-439f-99e1-a02660d8ef5a")
+	)
+	(wire
+		(pts
+			(xy 200.66 104.14) (xy 200.66 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "34767655-9548-45d3-a984-db2b4ba6bb85")
+	)
+	(wire
+		(pts
+			(xy 226.06 48.26) (xy 226.06 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "386a8cc7-a48e-4ab1-b607-b7e6bedd0cb8")
+	)
+	(wire
+		(pts
+			(xy 224.79 62.23) (xy 224.79 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3ad8df7f-12c8-4ae7-b477-1779c43677a9")
+	)
+	(wire
+		(pts
+			(xy 229.87 43.18) (xy 232.41 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3b2ee5f9-6e1a-4bed-aef4-25508f76ddf7")
+	)
+	(wire
+		(pts
+			(xy 243.84 81.28) (xy 243.84 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3c780ee3-5f05-40ff-89c9-fe8eebdfa67f")
+	)
+	(wire
+		(pts
+			(xy 204.47 96.52) (xy 214.63 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "3cf888e4-1000-40ae-bff5-946a9c64f4c6")
+	)
+	(wire
+		(pts
+			(xy 190.5 133.35) (xy 190.5 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "40be9b07-821b-40a1-bedd-659ddbfdd433")
+	)
+	(wire
+		(pts
+			(xy 247.65 43.18) (xy 247.65 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "41809e40-e1cf-4f18-8670-27a83d272ef1")
+	)
+	(wire
+		(pts
+			(xy 251.46 133.35) (xy 251.46 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "43c5c9fc-d9df-4a5b-9a49-5e9507802ca6")
+	)
+	(wire
+		(pts
+			(xy 234.95 119.38) (xy 241.3 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "445204c5-4599-4a1e-80f3-d4156f76eb93")
+	)
+	(wire
+		(pts
+			(xy 194.31 111.76) (xy 200.66 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4539ff73-d66e-4202-9ace-4594fd66fcff")
+	)
+	(wire
+		(pts
+			(xy 241.3 152.4) (xy 241.3 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "45bbc96a-20ff-4164-ae21-da5566a04d3e")
+	)
+	(wire
+		(pts
+			(xy 196.85 90.17) (xy 280.67 90.17)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "467d130e-8a45-4b09-a9cc-061e67274b6b")
+	)
+	(wire
+		(pts
+			(xy 242.57 40.64) (xy 246.38 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "480cddb0-d800-46c1-afc9-901e7d4d735b")
+	)
+	(wire
+		(pts
+			(xy 187.96 160.02) (xy 270.51 160.02)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4aa89572-d302-4a6d-9640-dab89087285d")
+	)
+	(wire
+		(pts
+			(xy 194.31 139.7) (xy 204.47 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4b98d43b-ee79-4c5a-88bc-febe89658a6e")
+	)
+	(wire
+		(pts
+			(xy 182.88 154.94) (xy 182.88 156.21)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4bc5feae-7104-4de4-aa6c-fd2da141c280")
+	)
+	(wire
+		(pts
+			(xy 261.62 133.35) (xy 261.62 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4c25fe96-4bd8-4379-9896-a47031ed24ef")
+	)
+	(wire
+		(pts
+			(xy 223.52 139.7) (xy 234.95 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4dc8e249-c36d-4ce2-878a-bad3fe6711bf")
+	)
+	(wire
+		(pts
+			(xy 278.13 43.18) (xy 278.13 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4e6c5290-ec98-4919-aae6-7f545a151d68")
+	)
+	(wire
+		(pts
+			(xy 241.3 119.38) (xy 241.3 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4f15e130-5265-405b-9740-a9bcf8ee6bfc")
+	)
+	(wire
+		(pts
+			(xy 213.36 86.36) (xy 229.87 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "4fa1c202-7849-4e52-8fb5-813885436594")
+	)
+	(wire
+		(pts
+			(xy 255.27 104.14) (xy 261.62 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "50d49fc1-5eb5-4d36-a63f-a348b029eb1f")
+	)
+	(wire
+		(pts
+			(xy 228.6 78.74) (xy 232.41 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "515ab327-02b3-4307-a4bb-c3a71cadcdbd")
+	)
+	(wire
+		(pts
+			(xy 177.8 149.86) (xy 177.8 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51f78a84-e774-492d-a4ef-3ffbe3d9380c")
+	)
+	(wire
+		(pts
+			(xy 220.98 133.35) (xy 220.98 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "51fe5989-b550-44d4-b9b7-85066bf535c7")
+	)
+	(wire
+		(pts
+			(xy 266.7 81.28) (xy 266.7 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "522bdf3c-6880-4a74-b1bd-98bdb6948232")
+	)
+	(wire
+		(pts
+			(xy 210.82 147.32) (xy 214.63 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5475ca43-31c4-4e62-8e84-ba04b11ce33b")
+	)
+	(wire
+		(pts
+			(xy 270.51 133.35) (xy 270.51 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "569d0e01-b1a3-471d-9e29-41d9b25257f6")
+	)
+	(wire
+		(pts
+			(xy 223.52 104.14) (xy 231.14 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "58b2d480-fcaa-4a07-a763-79c87ab2da59")
+	)
+	(wire
+		(pts
+			(xy 210.82 125.73) (xy 210.82 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5a54a4d7-7392-493d-90b1-9dc23b8c5566")
+	)
+	(wire
+		(pts
+			(xy 260.35 78.74) (xy 262.89 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5af86006-660c-4374-896c-ac431ff6afb5")
+	)
+	(wire
+		(pts
+			(xy 245.11 96.52) (xy 255.27 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5be34d45-8615-429a-a36a-21ba069ae192")
+	)
+	(wire
+		(pts
+			(xy 255.27 119.38) (xy 261.62 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d236159-dfd1-4870-8e73-0d6509b7b980")
+	)
+	(wire
+		(pts
+			(xy 223.52 119.38) (xy 231.14 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d6a055e-182d-44d7-84b9-d9556bdd66b1")
+	)
+	(wire
+		(pts
+			(xy 245.11 62.23) (xy 245.11 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5d77f6a7-58a1-4e57-a266-f06e27fd752a")
+	)
+	(wire
+		(pts
+			(xy 260.35 43.18) (xy 261.62 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5e1c925c-922a-49ea-85e3-1d059623e822")
+	)
+	(wire
+		(pts
+			(xy 223.52 125.73) (xy 234.95 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "613129b3-fa7d-4de1-9cee-09d74635ad83")
+	)
+	(wire
+		(pts
+			(xy 227.33 66.04) (xy 248.92 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "63c8359e-96a2-4c21-a6da-a6e2a7f5a52a")
+	)
+	(wire
+		(pts
+			(xy 213.36 40.64) (xy 210.82 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64abfe8b-b531-485f-848e-da63d9477823")
+	)
+	(wire
+		(pts
+			(xy 180.34 152.4) (xy 180.34 153.67)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "64ffb966-b7e1-476c-9531-6162af4219f2")
+	)
+	(wire
+		(pts
+			(xy 167.64 140.97) (xy 167.64 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "66767807-6d2f-4c7d-a91c-c9cc36c0def5")
+	)
+	(wire
+		(pts
+			(xy 251.46 154.94) (xy 251.46 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "676755af-7438-4bb9-a04a-35f56869b99f")
+	)
+	(wire
+		(pts
+			(xy 224.79 81.28) (xy 223.52 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "679434f0-ecd0-4907-8573-1ed2a7a41c37")
+	)
+	(wire
+		(pts
+			(xy 261.62 147.32) (xy 261.62 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6842919f-d42b-4aa3-85a9-0d324ebf6060")
+	)
+	(wire
+		(pts
+			(xy 210.82 62.23) (xy 213.36 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6862c72f-18d0-4a98-b9e4-3a8d43a7bf46")
+	)
+	(wire
+		(pts
+			(xy 261.62 81.28) (xy 261.62 91.44)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "697ad7f1-7403-4924-9af2-9fba43f570af")
+	)
+	(wire
+		(pts
+			(xy 250.19 86.36) (xy 266.7 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "697b23a7-6c0e-4ca4-8750-81b26ca6398d")
+	)
+	(wire
+		(pts
+			(xy 265.43 78.74) (xy 265.43 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6c7cb612-aff8-4f39-a3a4-b54cc4e83de9")
+	)
+	(wire
+		(pts
+			(xy 231.14 104.14) (xy 231.14 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6cd5d4af-4477-4bb9-9bea-9a7ab517f73d")
+	)
+	(wire
+		(pts
+			(xy 209.55 78.74) (xy 213.36 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6dedbde4-6c54-4c53-9083-9dd37aaf616f")
+	)
+	(wire
+		(pts
+			(xy 265.43 59.69) (xy 265.43 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6e0c05e0-ef14-44e1-b217-ec3cb739d727")
+	)
+	(wire
+		(pts
+			(xy 223.52 43.18) (xy 227.33 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "713b10f6-6b84-47e9-b887-ad4ec0005976")
+	)
+	(wire
+		(pts
+			(xy 194.31 125.73) (xy 204.47 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "713beb7a-cc82-4c08-b014-f47201f98d37")
+	)
+	(wire
+		(pts
+			(xy 234.95 125.73) (xy 245.11 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "71e8d010-ec90-4cfb-a330-9477e1e6c512")
+	)
+	(wire
+		(pts
+			(xy 264.16 119.38) (xy 270.51 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "729ea225-3c61-4c09-80ce-a4e46dc37f9b")
+	)
+	(wire
+		(pts
+			(xy 234.95 96.52) (xy 245.11 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "732cb105-d275-4674-bfc4-e1fd7fbc1ea6")
+	)
+	(wire
+		(pts
+			(xy 190.5 96.52) (xy 194.31 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "738fcd40-b12b-4e04-a812-9ab5e2505080")
+	)
+	(wire
+		(pts
+			(xy 228.6 40.64) (xy 232.41 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "75341834-c0dc-41ea-acff-dbe627dfdc57")
+	)
+	(wire
+		(pts
+			(xy 223.52 147.32) (xy 231.14 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "76d8e537-dd2f-4ce9-9382-7f056bf72a1b")
+	)
+	(wire
+		(pts
+			(xy 241.3 104.14) (xy 241.3 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7b0b80a5-bbb7-460c-97d2-6ccddccf2b1a")
+	)
+	(wire
+		(pts
+			(xy 226.06 40.64) (xy 226.06 48.26)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "7c1af494-0dd7-4d56-97e9-ba7461c5aa5b")
+	)
+	(wire
+		(pts
+			(xy 227.33 66.04) (xy 210.82 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "80467ed2-7cac-49d9-8055-c84be9d5816e")
+	)
+	(wire
+		(pts
+			(xy 190.5 133.35) (xy 194.31 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8083a278-70fc-4294-a171-8f353b92095c")
+	)
+	(wire
+		(pts
+			(xy 200.66 147.32) (xy 204.47 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "81a21444-681a-4c27-8444-29f6675bd2b4")
+	)
+	(wire
+		(pts
+			(xy 204.47 125.73) (xy 210.82 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82374406-8f52-4549-b735-96aaab7d93f0")
+	)
+	(wire
+		(pts
+			(xy 210.82 46.99) (xy 224.79 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "826f64b7-e7ff-49a2-af18-08b85a4b9e18")
+	)
+	(wire
+		(pts
+			(xy 246.38 67.31) (xy 246.38 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "82ae88d9-a066-4932-8abd-f8bf02383477")
+	)
+	(wire
+		(pts
+			(xy 214.63 111.76) (xy 223.52 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84799fd6-e019-46ab-9430-3ec7bbf188d6")
+	)
+	(wire
+		(pts
+			(xy 280.67 59.69) (xy 276.86 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "84daf7a9-bf46-4ef0-80c9-0c5db8f06df5")
+	)
+	(wire
+		(pts
+			(xy 227.33 62.23) (xy 232.41 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8548d310-da77-49af-b005-e9b905b235be")
+	)
+	(wire
+		(pts
+			(xy 266.7 62.23) (xy 266.7 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "85e7c282-9881-480d-b947-3a45882da323")
+	)
+	(wire
+		(pts
+			(xy 245.11 86.36) (xy 250.19 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "860f3b3a-c446-464d-9a75-1038cfd7d9df")
+	)
+	(wire
+		(pts
+			(xy 210.82 125.73) (xy 214.63 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8655154e-a5c6-4d97-a40d-0f3e0e397662")
+	)
+	(wire
+		(pts
+			(xy 213.36 59.69) (xy 210.82 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "86c3dc7b-3f53-45d1-9c1c-02197fa3b99e")
+	)
+	(wire
+		(pts
+			(xy 223.52 40.64) (xy 226.06 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88422964-44d7-4650-bb9b-94c6568d00e0")
+	)
+	(wire
+		(pts
+			(xy 228.6 68.58) (xy 250.19 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88932655-59a7-4d43-a946-3fe7d9a62924")
+	)
+	(wire
+		(pts
+			(xy 229.87 46.99) (xy 229.87 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "88fc723e-59b7-49c5-ba78-9370f2cb657a")
+	)
+	(wire
+		(pts
+			(xy 214.63 133.35) (xy 220.98 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "89b2f621-bd97-4fd9-a1e5-8b8a28170684")
+	)
+	(wire
+		(pts
+			(xy 194.31 139.7) (xy 175.26 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8adcb986-cadf-449f-8a72-4e8076ead8ce")
+	)
+	(wire
+		(pts
+			(xy 261.62 43.18) (xy 261.62 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8b53dfff-f3d4-439f-881d-623749bf58da")
+	)
+	(wire
+		(pts
+			(xy 243.84 62.23) (xy 245.11 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8bdd9cd5-f84b-4b0b-8b54-7378647a6c1d")
+	)
+	(wire
+		(pts
+			(xy 255.27 139.7) (xy 264.16 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8cb3034e-3a65-41ea-b535-32d17bdd4ebf")
+	)
+	(wire
+		(pts
+			(xy 228.6 68.58) (xy 228.6 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "8e0ffd43-12e3-4d89-90a9-d4d591382162")
+	)
+	(wire
+		(pts
+			(xy 264.16 40.64) (xy 264.16 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "917c2417-8706-49d4-9c82-ef58c6dc8970")
+	)
+	(wire
+		(pts
+			(xy 266.7 40.64) (xy 264.16 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "937afa88-d946-47fe-960e-876e3ffcccba")
+	)
+	(wire
+		(pts
+			(xy 276.86 40.64) (xy 280.67 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "94eaecac-5e48-449d-a908-152abb1b8eb0")
+	)
+	(wire
+		(pts
+			(xy 190.5 119.38) (xy 190.5 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "956857fe-0de5-4441-b01d-a72de161c992")
+	)
+	(wire
+		(pts
+			(xy 247.65 46.99) (xy 264.16 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96156081-c418-4f65-b073-0533e30228a2")
+	)
+	(wire
+		(pts
+			(xy 242.57 43.18) (xy 243.84 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "96cd223e-5736-41c8-967d-9709c9fcb10f")
+	)
+	(wire
+		(pts
+			(xy 246.38 40.64) (xy 246.38 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "975759c2-f8e9-4cd3-a1dc-fb64af5715ff")
+	)
+	(wire
+		(pts
+			(xy 270.51 104.14) (xy 270.51 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9760edf3-540d-488e-bfb1-6e67d622f04a")
+	)
+	(wire
+		(pts
+			(xy 194.31 104.14) (xy 200.66 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9920e02f-3695-47e9-b4f3-66f5b4903580")
+	)
+	(wire
+		(pts
+			(xy 228.6 50.8) (xy 228.6 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "996e1267-2c02-41a0-9b44-37d1c9401394")
+	)
+	(wire
+		(pts
+			(xy 245.11 133.35) (xy 251.46 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "998c0181-9ccc-448f-b971-c87136c98893")
+	)
+	(wire
+		(pts
+			(xy 175.26 139.7) (xy 175.26 148.59)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "9e0cbb6f-3ed0-4ba1-95f8-85e608d890eb")
+	)
+	(wire
+		(pts
+			(xy 245.11 119.38) (xy 251.46 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a034cfc9-76ba-47e7-b027-34d829d5334f")
+	)
+	(wire
+		(pts
+			(xy 261.62 147.32) (xy 255.27 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a0b3ec83-daff-450f-8314-baaf8c0ac74b")
+	)
+	(wire
+		(pts
+			(xy 224.79 62.23) (xy 223.52 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a102ab6a-742f-4d3c-af29-ab251a73f93b")
+	)
+	(wire
+		(pts
+			(xy 220.98 104.14) (xy 220.98 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a1699c63-85ab-44a3-93d8-d603092b538f")
+	)
+	(wire
+		(pts
+			(xy 243.84 62.23) (xy 242.57 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a22f8626-10db-44bc-9318-7cca89171c5a")
+	)
+	(wire
+		(pts
+			(xy 261.62 157.48) (xy 185.42 157.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a2bfa767-21ba-49a9-808c-e8d787b46dfc")
+	)
+	(wire
+		(pts
+			(xy 261.62 62.23) (xy 261.62 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a5ad08ab-83a8-4b07-94ac-56a301eafefc")
+	)
+	(wire
+		(pts
+			(xy 223.52 78.74) (xy 226.06 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a6bec0c9-ec2c-4ad3-a1db-4d8c5006b4ae")
+	)
+	(wire
+		(pts
+			(xy 185.42 157.48) (xy 185.42 158.75)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a7e1207e-a71f-4bf7-9549-46861abb6194")
+	)
+	(wire
+		(pts
+			(xy 200.66 111.76) (xy 204.47 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aaeb8f40-733d-43d4-84dd-676561cd7007")
+	)
+	(wire
+		(pts
+			(xy 248.92 50.8) (xy 228.6 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "aaf5ce40-297a-4b83-8c44-91c88eae5a7d")
+	)
+	(wire
+		(pts
+			(xy 223.52 133.35) (xy 231.14 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "abe93c8d-3ace-4cda-a4b3-797ef351a2cd")
+	)
+	(wire
+		(pts
+			(xy 205.74 67.31) (xy 246.38 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac570755-6934-4834-adb0-09ad2d1b1ccd")
+	)
+	(wire
+		(pts
+			(xy 245.11 104.14) (xy 251.46 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ac644f29-0ca3-4601-b7c8-be58ee86d248")
+	)
+	(wire
+		(pts
+			(xy 250.19 59.69) (xy 248.92 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "acd5f643-04df-44cf-bcc2-0c58d43b2f2f")
+	)
+	(wire
+		(pts
+			(xy 266.7 78.74) (xy 265.43 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "af09de30-c4a6-4035-9d41-9697d162dc30")
+	)
+	(wire
+		(pts
+			(xy 223.52 59.69) (xy 226.06 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b15c729c-0c09-4e1e-9201-ef1ced56ce58")
+	)
+	(wire
+		(pts
+			(xy 260.35 81.28) (xy 261.62 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b2d2fefd-7a36-4548-a15a-ea4962c0f98f")
+	)
+	(wire
+		(pts
+			(xy 213.36 81.28) (xy 213.36 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b32f1692-4ff9-43f1-bb4b-3458c5446cd2")
+	)
+	(wire
+		(pts
+			(xy 247.65 30.48) (xy 228.6 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b3384e76-b6bd-46d4-a869-89eee6656d05")
+	)
+	(wire
+		(pts
+			(xy 247.65 40.64) (xy 247.65 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b40b1c42-99c2-4408-9dc3-06f08ff89f21")
+	)
+	(wire
+		(pts
+			(xy 231.14 149.86) (xy 231.14 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b4b81d68-e659-490b-8acf-68ea434096b7")
+	)
+	(wire
+		(pts
+			(xy 265.43 50.8) (xy 248.92 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b5f64656-76e6-40a9-a65b-8141bcab9cb4")
+	)
+	(wire
+		(pts
+			(xy 234.95 139.7) (xy 245.11 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b645079f-8461-44c6-9be2-5bcd83bb2ec8")
+	)
+	(wire
+		(pts
+			(xy 190.5 147.32) (xy 190.5 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b6484a42-a532-417c-9af1-86b3d8ce7d8f")
+	)
+	(wire
+		(pts
+			(xy 266.7 59.69) (xy 265.43 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b685ed4b-2e49-4bda-bb24-f58a43407e94")
+	)
+	(wire
+		(pts
+			(xy 243.84 43.18) (xy 243.84 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b7f37e72-3e93-47d5-9597-04675e0cf727")
+	)
+	(wire
+		(pts
+			(xy 266.7 43.18) (xy 264.16 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b856d53f-491b-4095-a7bc-9964c83ff122")
+	)
+	(wire
+		(pts
+			(xy 226.06 59.69) (xy 226.06 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "b9dfdc3f-525c-4070-8758-c39fbe52f9c6")
+	)
+	(wire
+		(pts
+			(xy 182.88 154.94) (xy 251.46 154.94)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "baae16da-2249-4684-a7f6-c5ef2980ba68")
+	)
+	(wire
+		(pts
+			(xy 167.64 96.52) (xy 190.5 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bb189301-57a6-4d25-91a2-f9d276b5e778")
+	)
+	(wire
+		(pts
+			(xy 261.62 62.23) (xy 260.35 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbb4186d-c2c4-460b-9cf2-8497b6d73b22")
+	)
+	(wire
+		(pts
+			(xy 246.38 59.69) (xy 246.38 67.31)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bbfb59d7-b887-447b-89cd-bbe401939b7a")
+	)
+	(wire
+		(pts
+			(xy 260.35 59.69) (xy 262.89 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bcde3602-002a-4f9d-b039-859cd0c99615")
+	)
+	(wire
+		(pts
+			(xy 200.66 111.76) (xy 200.66 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "bdbd0b48-f045-47e5-b4ed-41df78c59da7")
+	)
+	(wire
+		(pts
+			(xy 278.13 81.28) (xy 278.13 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c11f68b2-06f7-4de3-8611-fb6de82bcf80")
+	)
+	(wire
+		(pts
+			(xy 248.92 66.04) (xy 266.7 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c14856a1-4684-48ce-84d1-739ac2c064e1")
+	)
+	(wire
+		(pts
+			(xy 229.87 46.99) (xy 247.65 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c318a4d8-6b25-42d9-8e72-b7906376b525")
+	)
+	(wire
+		(pts
+			(xy 280.67 59.69) (xy 280.67 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c416bf30-a9a5-423b-97d8-3f6fc5b78fb6")
+	)
+	(wire
+		(pts
+			(xy 214.63 125.73) (xy 223.52 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c4529855-2db0-486d-9fc6-3e3f99389660")
+	)
+	(wire
+		(pts
+			(xy 204.47 104.14) (xy 210.82 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c5909a96-3b5c-4065-b81b-56371a52b472")
+	)
+	(wire
+		(pts
+			(xy 280.67 40.64) (xy 280.67 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c6555a02-c178-4a23-b5bd-fbaa820158a2")
+	)
+	(wire
+		(pts
+			(xy 200.66 133.35) (xy 204.47 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c65ab477-9e91-4e63-b04e-1e5c42de8ef9")
+	)
+	(wire
+		(pts
+			(xy 264.16 30.48) (xy 247.65 30.48)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c7b9f7b1-d032-44d4-8762-65199cfeaa48")
+	)
+	(wire
+		(pts
+			(xy 265.43 68.58) (xy 250.19 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "c9728565-781a-488f-9cc6-6f427abb47f2")
+	)
+	(wire
+		(pts
+			(xy 210.82 50.8) (xy 228.6 50.8)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cae1ea55-d452-401b-bf34-0e975c024f53")
+	)
+	(wire
+		(pts
+			(xy 241.3 147.32) (xy 234.95 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb2e9416-6d86-4b45-999d-032f5de873a2")
+	)
+	(wire
+		(pts
+			(xy 228.6 30.48) (xy 228.6 40.64)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb6f9240-5b4c-4a33-81ff-cc803740e3ec")
+	)
+	(wire
+		(pts
+			(xy 276.86 78.74) (xy 280.67 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cb7f1be4-1c0b-4773-b193-931e53e62b30")
+	)
+	(wire
+		(pts
+			(xy 227.33 43.18) (xy 227.33 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cded251f-b7b8-4b0a-9d7a-6977e58a9ee0")
+	)
+	(wire
+		(pts
+			(xy 241.3 133.35) (xy 241.3 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce6198f8-53fd-42e9-84a8-03a17831ed95")
+	)
+	(wire
+		(pts
+			(xy 234.95 111.76) (xy 245.11 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ce7c3d3d-90bd-4acc-a72b-9829652c2ebf")
+	)
+	(wire
+		(pts
+			(xy 242.57 59.69) (xy 246.38 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "cf0d2839-a5ea-4692-a1b5-0366c4976c7d")
+	)
+	(wire
+		(pts
+			(xy 262.89 40.64) (xy 262.89 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d05c0e3a-1820-4444-95f2-3bfb59329a5c")
+	)
+	(wire
+		(pts
+			(xy 204.47 119.38) (xy 210.82 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d0f9b968-7734-4c90-b968-570050ac765d")
+	)
+	(wire
+		(pts
+			(xy 276.86 43.18) (xy 278.13 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d59716fa-a6b2-46c7-8fe9-3b6c8d925a7f")
+	)
+	(wire
+		(pts
+			(xy 194.31 96.52) (xy 204.47 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d7ec1775-8701-4768-be17-39c3a843a3b5")
+	)
+	(wire
+		(pts
+			(xy 229.87 81.28) (xy 232.41 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d919c000-a9b5-4180-8529-d68201c92ac2")
+	)
+	(wire
+		(pts
+			(xy 251.46 147.32) (xy 245.11 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d951505c-3fb1-4fbf-85be-6cd5d3179f52")
+	)
+	(wire
+		(pts
+			(xy 234.95 133.35) (xy 241.3 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "d9cff747-4e83-49fe-8689-6778634d6537")
+	)
+	(wire
+		(pts
+			(xy 207.01 87.63) (xy 243.84 87.63)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "da226e5c-a1fc-46f1-ae14-8ebfec7c8e94")
+	)
+	(wire
+		(pts
+			(xy 223.52 96.52) (xy 234.95 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc1b61d7-e8bd-4fe8-9680-b95e15b5df58")
+	)
+	(wire
+		(pts
+			(xy 255.27 125.73) (xy 264.16 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "dc1dd680-a91e-4817-bd25-914b59840c88")
+	)
+	(wire
+		(pts
+			(xy 204.47 111.76) (xy 214.63 111.76)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "def96b86-0b5c-4817-b95d-58c2ed0389e5")
+	)
+	(wire
+		(pts
+			(xy 276.86 81.28) (xy 278.13 81.28)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "df72f521-c0cf-483f-9d41-6988badc37b3")
+	)
+	(wire
+		(pts
+			(xy 270.51 160.02) (xy 270.51 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e12f5496-bb6d-4a73-a853-dd6fe343c140")
+	)
+	(wire
+		(pts
+			(xy 251.46 119.38) (xy 251.46 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e145768c-388f-4da6-91ff-31d939fa08f0")
+	)
+	(wire
+		(pts
+			(xy 245.11 125.73) (xy 255.27 125.73)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e17039e4-c52f-4f0a-8ed9-c48d539522d3")
+	)
+	(wire
+		(pts
+			(xy 261.62 104.14) (xy 261.62 119.38)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e22498d5-ce82-45cd-b3de-61bcc33c524f")
+	)
+	(wire
+		(pts
+			(xy 224.79 46.99) (xy 224.79 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e24e4eaf-ad8f-4060-9b63-63bcfcc87207")
+	)
+	(wire
+		(pts
+			(xy 264.16 43.18) (xy 264.16 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e38a706a-6378-4a5a-8a29-37542e51327d")
+	)
+	(wire
+		(pts
+			(xy 214.63 96.52) (xy 223.52 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "e5ad611c-9854-4643-ad6d-6b1cff542196")
+	)
+	(wire
+		(pts
+			(xy 229.87 86.36) (xy 245.11 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ec97333e-59db-4669-9ea2-32cbe16a0d4d")
+	)
+	(wire
+		(pts
+			(xy 270.51 119.38) (xy 270.51 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ede3c930-1957-4f78-9dd3-30f8e9761d64")
+	)
+	(wire
+		(pts
+			(xy 264.16 147.32) (xy 270.51 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1d33256-640c-4797-af5c-81ebdb1165a0")
+	)
+	(wire
+		(pts
+			(xy 209.55 68.58) (xy 228.6 68.58)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f1e0d0fa-f87f-428f-80c3-4ed223bcf6b7")
+	)
+	(wire
+		(pts
+			(xy 250.19 43.18) (xy 247.65 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f3d964aa-ac6b-4200-9376-f7b8f4355764")
+	)
+	(wire
+		(pts
+			(xy 255.27 96.52) (xy 264.16 96.52)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f41c4a52-46b0-4ec9-aa83-a05c7e08c05e")
+	)
+	(wire
+		(pts
+			(xy 248.92 62.23) (xy 250.19 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f587078b-84d8-40aa-b123-9100203a8b5f")
+	)
+	(wire
+		(pts
+			(xy 220.98 119.38) (xy 220.98 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f64cc6a0-0f2c-4b84-9c71-a7c03a4b1442")
+	)
+	(wire
+		(pts
+			(xy 224.79 46.99) (xy 229.87 46.99)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f697f28c-da6b-4bae-9718-fa436ceb6b61")
+	)
+	(wire
+		(pts
+			(xy 214.63 104.14) (xy 220.98 104.14)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8619d2d-259c-4beb-965e-8955f0c3f9ac")
+	)
+	(wire
+		(pts
+			(xy 213.36 43.18) (xy 210.82 43.18)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f88657d4-41d5-402a-bf6f-97a92b743416")
+	)
+	(wire
+		(pts
+			(xy 180.34 152.4) (xy 241.3 152.4)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f8e258d2-49e5-4b20-ae89-a907b6a27a3e")
+	)
+	(wire
+		(pts
+			(xy 248.92 66.04) (xy 248.92 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "f914677f-7768-405b-a25a-92fff2e662a8")
+	)
+	(wire
+		(pts
+			(xy 228.6 59.69) (xy 232.41 59.69)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fa2ef504-ef16-406b-95a7-6e7c3e11b0ab")
+	)
+	(wire
+		(pts
+			(xy 231.14 133.35) (xy 231.14 147.32)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fbcde7c4-6a42-43d5-af27-07a359e229af")
+	)
+	(wire
+		(pts
+			(xy 264.16 133.35) (xy 270.51 133.35)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fc7c82e7-e782-4f14-ab2c-71d24296276b")
+	)
+	(wire
+		(pts
+			(xy 227.33 62.23) (xy 227.33 66.04)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fcf575b9-c378-4e2d-9a60-6d21afe801a8")
+	)
+	(wire
+		(pts
+			(xy 245.11 139.7) (xy 255.27 139.7)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "fd1ba9e8-3719-4627-834e-3870524206f7")
+	)
+	(wire
+		(pts
+			(xy 242.57 78.74) (xy 246.38 78.74)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff010f71-e31d-48c4-847d-8272a06090e2")
+	)
+	(wire
+		(pts
+			(xy 278.13 62.23) (xy 276.86 62.23)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ff636808-2458-47ea-b2fa-6e804a561e3a")
+	)
+	(wire
+		(pts
+			(xy 250.19 81.28) (xy 250.19 86.36)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "ffcb9615-fc50-4d2c-be8e-d17129b29796")
+	)
+	(label "A3"
+		(at 210.82 86.36 0)
+		(fields_autoplaced yes)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+			(justify left bottom)
+		)
+		(uuid "4ff35a0a-4c9b-414e-bed2-bc06b33559ca")
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 234.95 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "004de237-e5a3-4b7a-a2d5-2453a5a68c80")
+		(property "Reference" "D21"
+			(at 237.49 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 237.49 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 234.95 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 234.95 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 234.95 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b11f8dc9-15f2-4d90-97da-0d579fa639b4")
+		)
+		(pin "1"
+			(uuid "33717d9a-7cb7-408b-8998-d11a56c16516")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D21")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 255.27 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "019b4bd7-881d-4d5a-b84f-03f0082a2e66")
+		(property "Reference" "D23"
+			(at 257.81 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 257.81 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 255.27 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 255.27 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "446a9f77-9ada-4db0-bfda-b6c02ff4daa2")
+		)
+		(pin "1"
+			(uuid "204295a1-0c2c-4f08-9aed-fdd80dad37c8")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D23")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 26.67 189.23 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "046fc3e3-9630-43db-80bc-65a7df8cf4c3")
+		(property "Reference" "H1"
+			(at 29.21 187.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 29.21 190.4999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:MountingHole_2.5mm_panel_cut"
+			(at 26.67 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 26.67 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 26.67 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "H1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 237.49 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "08f77c18-4996-473c-8105-59305a8973bc")
+		(property "Reference" "SW6"
+			(at 237.49 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 237.49 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 237.49 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 237.49 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "f4393772-7b86-471a-aa64-fff3902d3a8e")
+		)
+		(pin "1"
+			(uuid "1619a8e5-adfc-494f-8420-fd8608cba1a5")
+		)
+		(pin "4"
+			(uuid "e4e83503-3c92-48e0-a210-bd036e742423")
+		)
+		(pin "2"
+			(uuid "a5a54091-7fd2-46e4-8928-578bf304be64")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 255.27 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "0da19952-6f83-46e2-9d16-1b78774b797f")
+		(property "Reference" "SW9"
+			(at 255.27 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 255.27 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 255.27 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 255.27 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "15bbfd7a-1191-4925-9aa7-80a4586eeda5")
+		)
+		(pin "1"
+			(uuid "c8e4916c-d59e-46ee-a52b-b7dc7e37656f")
+		)
+		(pin "4"
+			(uuid "653abc8e-2d35-4d45-9665-59b3d46cabb3")
+		)
+		(pin "2"
+			(uuid "11238b6a-51e2-44b2-92db-3a9539af876c")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 245.11 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "112e73e8-a41c-4fbb-8304-0c6284eaf2c3")
+		(property "Reference" "D14"
+			(at 247.65 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 247.65 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 245.11 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 245.11 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e6b3da70-cb56-4293-85a0-344a248adc18")
+		)
+		(pin "1"
+			(uuid "a7b0e5c0-82f5-4cfb-a9bf-0be308611dfd")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D14")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 218.44 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "15e2a83d-00c1-4ef0-b7d9-4ea4ff696b23")
+		(property "Reference" "SW3"
+			(at 218.44 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 218.44 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 218.44 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 218.44 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "fd8299ad-444c-4c85-887e-360f7a3608cf")
+		)
+		(pin "1"
+			(uuid "756d627a-8e45-4fbe-b004-feef514adfab")
+		)
+		(pin "4"
+			(uuid "e5764bb6-2623-48a2-86f6-898a0f74918a")
+		)
+		(pin "2"
+			(uuid "aa206fb4-0a2d-4998-9d6e-398642f3e0fd")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 194.31 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2183c610-f9b4-4621-bdbe-f3269caaccc7")
+		(property "Reference" "D25"
+			(at 196.85 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 196.85 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 194.31 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 194.31 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 194.31 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5e76fabf-a4fb-4b0d-80d5-f1400ba43f40")
+		)
+		(pin "1"
+			(uuid "4f97a1ed-bbee-4093-9e03-53901e9b3312")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D25")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 264.16 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2223c95d-2e1c-4c46-931c-3c75045a3b8e")
+		(property "Reference" "D24"
+			(at 266.7 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 266.7 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 264.16 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 264.16 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 264.16 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c552364f-c9bd-4f0a-9f21-d43a31af5798")
+		)
+		(pin "1"
+			(uuid "6bc0f9ff-2312-49a5-b2eb-7d8b582d09c5")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D24")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 234.95 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "24c610dd-9265-4e7b-8ebb-2c437a2a9a18")
+		(property "Reference" "D5"
+			(at 237.49 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 237.49 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 234.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 234.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 234.95 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5e14d1db-0b5d-4ef9-9fc7-2a2987e4523d")
+		)
+		(pin "1"
+			(uuid "8ad7e080-3452-4f84-9f56-7800ce035de0")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 26.67 194.31 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "284ed019-1673-4559-8a5b-24087cea6f26")
+		(property "Reference" "H3"
+			(at 29.21 193.0399 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 29.21 195.5799 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:MountingHole_2.5mm_panel_cut"
+			(at 26.67 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 26.67 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 26.67 194.31 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "H3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 214.63 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "29320738-101a-4f48-ae3a-69b99a06f859")
+		(property "Reference" "D27"
+			(at 217.17 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 217.17 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 214.63 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 214.63 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 214.63 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "37047ece-bf84-4940-813e-78d6f1019782")
+		)
+		(pin "1"
+			(uuid "8e2133da-35d4-4150-8dd6-8d98e5421a87")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D27")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 223.52 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2be55a4a-3af8-45c4-812b-e948eb706313")
+		(property "Reference" "D12"
+			(at 226.06 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 226.06 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 223.52 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 223.52 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "56bb79ca-06c7-44fb-9e00-7c43e8286e44")
+		)
+		(pin "1"
+			(uuid "005e290a-ec56-43c9-ba34-db2b7d01bdd2")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 234.95 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2cd5542f-e6bf-4b5a-955b-544b5361cb27")
+		(property "Reference" "D29"
+			(at 237.49 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 237.49 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 234.95 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 234.95 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 234.95 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ea7cbf3c-15d8-4c6b-93d8-b900d700cfee")
+		)
+		(pin "1"
+			(uuid "8a0bd018-21a7-4521-a6fe-8132c7eb6398")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D29")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 234.95 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "2e05bbc2-796d-4afd-8cf5-e46ca79b3f72")
+		(property "Reference" "D13"
+			(at 237.49 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 237.49 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 234.95 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 234.95 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 234.95 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "c66044b6-ccd7-4200-ac92-f4a2944fbf9a")
+		)
+		(pin "1"
+			(uuid "42e3f82f-ac9b-44ff-9fad-af261401f8a0")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D13")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 264.16 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3620d7d2-228f-4ade-8546-08e5f7acfe79")
+		(property "Reference" "D8"
+			(at 266.7 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 266.7 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 264.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 264.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 264.16 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "5593f571-91b3-4232-97d8-964f7430a846")
+		)
+		(pin "1"
+			(uuid "6ac918bd-1479-4c3c-a11c-197aa02bff0d")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 245.11 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "39319110-810a-4430-adad-3c2d81225e0f")
+		(property "Reference" "D22"
+			(at 247.65 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 247.65 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 245.11 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 245.11 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f5153d4b-4302-40db-a9b7-c2ce4a608e54")
+		)
+		(pin "1"
+			(uuid "8c314f97-3d1b-4f17-87fd-cf373be1811d")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D22")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 214.63 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "3dd0aea7-fafa-4924-9ad4-690c75579cf9")
+		(property "Reference" "D3"
+			(at 217.17 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 217.17 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 214.63 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 214.63 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 214.63 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "477118b0-1a9e-4717-8ef1-c8c2b437c0e6")
+		)
+		(pin "1"
+			(uuid "c1b6b3cb-2ede-4848-a34a-05229e3aa02f")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D3")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 264.16 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "43453364-41f4-4bd1-a345-9e72b63362b0")
+		(property "Reference" "D32"
+			(at 266.7 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 266.7 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 264.16 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 264.16 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 264.16 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "81650615-2775-4af7-82d3-a01793318e0d")
+		)
+		(pin "1"
+			(uuid "e2f269cd-6c6f-4589-8231-ef52c199ce45")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D32")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 223.52 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "45babbde-c44d-4738-ac2d-6bb3d00d15ba")
+		(property "Reference" "D4"
+			(at 226.06 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 226.06 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 223.52 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 223.52 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f19e8527-e6a3-4d81-9b75-ff860e13e2c8")
+		)
+		(pin "1"
+			(uuid "71f9ba61-6ebe-4efc-90be-2504f01d7634")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 214.63 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "488a3549-66e9-40c8-8935-e724f2f07252")
+		(property "Reference" "D11"
+			(at 217.17 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 217.17 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 214.63 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 214.63 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 214.63 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "4e7e0b63-baf8-46fd-95f2-938553e6956c")
+		)
+		(pin "1"
+			(uuid "69092fc3-a772-4cf1-b4fd-2fc53e53ab4f")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 245.11 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "48bd21d5-263b-4966-aa40-d4f439454ebe")
+		(property "Reference" "D6"
+			(at 247.65 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 247.65 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 245.11 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 245.11 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "04510f55-7fa4-4739-9dbb-7192c00a6928")
+		)
+		(pin "1"
+			(uuid "c0f9b0d9-8d58-4680-9078-e06a6b493a3a")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D6")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 194.31 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "509787ff-3e9e-4254-b795-c407ab3c5f59")
+		(property "Reference" "D1"
+			(at 196.85 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 196.85 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 194.31 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 194.31 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 194.31 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e2b5419c-a396-424e-804a-405c1bb572b5")
+		)
+		(pin "1"
+			(uuid "7093c60c-574f-40c0-86ea-b5744a5354c8")
+		)
+		(instances
+			(project ""
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 194.31 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "56c172cf-71bc-4d92-950b-71a98c2ae8d4")
+		(property "Reference" "D9"
+			(at 196.85 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 196.85 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 194.31 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 194.31 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 194.31 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "f26aaea2-e118-4c79-ab80-53da676af6c3")
+		)
+		(pin "1"
+			(uuid "87b639ba-7f46-4ce1-a42d-f38dc50d6e5c")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D9")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 218.44 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "616c0b78-52f7-48b2-a959-ffa5ef0f7e11")
+		(property "Reference" "SW2"
+			(at 218.44 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 218.44 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 218.44 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 218.44 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "7766c116-16a7-44a8-b9a7-4a0c0e359e11")
+		)
+		(pin "1"
+			(uuid "a43a1703-dce4-4dd9-9cca-9a846c639baf")
+		)
+		(pin "4"
+			(uuid "f49b9871-4357-478f-a42c-56df82c69c26")
+		)
+		(pin "2"
+			(uuid "1d58adca-fbbc-4ea9-b0ec-225ddad77e68")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 255.27 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "64235d70-d1b5-44cd-9d2b-3fc1a509493b")
+		(property "Reference" "D7"
+			(at 257.81 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 257.81 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 255.27 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 255.27 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "b60704da-fd84-4836-96de-06d6b77bc2e9")
+		)
+		(pin "1"
+			(uuid "d5868ee3-3986-46b7-be19-5ed90dc4d778")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 264.16 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "65b89b06-f119-456a-833f-20c91003f82b")
+		(property "Reference" "D16"
+			(at 266.7 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 266.7 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 264.16 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 264.16 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 264.16 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "978df15e-37f3-462a-ab6a-3dc0757f22eb")
+		)
+		(pin "1"
+			(uuid "f835f36b-e647-4c05-8672-fbc13d1357e1")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D16")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 223.52 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "7dd5e0c0-ca37-4ba7-8195-2bdc7e449d1e")
+		(property "Reference" "D28"
+			(at 226.06 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 226.06 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 223.52 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 223.52 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ab767993-bea7-4ba9-b787-ca08106f3cf3")
+		)
+		(pin "1"
+			(uuid "f4af567a-7830-4a86-a535-1a54c5af6e36")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D28")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 255.27 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "84316e8d-9844-4717-b117-ecac2abc29cf")
+		(property "Reference" "SW8"
+			(at 255.27 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 255.27 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 255.27 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 255.27 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "8979899d-0e9a-4740-b544-3da110c1c597")
+		)
+		(pin "1"
+			(uuid "1316bc32-f041-4022-b47f-db34b0f4dda9")
+		)
+		(pin "4"
+			(uuid "0ea726b0-7649-4bd3-b21b-000273dbd832")
+		)
+		(pin "2"
+			(uuid "8c086e23-a693-4a02-a3ef-dd3b2e42e035")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW8")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 237.49 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "84484a9e-6f4d-4e53-a5fd-29f43a163e57")
+		(property "Reference" "SW4"
+			(at 237.49 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 237.49 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 237.49 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 237.49 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "01d596e5-c7db-4a36-beff-2a97c6e47679")
+		)
+		(pin "1"
+			(uuid "91da0d77-462f-4fbb-bdfd-1821e53d2f11")
+		)
+		(pin "4"
+			(uuid "b2368178-c5cc-4213-ac24-811436a653bd")
+		)
+		(pin "2"
+			(uuid "9ce78378-da02-4e15-853e-2b5d0eef7c28")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW4")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 194.31 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "869ed5e8-e761-446d-b4da-16ccebb6a229")
+		(property "Reference" "D17"
+			(at 196.85 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 196.85 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 194.31 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 194.31 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 194.31 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "02230122-d433-4765-967e-999775506552")
+		)
+		(pin "1"
+			(uuid "1f38773c-450c-4d19-a7b4-11ef66fa1bc8")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D17")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 271.78 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "972d1a3a-19cb-48fd-8498-1436fead8638")
+		(property "Reference" "SW11"
+			(at 271.78 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 271.78 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 271.78 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 271.78 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "e3c51c98-a43e-48d7-87df-8dd74bed58ed")
+		)
+		(pin "1"
+			(uuid "ab9de52f-6774-4d38-802b-f3b3437bb0b6")
+		)
+		(pin "4"
+			(uuid "2030f860-b984-45cc-866b-f722132295c2")
+		)
+		(pin "2"
+			(uuid "21a3a705-8a75-4c19-a585-a5844c0762e4")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW11")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 204.47 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9c933132-5b01-4bc0-97f4-5fd16ac5e945")
+		(property "Reference" "D10"
+			(at 207.01 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 207.01 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 204.47 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 204.47 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8518d1f6-d123-4079-83d3-7e4a3cd4d865")
+		)
+		(pin "1"
+			(uuid "c8a1098b-c5e2-4e47-857a-4b27b1e1c827")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 214.63 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "9d054bd8-037b-4ea8-ad5e-63f07be41631")
+		(property "Reference" "D19"
+			(at 217.17 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 217.17 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 214.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 214.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 214.63 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e35ff7ca-6acc-4136-ad69-1fc75cc3e001")
+		)
+		(pin "1"
+			(uuid "8429f384-fb91-4f57-b380-24d70e167079")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D19")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 255.27 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a468353f-d6c5-4b2b-b4a2-744b23c63f74")
+		(property "Reference" "D31"
+			(at 257.81 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 257.81 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 255.27 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 255.27 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "3e2d7942-7e0d-4272-9dfd-1957db25b813")
+		)
+		(pin "1"
+			(uuid "33e1a09c-d867-4b30-8653-2e09b5ccb7e2")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D31")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 223.52 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "a68e208a-b72b-49bd-acef-5160bc11b08f")
+		(property "Reference" "D20"
+			(at 226.06 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 226.06 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 223.52 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "14067c28-6041-4baa-a956-1d2e4c2a3f81")
+		)
+		(pin "1"
+			(uuid "201db37f-2c08-4323-8d27-2321eedd8845")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D20")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 218.44 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "ba80854b-cf65-423e-ab23-a4f351c061cd")
+		(property "Reference" "SW1"
+			(at 218.44 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 218.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 218.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 218.44 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 218.44 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "4351432a-7280-4f6d-b13e-81ecdc94b166")
+		)
+		(pin "1"
+			(uuid "84c17a8e-fa4b-4899-8b7c-10310d4d0ad4")
+		)
+		(pin "4"
+			(uuid "5e16aa5f-db1a-43e2-a7de-a6517451212b")
+		)
+		(pin "2"
+			(uuid "318001b1-ee79-4a48-a433-344ef1aa38f1")
+		)
+		(instances
+			(project ""
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW1")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 271.78 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "baf3a502-0376-4fc5-9d1c-603d56326dc2")
+		(property "Reference" "SW10"
+			(at 271.78 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 271.78 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 271.78 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 271.78 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "542292f6-d3d4-4dcd-9d6a-413af8ffc85a")
+		)
+		(pin "1"
+			(uuid "693a45b0-3351-4f9b-ba08-9118d63e7a95")
+		)
+		(pin "4"
+			(uuid "ee9c0a95-fbb1-4f9d-9bd1-44c922a03994")
+		)
+		(pin "2"
+			(uuid "f3f8a23a-b982-4d64-b22d-db0a447a3f98")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW10")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 245.11 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bb35f0bb-8bb4-46b3-b8c2-69c868271f11")
+		(property "Reference" "D30"
+			(at 247.65 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 247.65 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 245.11 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 245.11 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 245.11 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "944208cd-2474-44bc-a29b-acb1ad37fed9")
+		)
+		(pin "1"
+			(uuid "b570e84e-2ea2-452a-948b-48c6c9b9f9ab")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D30")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 255.27 43.18 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "bdaa5e96-90a5-4d85-b264-0e3bb6daa7b4")
+		(property "Reference" "SW7"
+			(at 255.27 33.02 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 255.27 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 255.27 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 35.56 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 255.27 43.18 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "f28a57ce-d015-4efb-b4a5-706f2c70647d")
+		)
+		(pin "1"
+			(uuid "96d6ceda-02de-487a-a01f-cedddb1b2442")
+		)
+		(pin "4"
+			(uuid "c7c143e7-9c59-4340-a4a4-8599a4c66948")
+		)
+		(pin "2"
+			(uuid "e69df319-066c-4b33-afc6-1ab250e35943")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW7")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Mechanical:MountingHole")
+		(at 48.26 189.23 0)
+		(unit 1)
+		(exclude_from_sim yes)
+		(in_bom no)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "c65e115e-75e6-4997-813e-53b11ceca719")
+		(property "Reference" "H2"
+			(at 50.8 187.9599 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "MountingHole"
+			(at 50.8 190.4999 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:MountingHole_2.5mm_panel_cut"
+			(at 48.26 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 48.26 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Mounting Hole without connection"
+			(at 48.26 189.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(instances
+			(project ""
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "H2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 255.27 115.57 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "d7389ce0-a3eb-4ddd-9a5e-1210705f4bde")
+		(property "Reference" "D15"
+			(at 257.81 112.7124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 257.81 115.2524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 255.27 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 255.27 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 255.27 115.57 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "fdfd08ec-7ad8-4a94-a4b4-421210e9e17c")
+		)
+		(pin "1"
+			(uuid "49f77b80-e9e0-4f64-98ca-5e5fa8acace5")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D15")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 271.78 81.28 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "db855745-f68e-4d9c-a31f-753c5d1d1591")
+		(property "Reference" "SW12"
+			(at 271.78 71.12 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 271.78 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 271.78 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 271.78 73.66 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 271.78 81.28 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "256fc5f9-389a-4a46-b31d-db7a2be18284")
+		)
+		(pin "1"
+			(uuid "3d199856-b29b-4600-ac0b-7d5a96100293")
+		)
+		(pin "4"
+			(uuid "3578fb40-4786-47d0-b8da-cd0d2e01ec96")
+		)
+		(pin "2"
+			(uuid "067191b4-51e9-419d-ba9c-b101208bb0cd")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW12")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 204.47 143.51 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "e27d78f6-7676-447c-a234-1aef01511d4b")
+		(property "Reference" "D26"
+			(at 207.01 140.6524 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 207.01 143.1924 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 204.47 143.51 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "e389ccb8-b060-4d3c-b0c1-878b0c603d1e")
+		)
+		(pin "1"
+			(uuid "d36f57ba-2f36-4bf5-8225-7a6ce5d6575d")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D26")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 204.47 100.33 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "f300a49d-62db-4f6f-951b-dae854f52e30")
+		(property "Reference" "D2"
+			(at 207.01 97.4724 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 207.01 100.0124 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 204.47 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 204.47 100.33 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "ea6d7049-e7c1-4f6d-bbb9-54d1fb32cce9")
+		)
+		(pin "1"
+			(uuid "fb9ed31a-a6b3-4626-8ed1-c00744e23357")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D2")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Switch:SW_Push_LED")
+		(at 237.49 62.23 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fac81615-e844-4a85-8336-b712781def5c")
+		(property "Reference" "SW5"
+			(at 237.49 52.07 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "SW_Push_LED"
+			(at 237.49 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "mWW-Library:SW_PUSH_and_LED_6mm_panel"
+			(at 237.49 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 237.49 54.61 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Push button switch with LED, generic"
+			(at 237.49 62.23 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "3"
+			(uuid "3f28b3e1-4062-47b1-9ae6-5df167bddef3")
+		)
+		(pin "1"
+			(uuid "4e071e36-7781-4799-a61e-19c73104f432")
+		)
+		(pin "4"
+			(uuid "d07da86b-e3b3-44dc-9eab-59206415e849")
+		)
+		(pin "2"
+			(uuid "d9bd25bf-fa98-483a-90f1-982cf8f918dc")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "SW5")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 204.47 129.54 270)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(fields_autoplaced yes)
+		(uuid "fe0b4731-1686-4c7e-8b65-502b867f688e")
+		(property "Reference" "D18"
+			(at 207.01 126.6824 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Value" "LED"
+			(at 207.01 129.2224 90)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(justify left)
+			)
+		)
+		(property "Footprint" "mWW-Library:LED_D3.0mm_panel_cut"
+			(at 204.47 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 204.47 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 204.47 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "8d97f44b-3965-4e0b-9baa-f4ff65b64bff")
+		)
+		(pin "1"
+			(uuid "4b1fb4eb-faf1-4ff6-86f1-0d51fc1ddf13")
+		)
+		(instances
+			(project "Micro-Whirlwind-PCB"
+				(path "/600999a8-5d2e-47ed-9bfd-a503a86ccc34"
+					(reference "D18")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(sheet_instances
+		(path "/"
+			(page "1")
+		)
+	)
+)

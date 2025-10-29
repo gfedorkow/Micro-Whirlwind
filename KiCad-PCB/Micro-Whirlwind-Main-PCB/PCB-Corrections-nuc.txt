@@ -1,0 +1,24 @@
+
+
+Notes from assembling MicroWhirlwind
+Dec 24, 2024
+
+
+** Main PCB
+The illuminated push switch has a mechanical key for orientation that I missed completely
+
+Show the push buttons as being on the back of the board
+move the Power button out of the way of the LCD HDMI
+Correct hole sizes for SW25 on-off-on toggle sw
+Ground SW-25 frame
+
+Ground the mounting screw holes for ESD resistance
+Ground the potentiometer frames
+
+
+** Dress Panel
+enlarge the round cutouts for push buttons
+Move the MAR label
+Add 0..15 bit numbers
+
+

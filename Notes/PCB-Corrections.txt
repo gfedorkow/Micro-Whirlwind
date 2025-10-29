@@ -1,0 +1,77 @@
+
+
+Notes from assembling MicroWhirlwind
+Dec 29, 2024
+Jan 2, 2025
+
+
+** Main PCB
+The illuminated push switch has a mechanical key for orientation that I missed completely; add it!
+
+Show the push buttons as being on the back of the board
+move the Power button out of the way of the LCD HDMI
+
+Change the green power LED resistor from 1K to 6.8K to 22K
+Change the red power LED resistor to xxK
+
+Correct hole sizes for SW25 on-off-on toggle sw
+Ground switch SW-25 frame
+Ground the mounting screw holes for ESD resistance
+Ground the potentiometer frames
+
+Correct footprint for 10-pin I2C address-fixer  (arghhh!)
+
+Unscramble SCL/SDA pins on TCA key scanner schematic
+Add pullups to 3.3V on the I2C output of the address-fixer
+Add more test points for stuff like the I2C bus(ses), 3.3V supply, TCA chip with hidden pins, etc
+
+Pins on the RCA jacks are Backwards!
+
+Pin 4 on FF2 Red D15B diode didn't get routed!
+
+(The IsGunOn2 pin got re-used?  Should be disconnected on Rainer's board?)
+
+Disconnect +5V from J2 16-pin connector
+
+The Audio Click pins on the analog page aren't connected to anything!
+
+
+Note pin conflict:
+AnaScope
+        # pin definitions in BCM numbering
+        self.pin_doMove = 17
+        self.pin_doDraw = 22
+        self.pin_enZ1 = 23
+        self.pin_enZ2 = 18
+        self.pin_isKey = 27 # used as the Stop signal
+        self.pin_isGun1 = 24
+        self.pin_isGun2 = 25
+**        self.pin_isGun1on = 26  # could be 12, # was 7
+        self.pin_isGun2on = 4
+        self.pin_TargetLED = 5
+        self.pin_InterceptorLED = 6
+        self.pin_isIntercept = 21  # used to indicate Target or Intercept to air-defense sim
+        # self.pin_audio_click = 12  # experiment
+
+MicroWhirlwind
+    pin_pwr_ctl = 19
+**    pin_tca_reset = 26  # keyboard scanner reset pin; low for reset
+    pin_tca_interrupt  = 16
+    pin_gpio_LED1 = 5
+    pin_gpio_LED2 = 6
+    pin_gpio_LED3 = 20
+    pin_gpio_LED4 = 21
+    pin_gpio_isKey = 27
+            self.pin_audio_click = 12  # audio pin
+
+
+
+
+
+** Dress Panel
+enlarge the round cutouts for push buttons
+Move the MAR label
+Add 0..15 bit numbers
+Add Op-Code / Operand markers to PAR (in very small print!)
+Correct horizontal positioning of LCD cutout
+

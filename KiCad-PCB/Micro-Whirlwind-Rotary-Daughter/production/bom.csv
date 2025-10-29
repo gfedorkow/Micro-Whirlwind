@@ -1,0 +1,6 @@
+﻿Designator,Footprint,Quantity,Value,LCSC Part #
+"D1, D2, D3, D4",LED_D3.0mm,4,LED,
+"J1, J2",PinHeader_1x06_P2.54mm_Vertical,2,Conn_01x06_Pin,
+"R5, R6, R7, R8",1206,4,1.8k,
+SW1,RotaryEncoder_Bourns_Vertical_PEC12R-3x17F-Sxxxx,1,RotaryEncoder_Switch_MP,
+"SW2, SW3, SW4, SW5",PinHeader_1x03_P2.54mm_Vertical,4,SW_Push_SPDT,

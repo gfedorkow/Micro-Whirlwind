@@ -1,0 +1,79 @@
+(footprint "Null-FootPrint"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(property "Reference" "REF**"
+		(at 0 0 90)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "abaee54b-6c33-49db-99a3-668b924828ac")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.1)
+			)
+		)
+	)
+	(property "Value" "12k"
+		(at 0 0 90)
+		(layer "B.SilkS")
+		(hide yes)
+		(uuid "3171c06d-2c0f-48c9-936f-d1134d003299")
+		(effects
+			(font
+				(size 0.5 0.5)
+				(thickness 0.1)
+			)
+			(justify mirror)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "3dd79711-66bb-4b1f-9851-c870d54cee45")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "7df032ee-ba4c-4dd1-ad78-8b245dba25c0")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "301be7c8-c3a2-4051-b0ca-52eb0b1037d6")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr smd)
+	(model "smd/chip_cms.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 0.17 0.16 0.16)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)

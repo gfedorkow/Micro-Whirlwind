@@ -1,0 +1,94 @@
+(footprint "LED_D3.0mm_panel_cut"
+	(version 20240108)
+	(generator "pcbnew")
+	(generator_version "8.0")
+	(layer "F.Cu")
+	(descr "LED, diameter 3.0mm, 2 pins")
+	(tags "LED diameter 3.0mm 2 pins")
+	(property "Reference" "REF**"
+		(at 1.27 -2.96 0)
+		(layer "F.SilkS")
+		(hide yes)
+		(uuid "1f80bb27-ee14-4fcf-ba6e-3568dd4d624f")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Value" "LED_D3.0mm_panel_cut"
+		(at 1.27 2.96 0)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "d54726f0-b6d3-42b6-8d9c-fd42a23f633c")
+		(effects
+			(font
+				(size 1 1)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Footprint" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "b16c4a87-4013-4101-a8e2-c8c5aaf849ec")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Datasheet" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "2caa3736-39c6-436d-b37e-ae0d5e386825")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(property "Description" ""
+		(at 0 0 0)
+		(unlocked yes)
+		(layer "F.Fab")
+		(hide yes)
+		(uuid "979248b3-090d-4463-be0a-01322f3037e1")
+		(effects
+			(font
+				(size 1.27 1.27)
+				(thickness 0.15)
+			)
+		)
+	)
+	(attr through_hole)
+	(fp_circle
+		(center 1.25 0)
+		(end 2.85 0)
+		(stroke
+			(width 0.1)
+			(type default)
+		)
+		(fill none)
+		(layer "Edge.Cuts")
+		(uuid "8025b683-31a6-48b0-a545-4487c34ec866")
+	)
+	(model "${KICAD8_3DMODEL_DIR}/LED_THT.3dshapes/LED_D3.0mm.wrl"
+		(offset
+			(xyz 0 0 0)
+		)
+		(scale
+			(xyz 1 1 1)
+		)
+		(rotate
+			(xyz 0 0 0)
+		)
+	)
+)
