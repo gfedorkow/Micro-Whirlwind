@@ -1,0 +1,28 @@
+# Compiled python modules.
+*.pyc
+__pycache__
+
+
+# Python egg metadata, regenerated from source files by setuptools.
+/*.egg-info
+
+# PyCharm Virtual Environment
+venv/
+
+# guy's ad-hoc backups
+*.bak
+Backup/
+
+# KiCad automatic backups
+backups/
+
+
+# Pycharm control files
+.idea/
+Py/workspace.code-workspace
+
+
+# huh, turning on Google Drive created a zillion .ini files
+# This may not have been a good idea...
+desktop.ini
+
