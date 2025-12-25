@@ -3,21 +3,26 @@
 Notes from assembling MicroWhirlwind
 Dec 29, 2024
 Jan 2, 2025
+tweaked Nov 15, 2025
 
 
 ** Main PCB
-The illuminated push switch has a mechanical key for orientation that I missed completely; add it!
+  * PCB
+The illuminated push switch has a mechanical key for orientation that I missed completely; add it to the footprint!
 
 Show the push buttons as being on the back of the board
 move the Power button out of the way of the LCD HDMI
 
+Correct hole sizes for SW25 on-off-on toggle sw pins
+Ground the mounting screw holes for ESD resistance
+
+Pins on the RCA jacks are Backwards!
+
+  * Schematic
+Ground the potentiometer frames
+Ground switch SW-25 frame
 Change the green power LED resistor from 1K to 6.8K to 22K
 Change the red power LED resistor to xxK
-
-Correct hole sizes for SW25 on-off-on toggle sw
-Ground switch SW-25 frame
-Ground the mounting screw holes for ESD resistance
-Ground the potentiometer frames
 
 Correct footprint for 10-pin I2C address-fixer  (arghhh!)
 
@@ -25,7 +30,6 @@ Unscramble SCL/SDA pins on TCA key scanner schematic
 Add pullups to 3.3V on the I2C output of the address-fixer
 Add more test points for stuff like the I2C bus(ses), 3.3V supply, TCA chip with hidden pins, etc
 
-Pins on the RCA jacks are Backwards!
 
 Pin 4 on FF2 Red D15B diode didn't get routed!
 
