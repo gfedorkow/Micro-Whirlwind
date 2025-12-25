@@ -1,1 +1,1 @@
-../../Notes/PCB-Corrections.txt
+See ../../Notes/PCB-Corrections.txt
