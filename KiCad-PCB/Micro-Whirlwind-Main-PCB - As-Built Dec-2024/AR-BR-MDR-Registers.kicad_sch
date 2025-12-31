@@ -1,14 +1,12 @@
 (kicad_sch
-	(version 20250114)
+	(version 20231120)
 	(generator "eeschema")
-	(generator_version "9.0")
+	(generator_version "8.0")
 	(uuid "19fdec2f-4aad-49a5-bf50-fce403329a6a")
 	(paper "A4")
 	(lib_symbols
 		(symbol "Device:C"
-			(pin_numbers
-				(hide yes)
-			)
+			(pin_numbers hide)
 			(pin_names
 				(offset 0.254)
 			)
@@ -81,7 +79,7 @@
 			(symbol "C_0_1"
 				(polyline
 					(pts
-						(xy -2.032 0.762) (xy 2.032 0.762)
+						(xy -2.032 -0.762) (xy 2.032 -0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -93,7 +91,7 @@
 				)
 				(polyline
 					(pts
-						(xy -2.032 -0.762) (xy 2.032 -0.762)
+						(xy -2.032 0.762) (xy 2.032 0.762)
 					)
 					(stroke
 						(width 0.508)
@@ -142,16 +140,11 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "Device:LED"
-			(pin_numbers
-				(hide yes)
-			)
+			(pin_numbers hide)
 			(pin_names
-				(offset 1.016)
-				(hide yes)
-			)
+				(offset 1.016) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -219,22 +212,10 @@
 			(symbol "LED_0_1"
 				(polyline
 					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+						(xy -1.27 -1.27) (xy -1.27 1.27)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -255,7 +236,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -267,10 +248,22 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -316,12 +309,9 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "Device:R"
-			(pin_numbers
-				(hide yes)
-			)
+			(pin_numbers hide)
 			(pin_names
 				(offset 0)
 			)
@@ -440,7 +430,6 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "Driver_LED:IS31FL3731-SA"
 			(exclude_from_sim no)
@@ -524,16 +513,16 @@
 			)
 			(symbol "IS31FL3731-SA_1_1"
 				(pin bidirectional line
-					(at -12.7 22.86 0)
+					(at 12.7 2.54 180)
 					(length 2.54)
-					(name "SDA"
+					(name "CA9"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "19"
+					(number "1"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -541,17 +530,17 @@
 						)
 					)
 				)
-				(pin input line
-					(at -12.7 20.32 0)
+				(pin bidirectional line
+					(at 12.7 -10.16 180)
 					(length 2.54)
-					(name "SCL"
+					(name "CB4"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "20"
+					(number "10"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -559,17 +548,17 @@
 						)
 					)
 				)
-				(pin input line
-					(at -12.7 17.78 0)
+				(pin bidirectional line
+					(at 12.7 -12.7 180)
 					(length 2.54)
-					(name "AD"
+					(name "CB5"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "18"
+					(number "11"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -577,17 +566,17 @@
 						)
 					)
 				)
-				(pin input line
-					(at -12.7 12.7 0)
+				(pin bidirectional line
+					(at 12.7 -15.24 180)
 					(length 2.54)
-					(name "~{SDB}"
+					(name "CB6"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "3"
+					(number "12"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -595,17 +584,17 @@
 						)
 					)
 				)
-				(pin open_collector line
-					(at -12.7 10.16 0)
+				(pin bidirectional line
+					(at 12.7 -17.78 180)
 					(length 2.54)
-					(name "~{INTB}"
+					(name "CB7"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "4"
+					(number "13"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -613,17 +602,35 @@
 						)
 					)
 				)
-				(pin input line
-					(at -12.7 5.08 0)
+				(pin bidirectional line
+					(at 12.7 -20.32 180)
 					(length 2.54)
-					(name "IN"
+					(name "CB8"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "17"
+					(number "14"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at 12.7 -22.86 180)
+					(length 2.54)
+					(name "CB9"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "15"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -649,17 +656,53 @@
 						)
 					)
 				)
-				(pin passive line
-					(at -12.7 -2.54 0)
+				(pin input line
+					(at -12.7 5.08 0)
 					(length 2.54)
-					(name "R_EXT"
+					(name "IN"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "6"
+					(number "17"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin input line
+					(at -12.7 17.78 0)
+					(length 2.54)
+					(name "AD"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "18"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin bidirectional line
+					(at -12.7 22.86 0)
+					(length 2.54)
+					(name "SDA"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "19"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -685,17 +728,17 @@
 						)
 					)
 				)
-				(pin power_in line
-					(at 0 -27.94 90)
+				(pin input line
+					(at -12.7 20.32 0)
 					(length 2.54)
-					(name "GND"
+					(name "SCL"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "5"
+					(number "20"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -847,17 +890,71 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 12.7 2.54 180)
+				(pin input line
+					(at -12.7 12.7 0)
 					(length 2.54)
-					(name "CA9"
+					(name "~{SDB}"
 						(effects
 							(font
 								(size 1.27 1.27)
 							)
 						)
 					)
-					(number "1"
+					(number "3"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin open_collector line
+					(at -12.7 10.16 0)
+					(length 2.54)
+					(name "~{INTB}"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "4"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin power_in line
+					(at 0 -27.94 90)
+					(length 2.54)
+					(name "GND"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -12.7 -2.54 0)
+					(length 2.54)
+					(name "R_EXT"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "6"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -919,116 +1016,7 @@
 						)
 					)
 				)
-				(pin bidirectional line
-					(at 12.7 -10.16 180)
-					(length 2.54)
-					(name "CB4"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "10"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 -12.7 180)
-					(length 2.54)
-					(name "CB5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "11"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 -15.24 180)
-					(length 2.54)
-					(name "CB6"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "12"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 -17.78 180)
-					(length 2.54)
-					(name "CB7"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "13"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 -20.32 180)
-					(length 2.54)
-					(name "CB8"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "14"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin bidirectional line
-					(at 12.7 -22.86 180)
-					(length 2.54)
-					(name "CB9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "15"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "mWW_Library:LEDx16"
 			(exclude_from_sim no)
@@ -1080,22 +1068,10 @@
 			(symbol "LEDx16_0_1"
 				(polyline
 					(pts
-						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+						(xy -1.27 -1.27) (xy -1.27 1.27)
 					)
 					(stroke
-						(width 0)
-						(type default)
-					)
-					(fill
-						(type none)
-					)
-				)
-				(polyline
-					(pts
-						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
-					)
-					(stroke
-						(width 0)
+						(width 0.254)
 						(type default)
 					)
 					(fill
@@ -1116,7 +1092,7 @@
 				)
 				(polyline
 					(pts
-						(xy -1.27 -1.27) (xy -1.27 1.27)
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
 					)
 					(stroke
 						(width 0.254)
@@ -1128,10 +1104,22 @@
 				)
 				(polyline
 					(pts
-						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
 					)
 					(stroke
-						(width 0.254)
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
 						(type default)
 					)
 					(fill
@@ -1293,24 +1281,6 @@
 			)
 			(symbol "LEDx16_5_1"
 				(pin passive line
-					(at -3.81 0 0)
-					(length 2.54)
-					(name "K5"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-					(number "9"
-						(effects
-							(font
-								(size 1.27 1.27)
-							)
-						)
-					)
-				)
-				(pin passive line
 					(at 3.81 0 180)
 					(length 2.54)
 					(name "A5"
@@ -1321,6 +1291,24 @@
 						)
 					)
 					(number "10"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K5"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "9"
 						(effects
 							(font
 								(size 1.27 1.27)
@@ -1747,17 +1735,12 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "power:+5V"
 			(power)
-			(pin_numbers
-				(hide yes)
-			)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-				(hide yes)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1829,7 +1812,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 2.54) (xy 0.762 1.27)
+						(xy 0 0) (xy 0 2.54)
 					)
 					(stroke
 						(width 0)
@@ -1841,7 +1824,7 @@
 				)
 				(polyline
 					(pts
-						(xy 0 0) (xy 0 2.54)
+						(xy 0 2.54) (xy 0.762 1.27)
 					)
 					(stroke
 						(width 0)
@@ -1872,17 +1855,12 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
 		(symbol "power:GND"
 			(power)
-			(pin_numbers
-				(hide yes)
-			)
+			(pin_numbers hide)
 			(pin_names
-				(offset 0)
-				(hide yes)
-			)
+				(offset 0) hide)
 			(exclude_from_sim no)
 			(in_bom yes)
 			(on_board yes)
@@ -1973,158 +1951,7 @@
 					)
 				)
 			)
-			(embedded_fonts no)
 		)
-	)
-	(text "BR-Red"
-		(exclude_from_sim no)
-		(at 256.286 116.586 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "070b4e24-5ff7-4da1-9c85-9494e9d2ce4c")
-	)
-	(text "MDR-White"
-		(exclude_from_sim no)
-		(at 162.814 62.23 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "1db817b2-080d-4253-8f9e-902d03d30640")
-	)
-	(text "Alarm"
-		(exclude_from_sim no)
-		(at 232.664 138.176 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "31d8f470-0c1d-48c5-bd95-c4038977da4f")
-	)
-	(text "MAR-Red"
-		(exclude_from_sim no)
-		(at 257.175 50.165 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "3fd65db9-e03f-4cf5-9cfb-9a9de1e2cc27")
-	)
-	(text "IND 7:0"
-		(exclude_from_sim no)
-		(at 163.068 127.254 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "498756bf-6442-4a58-8c62-7b0f6f76d736")
-	)
-	(text "I'm running the IS31 on 5V, but the input threshold \nfor Logic \"1\" is 1.4V, so it looks compatible with \nRPi 3.3V I2c\n"
-		(exclude_from_sim no)
-		(at 47.498 33.02 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "5457fff2-a85e-46b7-a2e9-de97c4d57416")
-	)
-	(text "MAR-\nWhite0-7"
-		(exclude_from_sim no)
-		(at 163.322 38.1 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "70d8891d-cb50-4d36-86d5-53c3f7eb49e4")
-	)
-	(text "ACC Carry"
-		(exclude_from_sim no)
-		(at 208.534 138.684 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "7c2bbca7-34d2-4b0c-8868-eade26c52c5b")
-	)
-	(text "Stop"
-		(exclude_from_sim no)
-		(at 238.8543 137.8756 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "82b80a14-d32e-4c05-a585-f1563a9e7fc9")
-	)
-	(text "Restart"
-		(exclude_from_sim no)
-		(at 245.872 138.938 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "8a5bdfee-eacf-4d2a-a3e7-399f8792b266")
-	)
-	(text "ACC-Red"
-		(exclude_from_sim no)
-		(at 256.794 94.996 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "8a999455-da1c-4a14-a139-e7f22c23b7f1")
-	)
-	(text "BR-White"
-		(exclude_from_sim no)
-		(at 163.068 103.632 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ab3994d8-fe7d-4f3a-992c-f392b83cd90c")
-	)
-	(text "MDR-Red"
-		(exclude_from_sim no)
-		(at 257.048 73.66 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "ab8941aa-c172-4076-93fb-5da0ab52d41f")
-	)
-	(text "I2C address 0x74"
-		(exclude_from_sim no)
-		(at 36.576 46.482 0)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "cc5547fa-d823-4645-8400-0f3197303a73")
-	)
-	(text "ACC-White"
-		(exclude_from_sim no)
-		(at 162.56 83.566 90)
-		(effects
-			(font
-				(size 1.27 1.27)
-			)
-		)
-		(uuid "feb680e4-ce6c-4644-8f92-ec1d19877f47")
 	)
 	(junction
 		(at 106.68 34.29)
@@ -9428,9 +9255,160 @@
 		)
 		(uuid "ffda6b33-1f10-4de7-89a0-36d7f4c7685f")
 	)
+	(text "BR-Red"
+		(exclude_from_sim no)
+		(at 256.286 116.586 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "070b4e24-5ff7-4da1-9c85-9494e9d2ce4c")
+	)
+	(text "MDR-White"
+		(exclude_from_sim no)
+		(at 162.814 62.23 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "1db817b2-080d-4253-8f9e-902d03d30640")
+	)
+	(text "Alarm"
+		(exclude_from_sim no)
+		(at 232.664 138.176 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "31d8f470-0c1d-48c5-bd95-c4038977da4f")
+	)
+	(text "MAR-Red"
+		(exclude_from_sim no)
+		(at 257.175 50.165 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "3fd65db9-e03f-4cf5-9cfb-9a9de1e2cc27")
+	)
+	(text "IND 7:0"
+		(exclude_from_sim no)
+		(at 163.068 127.254 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "498756bf-6442-4a58-8c62-7b0f6f76d736")
+	)
+	(text "I'm running the IS31 on 5V, but the input threshold \nfor Logic \"1\" is 1.4V, so it looks compatible with \nRPi 3.3V I2c\n"
+		(exclude_from_sim no)
+		(at 47.498 33.02 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "5457fff2-a85e-46b7-a2e9-de97c4d57416")
+	)
+	(text "MAR-\nWhite0-7"
+		(exclude_from_sim no)
+		(at 163.322 38.1 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "70d8891d-cb50-4d36-86d5-53c3f7eb49e4")
+	)
+	(text "ACC Carry"
+		(exclude_from_sim no)
+		(at 208.534 138.684 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "7c2bbca7-34d2-4b0c-8868-eade26c52c5b")
+	)
+	(text "Stop"
+		(exclude_from_sim no)
+		(at 238.8543 137.8756 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "82b80a14-d32e-4c05-a585-f1563a9e7fc9")
+	)
+	(text "Restart"
+		(exclude_from_sim no)
+		(at 245.872 138.938 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8a5bdfee-eacf-4d2a-a3e7-399f8792b266")
+	)
+	(text "ACC-Red"
+		(exclude_from_sim no)
+		(at 256.794 94.996 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "8a999455-da1c-4a14-a139-e7f22c23b7f1")
+	)
+	(text "BR-White"
+		(exclude_from_sim no)
+		(at 163.068 103.632 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ab3994d8-fe7d-4f3a-992c-f392b83cd90c")
+	)
+	(text "MDR-Red"
+		(exclude_from_sim no)
+		(at 257.048 73.66 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "ab8941aa-c172-4076-93fb-5da0ab52d41f")
+	)
+	(text "I2C address 0x74"
+		(exclude_from_sim no)
+		(at 36.576 46.482 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "cc5547fa-d823-4645-8400-0f3197303a73")
+	)
+	(text "ACC-White"
+		(exclude_from_sim no)
+		(at 162.56 83.566 90)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "feb680e4-ce6c-4644-8f92-ec1d19877f47")
+	)
 	(hierarchical_label "SDA_3V3"
 		(shape input)
 		(at 24.13 49.53 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -9442,6 +9420,7 @@
 	(hierarchical_label "SCL_3V3"
 		(shape input)
 		(at 24.13 53.34 180)
+		(fields_autoplaced yes)
 		(effects
 			(font
 				(size 1.27 1.27)

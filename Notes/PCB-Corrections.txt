@@ -4,6 +4,8 @@ Notes from assembling MicroWhirlwind
 Dec 29, 2024
 Jan 2, 2025
 tweaked Nov 15, 2025
+merged again Dec 30, 2025
+Corrections made to schematic and PCB, marked with [x]
 
 
 ** Main PCB
@@ -16,28 +18,36 @@ move the Power button out of the way of the LCD HDMI
 Correct hole sizes for SW25 on-off-on toggle sw pins
 Ground the mounting screw holes for ESD resistance
 
-Pins on the RCA jacks are Backwards!
+[x] Pins on the RCA jacks are Backwards!
 
   * Schematic
-Ground the potentiometer frames
-Ground switch SW-25 frame
-Change the green power LED resistor from 1K to 6.8K to 22K
-Change the red power LED resistor to xxK
-
-Correct footprint for 10-pin I2C address-fixer  (arghhh!)
-
-Unscramble SCL/SDA pins on TCA key scanner schematic
-Add pullups to 3.3V on the I2C output of the address-fixer
 Add more test points for stuff like the I2C bus(ses), 3.3V supply, TCA chip with hidden pins, etc
 
+[x] Ground the potentiometer frames
+[x] Ground switch SW-25 frame
+[x] Change the green power LED resistor from 1K to 6.8K to 22K
+[x] Change the red power LED resistor to 1.5K
+
+[x] Correct footprint for 10-pin I2C address-fixer  (arghhh!)
+
+[x] Unscramble SCL/SDA pins on TCA key scanner schematic - pg3, pg 5
+[x] Add 3.3K pullups to 3.3V on the I2C output of the address-fixer
 
 Pin 4 on FF2 Red D15B diode didn't get routed!
 
 (The IsGunOn2 pin got re-used?  Should be disconnected on Rainer's board?)
 
-Disconnect +5V from J2 16-pin connector
+[x] Disconnect +5V from J2 pin 9 of the 16-pin connector -- Actually, J2 supplies a second pin from the main unswitched +5V supply, 
+   So this pin is now connected to the _input_ to the +5V switch
+   On the model proto, somehow unswitched +5V seems to go to the audio board; that seems wrong...
 
-The Audio Click pins on the analog page aren't connected to anything!
+[x] The Audio Click pins on the analog page aren't connected to anything!  GPIO12 is the bit from the accumulator
+   [Audio Click Sync is unused; it would need another GPIO
+
+[x] Move DC Blocking capacitor C9 ahead of the volume potentiometer
+
+The +5V power switch is not working quite right -- there may be a leakage 
+path from the 3.3V supply.
 
 
 Note pin conflict:
