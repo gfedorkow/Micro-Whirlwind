@@ -5,6 +5,180 @@
 	(uuid "6fa82b8b-c3d9-47c2-9141-cdb6f5b8f855")
 	(paper "B")
 	(lib_symbols
+		(symbol "Device:LED"
+			(pin_numbers
+				(hide yes)
+			)
+			(pin_names
+				(offset 1.016)
+				(hide yes)
+			)
+			(exclude_from_sim no)
+			(in_bom yes)
+			(on_board yes)
+			(property "Reference" "D"
+				(at 0 2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Value" "LED"
+				(at 0 -2.54 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+				)
+			)
+			(property "Footprint" ""
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Datasheet" "~"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "Description" "Light emitting diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_keywords" "LED diode"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(property "ki_fp_filters" "LED* LED_SMD:* LED_THT:*"
+				(at 0 0 0)
+				(effects
+					(font
+						(size 1.27 1.27)
+					)
+					(hide yes)
+				)
+			)
+			(symbol "LED_0_1"
+				(polyline
+					(pts
+						(xy -3.048 -0.762) (xy -4.572 -2.286) (xy -3.81 -2.286) (xy -4.572 -2.286) (xy -4.572 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.778 -0.762) (xy -3.302 -2.286) (xy -2.54 -2.286) (xy -3.302 -2.286) (xy -3.302 -1.524)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 0) (xy 1.27 0)
+					)
+					(stroke
+						(width 0)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy -1.27 -1.27) (xy -1.27 1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+				(polyline
+					(pts
+						(xy 1.27 -1.27) (xy 1.27 1.27) (xy -1.27 0) (xy 1.27 -1.27)
+					)
+					(stroke
+						(width 0.254)
+						(type default)
+					)
+					(fill
+						(type none)
+					)
+				)
+			)
+			(symbol "LED_1_1"
+				(pin passive line
+					(at -3.81 0 0)
+					(length 2.54)
+					(name "K"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "1"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+				(pin passive line
+					(at 3.81 0 180)
+					(length 2.54)
+					(name "A"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+					(number "2"
+						(effects
+							(font
+								(size 1.27 1.27)
+							)
+						)
+					)
+				)
+			)
+			(embedded_fonts no)
+		)
 		(symbol "Switch:SW_Push_LED"
 			(pin_names
 				(offset 1.016)
@@ -1619,9 +1793,9 @@
 			(embedded_fonts no)
 		)
 	)
-	(text "F-Scope"
+	(text "F-Scope\nU2_led[7] bit 11"
 		(exclude_from_sim no)
-		(at 239.776 93.218 0)
+		(at 243.586 92.964 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1678,6 +1852,16 @@
 			)
 		)
 		(uuid "82319bda-7e16-4c47-b4e2-f93d67b77ff5")
+	)
+	(text "Light-Gun Active\nU2_led[7] bit 13\nadded Jun 14, 2026"
+		(exclude_from_sim no)
+		(at 246.126 129.794 0)
+		(effects
+			(font
+				(size 1.27 1.27)
+			)
+		)
+		(uuid "84d880c8-704c-4a2b-ba9f-78ad753c9810")
 	)
 	(text "TCA8418 has a fixed I2C address \nof 0x34.  No way to change!"
 		(exclude_from_sim yes)
@@ -1759,9 +1943,9 @@
 		)
 		(uuid "d68e2e9e-0abb-42ff-b389-e3c212cd2586")
 	)
-	(text "D-Scope"
+	(text "D-Scope\nU2_led[7] bit 12"
 		(exclude_from_sim no)
-		(at 239.776 112.268 0)
+		(at 243.586 111.76 0)
 		(effects
 			(font
 				(size 1.27 1.27)
@@ -1998,6 +2182,12 @@
 		(uuid "d4dcb433-9206-47b7-bb4f-4409b45d80fb")
 	)
 	(junction
+		(at 215.9 129.54)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "d6b8211b-98bb-40ee-8a70-053efa6fcbfd")
+	)
+	(junction
 		(at 213.36 90.17)
 		(diameter 0)
 		(color 0 0 0 0)
@@ -2032,6 +2222,12 @@
 		(diameter 0)
 		(color 0 0 0 0)
 		(uuid "f8c0b0ce-d818-46d4-9a88-fb052b2e1681")
+	)
+	(junction
+		(at 198.12 134.62)
+		(diameter 0)
+		(color 0 0 0 0)
+		(uuid "fef6c932-26ab-4921-aae1-2b6841343fda")
 	)
 	(no_connect
 		(at 279.4 185.42)
@@ -2785,6 +2981,16 @@
 	)
 	(wire
 		(pts
+			(xy 232.41 129.54) (xy 232.41 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "5913737d-5c56-47ac-96e4-61e8745016b5")
+	)
+	(wire
+		(pts
 			(xy 163.83 96.52) (xy 163.83 48.26)
 		)
 		(stroke
@@ -2842,6 +3048,16 @@
 			(type default)
 		)
 		(uuid "5f371cbb-54ea-47a4-b46b-217967ebfcff")
+	)
+	(wire
+		(pts
+			(xy 215.9 129.54) (xy 215.9 151.13)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "6037a5ac-357c-4e26-a271-73a97722550b")
 	)
 	(wire
 		(pts
@@ -2952,6 +3168,16 @@
 			(type default)
 		)
 		(uuid "68f78208-bffb-4de4-9260-9e2c87330e99")
+	)
+	(wire
+		(pts
+			(xy 229.87 129.54) (xy 232.41 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "691e8607-ff06-48b9-8872-78a27a6f5d4e")
 	)
 	(wire
 		(pts
@@ -3605,6 +3831,16 @@
 	)
 	(wire
 		(pts
+			(xy 215.9 129.54) (xy 222.25 129.54)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "a40e088c-e516-44c5-ab8d-33143d6ddd20")
+	)
+	(wire
+		(pts
 			(xy 205.74 156.21) (xy 238.76 156.21)
 		)
 		(stroke
@@ -3835,7 +4071,7 @@
 	)
 	(wire
 		(pts
-			(xy 215.9 111.76) (xy 215.9 151.13)
+			(xy 215.9 111.76) (xy 215.9 129.54)
 		)
 		(stroke
 			(width 0)
@@ -4332,6 +4568,16 @@
 			(type default)
 		)
 		(uuid "fa0c92d6-1a68-449f-8f56-11c2d3b1fe3f")
+	)
+	(wire
+		(pts
+			(xy 232.41 134.62) (xy 198.12 134.62)
+		)
+		(stroke
+			(width 0)
+			(type default)
+		)
+		(uuid "faf2aa10-e7aa-4c4c-a3d6-e7243b50b9aa")
 	)
 	(wire
 		(pts
@@ -5858,6 +6104,73 @@
 			(project "Micro-Whirlwind-Main-PCB"
 				(path "/83dfe2c9-ab1a-4178-9feb-71b29481afb4/aba83ce9-7044-4816-b03c-463b3738e5e7"
 					(reference "#PWR031")
+					(unit 1)
+				)
+			)
+		)
+	)
+	(symbol
+		(lib_id "Device:LED")
+		(at 226.06 129.54 0)
+		(unit 1)
+		(exclude_from_sim no)
+		(in_bom yes)
+		(on_board yes)
+		(dnp no)
+		(uuid "b1d567d8-1640-43cb-95ce-16f8bdf453a1")
+		(property "Reference" "D19"
+			(at 225.552 127 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Value" "LED"
+			(at 229.616 128.27 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+			)
+		)
+		(property "Footprint" "LED_THT:LED_D3.0mm"
+			(at 226.06 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Datasheet" "~"
+			(at 226.06 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(property "Description" "Light emitting diode"
+			(at 226.06 129.54 0)
+			(effects
+				(font
+					(size 1.27 1.27)
+				)
+				(hide yes)
+			)
+		)
+		(pin "2"
+			(uuid "168f1d38-d2ef-4767-bc9b-4bfab6d25628")
+		)
+		(pin "1"
+			(uuid "31eec12e-f97b-4c7b-9b66-760e67b1b24e")
+		)
+		(instances
+			(project "Micro-Whirlwind-Main-PCB"
+				(path "/83dfe2c9-ab1a-4178-9feb-71b29481afb4/aba83ce9-7044-4816-b03c-463b3738e5e7"
+					(reference "D19")
 					(unit 1)
 				)
 			)

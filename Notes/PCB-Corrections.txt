@@ -79,6 +79,10 @@ MicroWhirlwind
             self.pin_audio_click = 12  # audio pin
 
 
+[x] [Jun 14, 2026] Add one LED for "light Gun Active" at the intersection of Stop-on-addr and 
+        Restart - addr u2_led[7] bit 13
+        (Correction made to schematic, not the PCB (yet, Jun 15))
+
 
 
 
@@ -88,4 +92,7 @@ Move the MAR label
 Add 0..15 bit numbers
 Add Op-Code / Operand markers to PAR (in very small print!)
 Correct horizontal positioning of LCD cutout
+
+[Jun 14, 2026] add an LED for Light Gun Active
+
 
