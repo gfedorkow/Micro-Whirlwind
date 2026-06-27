@@ -1,0 +1,50 @@
+Subject:
+Whirlwind tweaks
+From: Jürgen Müller <jm@plan-prototyp.de>
+Date: 6/23/2026, 4:00 PM
+To: Guy Fedorkow <fedorkow@mit.edu>, "Woitkowski, Dr. David" <DWoitkowski@hnf.de>
+
+Hi Guy,
+
+We made very nice progress today. The simulator is up and running and seems happy with the HNF electrical and network environment. The touch monitors are not complaining about the metal around and in front of the touch screen either. I have attached a couple more photos -- hopefully we will get better ones soon: One of the HNF media colleagues also stopped by, and he had a proper camera and knew how to use it. ;-)
+
+We did come across a few tweaks you could help with. Hopefully this is not more than you had bargained for...
+
+    I currently have all LEDs set to maximum brightness (LEDbrightness 255,255,255). The lights for the program buttons and the light gun activity are just right, but the LEDs for the registers are actually too bright. I don't think I can currently adjust the register lights only. Is there a way for you to implement brightness control by functional group instead of the current blue/red/white color? The Start/Stop/Step/Alarm lights could either remain at their current brightness or be reduced together with the registers, I think -- whichever is easier or makes more sense to you.
+[I think the LEDs that Jurgen wants bright are all already in the "blue" category, so white and red can be dimmed without changing blue]
+
+    The five unused high bits of the program counter currently have their zero bits lighted. Would it be possible to switch them off entirely? The 3D-printed blind caps are actually not quite blind but slightly translucent... If this gets complex, we can always implement a hardware solution and put black tape over the LEDs, but ideally we would like to keep all LED PCBs identical for easy replacement.
+[fixed, not tested]
+
+    When the simulator lights the Alarm light, could you send an "E" page code via the serial link? Then the instruction screen can display an explanation about the Alarm state and what to do about it. When the Alarm is cleared, sending the code of the currently executing program (again) would be ideal, so the display can be updated.
+[fixed; it should be sending the "E" now, but not tested]
+
+
+    There is a glitch when selecting a new program from Stopped state: The simulator goes back to continuous execution (as desired), but it does not actually switch to the new program.
+[fixed]
+
+    David mentioned that you and he had gone back and forth a few times regarding the naming of "Missile trajectory" vs. "Rocket trajectory" for program #3. In David's understanding the conclusion was that "Rocket trajectory" is historically correct (found in some original documents). Could you change the name when cycling through the demo programs?
+[fixed]
+
+    With the lighting conditions at HNF and the contrasting hammertone paint on the panels, we feel that a black background works better for the radar screen than the current 10% gray. It also takes care of the black "ghost letters" which were previously visible in some of the demos (Black Jack I believe, and possibly others).  I have currently patched this in wwinfra.py: replaced "gray10" with "black" in two instances.  If you are happy with using black background throughout, could you please make this official -- or make this dependent on HNF mode?
+[fixed, not fully tested]
+
+
+    We have made the image slightly smaller (980*980 window instead of the previous 1080*1080) and tweaked the centering in the round cutout. This lets all displayed content show up properly -- but the results of Tic-Tac-Toe games, and the active spot to restart the game, appear very squeezed towards the lower left edge of the cutout. The proper solution might be to make the active window even smaller; but then some of the other programs' output starts to look a bit lost on the large screen. Would it be easily feasible, and acceptable, to position the Tic-Tac-Toe result at the bottom center instead?
+[fixed; message locations are set by  c_msg_x_pos, c_reset_x_pos, c_reset_y_pos]
+
+    Finally, when the simulator restarts every 60 minutes we noticed a bright rectangle flashing briefly in the upper left corner of the round display cutout. I never noticed it before, but may very well have simply missed it. This is probably not caused by the simulator code at all, but by the Linux OS, the service which restart the program, or the Python environment. I will look into this, but if the effect should ring any bell, please let me know!
+[hmm, looks like this is part of the graphics lib; might be hard to get rid of]
+
+
+[added later]
+    The Rocket Trajectory program actually runs a bit fast for my taste. The simulated phosphor persistence makes the rapid changes of the fuel and speed bar graphs quite hard to see and interpret. The recorded original program in the video is much slower, maybe too slow for a contemporary visitor. Maybe there is some happy middle ground? Would we have to ask Rainer to make his overly efficient code slower? 
+; Modified Jun 26 2026 to do several graphics refresh cycles in between each velocity
+; calculation; net result is that the length of wall-clock time to complete the flight
+; can be adjusted to taste.
+;  The Murrow film takes about 26 seconds to complete the flight; with no artificial delay,
+; this program completes a cycle in less than two seconds, making it hard to see what's happening
+; with the gauges.
+;  Pacing can be adjusted by changing the small negative number in "delay_init"
+
+
